@@ -1,4 +1,4 @@
-# Sky
+# Sky.app
 
 A lightweight wrapper around bsky.social (staging.bsky.social) on MacOS.
 
