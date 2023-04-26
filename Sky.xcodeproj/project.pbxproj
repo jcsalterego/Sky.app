@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		043A0F1829A5330E00B06D18 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 043A0F1729A5330E00B06D18 /* Scripts */; };
+		043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1929A5331800B06D18 /* JsLoader.swift */; };
+		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
+		04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847C921D99CE0009D1B0F /* AppDelegate.swift */; };
+		04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847CB21D99CE0009D1B0F /* ViewController.swift */; };
+		04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E847CD21D99CE1009D1B0F /* Assets.xcassets */; };
+		04E847D121D99CE1009D1B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E847CF21D99CE1009D1B0F /* Main.storyboard */; };
+		04E847DD21D99CE1009D1B0F /* SkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847DC21D99CE1009D1B0F /* SkyTests.swift */; };
+		04E847E821D99CE1009D1B0F /* SkyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847E721D99CE1009D1B0F /* SkyUITests.swift */; };
+		04E847F721D99DEE009D1B0F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E847F621D99DEE009D1B0F /* WebKit.framework */; };
+		04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04E847D921D99CE1009D1B0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04E847BE21D99CE0009D1B0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04E847C521D99CE0009D1B0F;
+			remoteInfo = Sky;
+		};
+		04E847E421D99CE1009D1B0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04E847BE21D99CE0009D1B0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04E847C521D99CE0009D1B0F;
+			remoteInfo = Sky;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		043A0F1729A5330E00B06D18 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
+		043A0F1929A5331800B06D18 /* JsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsLoader.swift; sourceTree = "<group>"; };
+		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
+		04E847C621D99CE0009D1B0F /* Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E847C921D99CE0009D1B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04E847CB21D99CE0009D1B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04E847CD21D99CE1009D1B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04E847D021D99CE1009D1B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04E847D221D99CE1009D1B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E847D321D99CE1009D1B0F /* Sky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sky.entitlements; sourceTree = "<group>"; };
+		04E847D821D99CE1009D1B0F /* SkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E847DC21D99CE1009D1B0F /* SkyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTests.swift; sourceTree = "<group>"; };
+		04E847DE21D99CE1009D1B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E847E321D99CE1009D1B0F /* SkyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E847E721D99CE1009D1B0F /* SkyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUITests.swift; sourceTree = "<group>"; };
+		04E847E921D99CE1009D1B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E847F621D99DEE009D1B0F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04E847C321D99CE0009D1B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E847F721D99DEE009D1B0F /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847D521D99CE1009D1B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847E021D99CE1009D1B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04E847BD21D99CE0009D1B0F = {
+			isa = PBXGroup;
+			children = (
+				04E847C821D99CE0009D1B0F /* Sky */,
+				04E847DB21D99CE1009D1B0F /* SkyTests */,
+				04E847E621D99CE1009D1B0F /* SkyUITests */,
+				04E847C721D99CE0009D1B0F /* Products */,
+				04E847F521D99DEE009D1B0F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04E847C721D99CE0009D1B0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04E847C621D99CE0009D1B0F /* Sky.app */,
+				04E847D821D99CE1009D1B0F /* SkyTests.xctest */,
+				04E847E321D99CE1009D1B0F /* SkyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04E847C821D99CE0009D1B0F /* Sky */ = {
+			isa = PBXGroup;
+			children = (
+				043A0F1729A5330E00B06D18 /* Scripts */,
+				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
+				043A0F1929A5331800B06D18 /* JsLoader.swift */,
+				043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */,
+				04E847CB21D99CE0009D1B0F /* ViewController.swift */,
+				04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */,
+				04E847CD21D99CE1009D1B0F /* Assets.xcassets */,
+				04E847CF21D99CE1009D1B0F /* Main.storyboard */,
+				04E847D221D99CE1009D1B0F /* Info.plist */,
+				04E847D321D99CE1009D1B0F /* Sky.entitlements */,
+			);
+			path = Sky;
+			sourceTree = "<group>";
+		};
+		04E847DB21D99CE1009D1B0F /* SkyTests */ = {
+			isa = PBXGroup;
+			children = (
+				04E847DC21D99CE1009D1B0F /* SkyTests.swift */,
+				04E847DE21D99CE1009D1B0F /* Info.plist */,
+			);
+			path = SkyTests;
+			sourceTree = "<group>";
+		};
+		04E847E621D99CE1009D1B0F /* SkyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04E847E721D99CE1009D1B0F /* SkyUITests.swift */,
+				04E847E921D99CE1009D1B0F /* Info.plist */,
+			);
+			path = SkyUITests;
+			sourceTree = "<group>";
+		};
+		04E847F521D99DEE009D1B0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04E847F621D99DEE009D1B0F /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04E847C521D99CE0009D1B0F /* Sky */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E847EC21D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "Sky" */;
+			buildPhases = (
+				04E847C221D99CE0009D1B0F /* Sources */,
+				04E847C321D99CE0009D1B0F /* Frameworks */,
+				04E847C421D99CE0009D1B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sky;
+			productName = Sky;
+			productReference = 04E847C621D99CE0009D1B0F /* Sky.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04E847D721D99CE1009D1B0F /* SkyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E847EF21D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "SkyTests" */;
+			buildPhases = (
+				04E847D421D99CE1009D1B0F /* Sources */,
+				04E847D521D99CE1009D1B0F /* Frameworks */,
+				04E847D621D99CE1009D1B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E847DA21D99CE1009D1B0F /* PBXTargetDependency */,
+			);
+			name = SkyTests;
+			productName = SkyTests;
+			productReference = 04E847D821D99CE1009D1B0F /* SkyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04E847E221D99CE1009D1B0F /* SkyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E847F221D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "SkyUITests" */;
+			buildPhases = (
+				04E847DF21D99CE1009D1B0F /* Sources */,
+				04E847E021D99CE1009D1B0F /* Frameworks */,
+				04E847E121D99CE1009D1B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E847E521D99CE1009D1B0F /* PBXTargetDependency */,
+			);
+			name = SkyUITests;
+			productName = SkyUITests;
+			productReference = 04E847E321D99CE1009D1B0F /* SkyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04E847BE21D99CE0009D1B0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1430;
+				ORGANIZATIONNAME = "Jerry Chen";
+				TargetAttributes = {
+					04E847C521D99CE0009D1B0F = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = "";
+					};
+					04E847D721D99CE1009D1B0F = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = "";
+						TestTargetID = 04E847C521D99CE0009D1B0F;
+					};
+					04E847E221D99CE1009D1B0F = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = "";
+						TestTargetID = 04E847C521D99CE0009D1B0F;
+					};
+				};
+			};
+			buildConfigurationList = 04E847C121D99CE0009D1B0F /* Build configuration list for PBXProject "Sky" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04E847BD21D99CE0009D1B0F;
+			productRefGroup = 04E847C721D99CE0009D1B0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04E847C521D99CE0009D1B0F /* Sky */,
+				04E847D721D99CE1009D1B0F /* SkyTests */,
+				04E847E221D99CE1009D1B0F /* SkyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04E847C421D99CE0009D1B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				043A0F1829A5330E00B06D18 /* Scripts in Resources */,
+				04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */,
+				04E847D121D99CE1009D1B0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847D621D99CE1009D1B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847E121D99CE1009D1B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04E847C221D99CE0009D1B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */,
+				04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */,
+				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
+				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
+				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847D421D99CE1009D1B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E847DD21D99CE1009D1B0F /* SkyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E847DF21D99CE1009D1B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E847E821D99CE1009D1B0F /* SkyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04E847DA21D99CE1009D1B0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04E847C521D99CE0009D1B0F /* Sky */;
+			targetProxy = 04E847D921D99CE1009D1B0F /* PBXContainerItemProxy */;
+		};
+		04E847E521D99CE1009D1B0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04E847C521D99CE0009D1B0F /* Sky */;
+			targetProxy = 04E847E421D99CE1009D1B0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04E847CF21D99CE1009D1B0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E847D021D99CE1009D1B0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04E847EA21D99CE1009D1B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		04E847EB21D99CE1009D1B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		04E847ED21D99CE1009D1B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sky/Sky.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Sky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.Sky;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		04E847EE21D99CE1009D1B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sky/Sky.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Sky/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.Sky;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		04E847F021D99CE1009D1B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = SkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.SkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sky.app/Contents/MacOS/Sky";
+			};
+			name = Debug;
+		};
+		04E847F121D99CE1009D1B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = SkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.SkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sky.app/Contents/MacOS/Sky";
+			};
+			name = Release;
+		};
+		04E847F321D99CE1009D1B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = SkyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.SkyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = Sky;
+			};
+			name = Debug;
+		};
+		04E847F421D99CE1009D1B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = SkyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				PRODUCT_BUNDLE_IDENTIFIER = jcsalterego.SkyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = Sky;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04E847C121D99CE0009D1B0F /* Build configuration list for PBXProject "Sky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E847EA21D99CE1009D1B0F /* Debug */,
+				04E847EB21D99CE1009D1B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E847EC21D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "Sky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E847ED21D99CE1009D1B0F /* Debug */,
+				04E847EE21D99CE1009D1B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E847EF21D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "SkyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E847F021D99CE1009D1B0F /* Debug */,
+				04E847F121D99CE1009D1B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E847F221D99CE1009D1B0F /* Build configuration list for PBXNativeTarget "SkyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E847F321D99CE1009D1B0F /* Debug */,
+				04E847F421D99CE1009D1B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04E847BE21D99CE0009D1B0F /* Project object */;
+}
