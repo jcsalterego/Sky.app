@@ -36,6 +36,8 @@ class ViewController: NSViewController {
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_light_mode"))
+        userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_disable_outer_scrollbars"))
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
@@ -124,14 +126,14 @@ class ViewController: NSViewController {
     }
 
     func updateTitleBar(_ mode: LightMode) {
-        var color: NSColor = NSColor.white
         switch (mode) {
         case .dark:
-            color = NSColor.black
+            self.webView.window!.backgroundColor = NSColor.black
+            self.webView.window!.appearance = NSAppearance(named: .darkAqua)
         case .light:
-            color = NSColor.white
+            self.webView.window!.backgroundColor = NSColor.white
+            self.webView.window!.appearance = NSAppearance(named: .aqua)
         }
-        self.webView.window!.backgroundColor = color
     }
 
 }
