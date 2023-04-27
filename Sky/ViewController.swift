@@ -28,17 +28,27 @@ class ViewController: NSViewController {
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
-        userContentController.add(ScriptMessageHandler(), name: "windowOpen")
-        let source = JsLoader.loadJs("Scripts/hook_window_open")
-        let script = WKUserScript(
-            source: source,
-            injectionTime: .atDocumentEnd,
-            forMainFrameOnly: false)
-        userContentController.addUserScript(script)
+        let scriptMessageHandler = ScriptMessageHandler()
+        scriptMessageHandler.viewController = self
+        userContentController.add(scriptMessageHandler, name: "windowOpen")
+        userContentController.add(scriptMessageHandler, name: "lightModeChange")
+        userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_window_open"))
+        userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_light_mode"))
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
         view = webView
+    }
+
+    func newScriptFromSource(_ name: String) -> WKUserScript {
+        let source = JsLoader.loadJs(name)
+        return WKUserScript(
+            source: source,
+            injectionTime: .atDocumentEnd,
+            forMainFrameOnly: false
+        )
     }
 
     override func viewDidLoad() {
@@ -106,6 +116,22 @@ class ViewController: NSViewController {
         return JsLoader.loadJs(
             "Scripts/click_new_post", [:]
         )
+    }
+    
+    enum LightMode {
+        case dark
+        case light
+    }
+
+    func updateTitleBar(_ mode: LightMode) {
+        var color: NSColor = NSColor.white
+        switch (mode) {
+        case .dark:
+            color = NSColor.black
+        case .light:
+            color = NSColor.white
+        }
+        self.webView.window!.backgroundColor = color
     }
 
 }
