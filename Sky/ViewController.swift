@@ -31,11 +31,11 @@ class ViewController: NSViewController {
         let scriptMessageHandler = ScriptMessageHandler()
         scriptMessageHandler.viewController = self
         userContentController.add(scriptMessageHandler, name: "windowOpen")
-        userContentController.add(scriptMessageHandler, name: "lightModeChange")
+        userContentController.add(scriptMessageHandler, name: "windowColorSchemeChange")
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_light_mode"))
+            newScriptFromSource("Scripts/hook_window_color_scheme"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_disable_outer_scrollbars"))
         webConfiguration.userContentController = userContentController
@@ -120,12 +120,13 @@ class ViewController: NSViewController {
         )
     }
     
-    enum LightMode {
+    enum WindowColorScheme {
         case dark
         case light
     }
 
-    func updateTitleBar(_ mode: LightMode) {
+    func updateTitleBar(_ mode: WindowColorScheme) {
+//        NSLog("mode = \(mode)")
         switch (mode) {
         case .dark:
             self.webView.window!.backgroundColor = NSColor.black
