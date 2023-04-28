@@ -327,6 +327,13 @@
                                                 <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="2GO-Mh-Pot"/>
+                                        <menuItem title="Open in Browser..." keyEquivalent="t" id="sDs-WP-qC5">
+                                            <connections>
+                                                <action selector="actionOpenInBrowser:" target="Ady-hI-5gd" id="5ot-1t-rJF"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="mHh-pj-LA4"/>
                                     </items>
                                 </menu>
                             </menuItem>

@@ -95,6 +95,17 @@ class ViewController: NSViewController {
         webView.reload()
     }
 
+    @IBAction func actionOpenInBrowser(_ sender: Any?) {
+        let urlString = webView.url!.absoluteString
+        switch urlString {
+        case SkyUrls.home,
+             SkyUrls.notifications:
+            break
+        default:
+            NSWorkspace.shared.open(webView.url!)
+        }
+    }
+
     @IBAction func actionNewPost(_ sender: Any?) {
         NSLog("new post \(SkyUrls.settings)")
         self.webView.evaluateJavaScript(clickNewPost());
