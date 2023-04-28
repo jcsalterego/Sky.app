@@ -18,6 +18,10 @@ Clone the repo or download the DMG from the [Releases](https://github.com/jcsalt
 
 ![](docs/screenshot.png)
 
+## Credits
+
+App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
+
 ## Changelog
 
 ### 0.0.3
@@ -32,12 +36,6 @@ Clone the repo or download the DMG from the [Releases](https://github.com/jcsalt
 ### 0.0.1
 
 * Initial release
-
-App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
-
-## Credits
-
-App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
 
 ## LICENSE
 
