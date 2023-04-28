@@ -20,6 +20,10 @@ Clone the repo or download the DMG from the [Releases](https://github.com/jcsalt
 
 ## Changelog
 
+### 0.0.3
+
+* Full Light/Dark Mode sync (scrollbars included)
+
 ### 0.0.2
 
 * Title bar follows dark mode
