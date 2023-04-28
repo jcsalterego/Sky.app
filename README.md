@@ -9,6 +9,7 @@ Clone the repo or download the DMG from the [Releases](https://github.com/jcsalt
 ## Keyboard Shortcuts
 
 * `⌘-N` New Post
+* `⌘-T` Open in Browser
 * `⌘-1` Home
 * `⌘-2` Search
 * `⌘-3` Notifications
@@ -23,6 +24,10 @@ Clone the repo or download the DMG from the [Releases](https://github.com/jcsalt
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
 
 ## Changelog
+
+### 0.0.4
+
+* Open in Browser
 
 ### 0.0.3
 
