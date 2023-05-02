@@ -106,6 +106,13 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func actionCopyLink(_ sender: Any?) {
+        let pasteboard = NSPasteboard.general
+        let urlString = webView.url!.absoluteString
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString(urlString, forType: NSPasteboard.PasteboardType.string)
+    }
+
     @IBAction func actionNewPost(_ sender: Any?) {
         NSLog("new post \(SkyUrls.settings)")
         self.webView.evaluateJavaScript(clickNewPost());

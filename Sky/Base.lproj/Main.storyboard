@@ -94,6 +94,12 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
+                                        <menuItem title="Copy URL" keyEquivalent="C" id="NTi-6D-KB5">
+                                            <connections>
+                                                <action selector="actionCopyLink:" target="Ady-hI-5gd" id="H5J-mP-a6p"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="tHo-4g-Z98"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
                                             <connections>
                                                 <action selector="cut:" target="Ady-hI-5gd" id="YJe-68-I9s"/>
