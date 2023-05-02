@@ -25,6 +25,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.0.5
+
+* ⌘-⇧-C to copy the current URL (#1)
+
 ### 0.0.4
 
 * Open in Browser
