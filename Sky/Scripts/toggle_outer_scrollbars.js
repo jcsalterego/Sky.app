@@ -4,7 +4,6 @@ window.toggleOuterScrollbars = function(enabled) {
     if (document !== undefined) {
         if (document.body !== undefined) {
             const overflowProp = enabled ? "auto" : "hidden";
-            console.log(`overflowProp = ${overflowProp)`);
             document.body.style.overflow = "hidden";
             success = true;
         }
