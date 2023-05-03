@@ -25,6 +25,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.0.7
+
+* FIX: Restore Dark Mode sync scrollbars. Whoops.
+
 ### 0.0.6
 
 * Notification badges! It might be a little wonky. One can always issue a Refresh (⌘-⇧-R).
