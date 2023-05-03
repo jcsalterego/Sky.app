@@ -119,6 +119,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
+        (NSApplication.shared.delegate as! AppDelegate).clearNotifCounts()
         webView.reload()
     }
 
@@ -164,7 +165,7 @@ class ViewController: NSViewController {
             "Scripts/click_new_post", [:]
         )
     }
-    
+
     enum WindowColorScheme {
         case dark
         case light
