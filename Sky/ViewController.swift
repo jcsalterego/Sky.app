@@ -21,8 +21,6 @@ class ViewController: NSViewController {
     var webView: WKWebView!
     var webKitDelegate: WebKitDelegate!
 
-    let nsLogKeyDown = false
-    let jsonLogging = false
     var outerScrollbarsEnabled = false
 
     override func loadView() {
