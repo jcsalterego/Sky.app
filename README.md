@@ -19,7 +19,6 @@ Posting
 * `⌘-2` Search
 * `⌘-3` Notifications
 * `⌘-4` Profile
-* `⌘-5` Profile
 * `⌘-T` Open in Browser
 * `⌘-⇧-C` Copy Current URL
 
