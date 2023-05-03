@@ -23,6 +23,7 @@ class ViewController: NSViewController {
 
     let nsLogKeyDown = false
     let jsonLogging = false
+    var outerScrollbarsEnabled = false
 
     override func loadView() {
         webKitDelegate = WebKitDelegate()
@@ -51,22 +52,20 @@ class ViewController: NSViewController {
         context: UnsafeMutableRawPointer?
     ) {
         if let url = change?[NSKeyValueChangeKey.newKey] as? NSURL {
-            if url.path!.contains("/search") {
-                // The search page doesn't work well with frozen
-                // outer scrollbars, so we enable it
+            // Currently the only section that should have
+            // outer scrollbars enabled is /search.
+            // We compare with outerScrollbarsEnabled to prevent
+            // running JS unless we have to.
+            let shouldHaveOuterScrollbars = url.path!.contains("/search")
+            if shouldHaveOuterScrollbars != outerScrollbarsEnabled {
+                // change state
                 self.webView.evaluateJavaScript(
                     JsLoader.loadJs(
                         "Scripts/toggle_outer_scrollbars",
-                        ["enabled": "true"]
+                        ["enabled": String(shouldHaveOuterScrollbars)]
                     )
                 );
-            } else {
-                self.webView.evaluateJavaScript(
-                    JsLoader.loadJs(
-                        "Scripts/toggle_outer_scrollbars",
-                        ["enabled": "false"]
-                    )
-                );
+                outerScrollbarsEnabled = shouldHaveOuterScrollbars
             }
         }
     }
