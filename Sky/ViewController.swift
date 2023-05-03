@@ -29,8 +29,11 @@ class ViewController: NSViewController {
         let userContentController = WKUserContentController()
         let scriptMessageHandler = ScriptMessageHandler()
         scriptMessageHandler.viewController = self
+        userContentController.add(scriptMessageHandler, name: "fetch")
         userContentController.add(scriptMessageHandler, name: "windowOpen")
         userContentController.add(scriptMessageHandler, name: "windowColorSchemeChange")
+        userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_fetch"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(

@@ -17,6 +17,8 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             windowOpen(message);
         } else if message.name == "windowColorSchemeChange" {
             windowColorSchemeChange(message)
+        } else if message.name == "fetch" {
+            fetch(message)
         } else {
             NSLog("unknown message: \(message)")
         }
@@ -38,6 +40,33 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                     viewController.updateTitleBar(.dark)
                 } else {
                     viewController.updateTitleBar(.light)
+                }
+            }
+        }
+    }
+
+    func handleFetchListNotifications(_ doc : NSDictionary) {
+        var unreadCount = 0;
+        if let notificationsList = doc["notifications"] as? [NSDictionary] {
+            for notification in notificationsList {
+                if let isRead = notification["isRead"] as? Int {
+                    if isRead == 0 {
+                        unreadCount += 1
+                    }
+                }
+            }
+        }
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.setBadgeCount(unreadCount)
+    }
+
+    func fetch(_ message: WKScriptMessage) {
+        if let messageBody = message.body as? NSDictionary {
+            if let urlString = messageBody["url"] as? String,
+               let response = messageBody["response"] as? NSDictionary
+            {
+                if urlString.contains("listNotifications") {
+                    handleFetchListNotifications(response)
                 }
             }
         }

@@ -11,6 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var lastBadgeCount = 0
+
     func applicationDidBecomeActive(_ notification: Notification) {
     }
 
@@ -22,6 +24,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
+    }
+
+    func setBadgeCount(_ count: Int) {
+        if count != lastBadgeCount {
+            if count == 0 {
+                NSApp.dockTile.badgeLabel = nil
+            } else {
+                NSApp.dockTile.badgeLabel = String(count)
+            }
+            lastBadgeCount = count
+        }
     }
 
 }
