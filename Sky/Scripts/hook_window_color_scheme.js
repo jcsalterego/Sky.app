@@ -1,37 +1,6 @@
 function setColorScheme(darkMode){
-    const DARK_MODE_FOREGROUND = "#79787c";
-    const DARK_MODE_BACKGROUND = "#000000";
-    const LIGHT_MODE_FOREGROUND = "#c3c3c3";
-    const LIGHT_MODE_BACKGROUND = "#fafafa";
     window.webkit.messageHandlers.
         windowColorSchemeChange.postMessage({"darkMode":darkMode});
-    if (darkMode) {
-        foreground = DARK_MODE_FOREGROUND;
-        background = DARK_MODE_BACKGROUND;
-    } else {
-        foreground = LIGHT_MODE_FOREGROUND;
-        background = LIGHT_MODE_BACKGROUND;
-    }
-    let rules = [
-        `::-webkit-scrollbar { width: auto }`,
-        `::-webkit-scrollbar-track { background: ${background}; }`,
-        `::-webkit-scrollbar-thumb { background-color: ${foreground}; `+
-            `border-radius: 6px; border: 4px solid ${background}; }`,
-    ]
-    let stylesheet = document.styleSheets[document.styleSheets.length - 1];
-    for (let rule of rules) {
-        stylesheet.insertRule(rule, stylesheet.rules.length - 1);
-    }
-    elems = Array.from(document.querySelectorAll("div")).
-        filter(div => {return div.scrollHeight > window.innerHeight;});
-    for (let elem of elems) {
-        elem.style.overflow = 'hidden';
-        window.setTimeout(() => {
-            elem.style.overflow = 'auto';
-        }, 10);
-    }
-    document.body.style.overflow = 'auto';
-    window.setTimeout(() => {document.body.style.overflow = 'hidden';}, 10);
 }
 
 function hookColorSchemeChange() {
