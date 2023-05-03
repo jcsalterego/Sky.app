@@ -13,8 +13,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var lastBadgeCount = 0
     var notificationReadStatuses = [String:Int]()
+    var firstRun = true
 
     func applicationDidBecomeActive(_ notification: Notification) {
+        if firstRun, let mainWindow = NSApplication.shared.mainWindow {
+            mainWindow.backgroundColor = NSColor.white
+            firstRun = false
+        }
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
