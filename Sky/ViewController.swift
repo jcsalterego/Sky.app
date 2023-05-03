@@ -36,12 +36,39 @@ class ViewController: NSViewController {
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_color_scheme"))
-        userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_disable_outer_scrollbars"))
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
+        webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
         view = webView
+    }
+
+    // Observe value
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        if let url = change?[NSKeyValueChangeKey.newKey] as? NSURL {
+            if url.path!.contains("/search") {
+                // The search page doesn't work well with frozen
+                // outer scrollbars, so we enable it
+                self.webView.evaluateJavaScript(
+                    JsLoader.loadJs(
+                        "Scripts/toggle_outer_scrollbars",
+                        ["enabled": "true"]
+                    )
+                );
+            } else {
+                self.webView.evaluateJavaScript(
+                    JsLoader.loadJs(
+                        "Scripts/toggle_outer_scrollbars",
+                        ["enabled": "false"]
+                    )
+                );
+            }
+        }
     }
 
     func newScriptFromSource(_ name: String) -> WKUserScript {
