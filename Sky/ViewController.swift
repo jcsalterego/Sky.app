@@ -35,6 +35,8 @@ class ViewController: NSViewController {
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_fetch"))
         userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_initial_disable_scrollbars"))
+        userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_color_scheme"))

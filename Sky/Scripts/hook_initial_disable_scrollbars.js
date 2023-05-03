@@ -12,12 +12,12 @@ window.toggleOuterScrollbars = function(enabled) {
     return success;
 }
 
-function hookToggleOuterScrollbars(enabled) {
-    let done = window.toggleOuterScrollbars(enabled);
+function hookDisableOuterScrollbars() {
+    let done = window.toggleOuterScrollbars(false);
     if (!done) {
         // try again 200ms
-        window.setTimeout(() => hookToggleOuterScrollbars(enabled), 200);
+        window.setTimeout(() => hookDisableOuterScrollbars(), 200);
     }
 }
 
-hookToggleOuterScrollbars($__ENABLED__);
+hookDisableOuterScrollbars();
