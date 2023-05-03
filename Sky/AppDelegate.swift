@@ -12,9 +12,6 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidBecomeActive(_ notification: Notification) {
-        if let mainWindow = NSApplication.shared.mainWindow {
-            mainWindow.backgroundColor = NSColor.white
-        }
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
