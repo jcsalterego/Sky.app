@@ -25,6 +25,12 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.0.6
+
+* Notification badges! It might be a little wonky. One can always issue a Refresh (⌘-⇧-R).
+* FIX: Dark Mode sync got outta whack. It is in whack now.
+* FIX: Search page is scrollable now.
+
 ### 0.0.5
 
 * ⌘-⇧-C to copy the current URL (#1)
