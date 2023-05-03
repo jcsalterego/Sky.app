@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var lastBadgeCount = 0
-    var notifCounts = [String:Int]()
+    var notificationReadStatuses = [String:Int]()
 
     func applicationDidBecomeActive(_ notification: Notification) {
     }
@@ -28,24 +28,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func clearNotifCounts() {
-        notifCounts.removeAll()
+        notificationReadStatuses.removeAll()
     }
 
-    func updateNotifCount(cursor: String, count: Int) {
-        notifCounts[cursor] = count
+    func setNotificationReadStatus(uri: String, isRead: Int) {
+        notificationReadStatuses[uri] = isRead
+    }
 
-        var totalCount = 0
-        for (_, count) in notifCounts {
-            totalCount += count
+    func refreshBadge() {
+//        NSLog("notificationReadStatuses = \(notificationReadStatuses)")
+        var totalBadgeCount = 0
+        for (_, isRead) in notificationReadStatuses {
+            if isRead == 0 {
+                totalBadgeCount += 1
+            }
         }
-
-        if totalCount != lastBadgeCount {
-            if count == 0 {
+        if totalBadgeCount != lastBadgeCount {
+            if totalBadgeCount == 0 {
                 NSApp.dockTile.badgeLabel = nil
             } else {
-                NSApp.dockTile.badgeLabel = String(totalCount)
+                NSApp.dockTile.badgeLabel = String(totalBadgeCount)
             }
-            lastBadgeCount = totalCount
+            lastBadgeCount = totalBadgeCount
         }
     }
 

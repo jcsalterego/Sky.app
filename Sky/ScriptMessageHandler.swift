@@ -46,19 +46,16 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     }
 
     func handleFetchListNotifications(_ doc : NSDictionary) {
-        var unreadCount = 0;
-        if let notificationsList = doc["notifications"] as? [NSDictionary],
-            let cursor = doc["cursor"] as? String
-        {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        if let notificationsList = doc["notifications"] as? [NSDictionary] {
             for notification in notificationsList {
-                if let isRead = notification["isRead"] as? Int {
-                    if isRead == 0 {
-                        unreadCount += 1
-                    }
+                if let isRead = notification["isRead"] as? Int,
+                   let uri = notification["uri"] as? String
+                {
+                    appDelegate.setNotificationReadStatus(uri: uri, isRead: isRead)
                 }
             }
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.updateNotifCount(cursor: cursor, count: unreadCount)
+            appDelegate.refreshBadge()
         }
     }
 
