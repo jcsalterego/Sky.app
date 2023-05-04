@@ -11,14 +11,22 @@ It has some neat features like keyboard shortcuts, Dark Mode Sync️, and notifi
 
 ## Keyboard Shortcuts
 
-Posting
+### Posting
 
 * `⌘-N` New Post
+
+### Navigation
+
 * `⌘-⇧-R` Refresh
+* `⌘-⇧-]` Next Tab (or `^-Tab`)
+* `⌘-⇧-[` Previous Tab (or `^-⇧-Tab`)
 * `⌘-1` Home
-* `⌘-2` Search
+* `⌘-2` Search (also `⌘-k`)
 * `⌘-3` Notifications
 * `⌘-4` Profile
+
+### Other
+
 * `⌘-T` Open in Browser
 * `⌘-⇧-C` Copy Current URL
 
@@ -31,6 +39,16 @@ Posting
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
 
 ## Changelog
+
+### 0.0.8
+
+* Using `⌘-1` for Home while you're already on the page will click the
+  "Load More Posts" button. Same for Notifications.
+* Navigate inner tabs (Following, What's New):
+  * Previous Tab: `⌘-⇧-[` or `^-⇧-Tab`
+  * Next Tab: `⌘-⇧-]` or `^-Tab`
+* Bonus key binding: `⌘-k` goes to Search
+* `Advanced > Search Posts By Newest First` will reorder searched posts in reverse chronological order.
 
 ### 0.0.7
 
