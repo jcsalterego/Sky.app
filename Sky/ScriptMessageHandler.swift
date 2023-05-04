@@ -14,9 +14,9 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         didReceive message: WKScriptMessage
     ) {
         if message.name == "windowOpen" {
-            windowOpen(message);
+            windowOpen(message)
         } else if message.name == "consoleLog" {
-            consoleLog(message);
+            consoleLog(message)
         } else if message.name == "windowColorSchemeChange" {
             windowColorSchemeChange(message)
         } else if message.name == "fetch" {

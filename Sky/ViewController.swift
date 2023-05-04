@@ -78,7 +78,7 @@ class ViewController: NSViewController {
                         "Scripts/toggle_outer_scrollbars",
                         ["enabled": String(shouldHaveOuterScrollbars)]
                     )
-                );
+                )
                 outerScrollbarsEnabled = shouldHaveOuterScrollbars
             }
         }
@@ -166,7 +166,7 @@ class ViewController: NSViewController {
 
     @IBAction func actionNewPost(_ sender: Any?) {
         NSLog("new post \(SkyUrls.settings)")
-        self.webView.evaluateJavaScript(clickNewPost());
+        self.webView.evaluateJavaScript(clickNewPost())
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
