@@ -21,6 +21,8 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             windowColorSchemeChange(message)
         } else if message.name == "fetch" {
             fetch(message)
+        } else if message.name == "ctrlTab" {
+            ctrlTab(message)
         } else {
             NSLog("unknown message: \(message)")
         }
@@ -82,6 +84,18 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             NSLog("console.log: \(messageBody)")
         } else {
             NSLog("console.log [unknown type \(type(of:message.body))]: \(message.body)")
+        }
+    }
+
+    func ctrlTab(_ message: WKScriptMessage) {
+        if let messageBody = message.body as? NSDictionary {
+            if let direction = messageBody["direction"] as? Int {
+                if direction == 1 {
+                    viewController.actionNextTab(Optional.none)
+                } else {
+                    viewController.actionPrevTab(Optional.none)
+                }
+            }
         }
     }
 

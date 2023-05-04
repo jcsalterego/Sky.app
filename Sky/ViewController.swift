@@ -37,9 +37,10 @@ class ViewController: NSViewController {
         let scriptMessageHandler = ScriptMessageHandler()
         scriptMessageHandler.viewController = self
         userContentController.add(scriptMessageHandler, name: "consoleLog")
+        userContentController.add(scriptMessageHandler, name: "ctrlTab")
         userContentController.add(scriptMessageHandler, name: "fetch")
-        userContentController.add(scriptMessageHandler, name: "windowOpen")
         userContentController.add(scriptMessageHandler, name: "windowColorSchemeChange")
+        userContentController.add(scriptMessageHandler, name: "windowOpen")
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_fetch"))
         userContentController.addUserScript(
@@ -48,6 +49,8 @@ class ViewController: NSViewController {
             newScriptFromSource("Scripts/hook_window_open"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_window_color_scheme"))
+        userContentController.addUserScript(
+            newScriptFromSource("Scripts/hook_ctrl_tab"))
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
@@ -167,11 +170,11 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
-        self.webView.evaluateJavaScript(navigateTab(direction: 1));
+        self.webView.evaluateJavaScript(navigateTab(direction: 1))
     }
 
     @IBAction func actionPrevTab(_ sender: Any?) {
-        self.webView.evaluateJavaScript(navigateTab(direction: -1));
+        self.webView.evaluateJavaScript(navigateTab(direction: -1))
     }
 
     func navigateTab(direction: Int) -> String {
