@@ -14,6 +14,7 @@ class ViewController: NSViewController {
         static let escape                    : UInt16 = 0x35
         static let leftBracket               : UInt16 = 0x21
         static let rightBracket              : UInt16 = 0x1E
+        static let k                         : UInt16 = 0x28
     }
 
     enum SkyUrls {
@@ -103,6 +104,11 @@ class ViewController: NSViewController {
     override func keyDown(with event: NSEvent) {
         if (event.keyCode == Keycode.escape) {
             self.webView.evaluateJavaScript(clickByLabel(label: "Cancel"))
+        } else if (
+            event.modifierFlags.contains(.command)
+            && event.keyCode == Keycode.k
+        ) {
+            actionViewSearch(nil)
         }
     }
 
