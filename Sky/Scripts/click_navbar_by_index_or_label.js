@@ -7,6 +7,7 @@ function findByDivLabel(label) {
             elem.click();
         }
     }
+    document.activeElement.blur();
     return found;
 }
 function findByNavbarIndex(index) {
@@ -27,6 +28,7 @@ function findByNavbarIndex(index) {
             }
         }
     }
+    document.activeElement.blur();
     return found;
 }
 function clickNavbarByIndexOrLabel() {
