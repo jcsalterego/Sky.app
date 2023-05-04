@@ -13,6 +13,12 @@ class JsLoader {
             let jsKey = "$__\(key.uppercased())__"
             myText = myText.replacingOccurrences(of: jsKey, with: value)
         }
+        if myText.contains("$LOG") {
+            myText = myText.replacingOccurrences(
+                of: "$LOG",
+                with: "window.webkit.messageHandlers.consoleLog.postMessage"
+            )
+        }
         return myText
     }
 
