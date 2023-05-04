@@ -8,6 +8,16 @@
             "url": url,
             "response": responseData
         });
+
+        if (url.indexOf('https://search.bsky.social/search/posts') === 0
+            && document.body.dataset.featureOrderPosts === 'yes'
+        ) {
+            responseData.sort((post2, post1) => post1.post.createdAt < post2.post.createdAt ? -1 : 1)
+            response.json = async function() {
+                return responseData;
+            }
+        }
+
         return response;
     }
 })();

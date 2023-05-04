@@ -52,6 +52,14 @@ class ViewController: NSViewController {
             newScriptFromSource("Scripts/hook_window_color_scheme"))
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_ctrl_tab"))
+
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        let orderPosts = appDelegate.getUserDefaultsOrderPosts()
+        userContentController.addUserScript(
+            newScriptFromSource(
+                "Scripts/set_order_posts",
+                ["value": orderPosts ? "yes" : "no" ]))
+
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
@@ -85,8 +93,8 @@ class ViewController: NSViewController {
         }
     }
 
-    func newScriptFromSource(_ name: String) -> WKUserScript {
-        let source = JsLoader.loadJs(name)
+    func newScriptFromSource(_ name: String, _ context: [String: String] = [:]) -> WKUserScript {
+        let source = JsLoader.loadJs(name, context)
         return WKUserScript(
             source: source,
             injectionTime: .atDocumentEnd,
@@ -181,6 +189,24 @@ class ViewController: NSViewController {
 
     @IBAction func actionPrevTab(_ sender: Any?) {
         self.webView.evaluateJavaScript(navigateTab(direction: -1))
+    }
+
+    @IBAction func actionOrderPosts(_ sender: Any?) {
+        if let menuItem = sender as? NSMenuItem {
+            var orderPosts = menuItem.state == .on
+            orderPosts = !orderPosts
+            menuItem.state = orderPosts ? .on : .off
+            self.webView.evaluateJavaScript(setOrderPosts(orderPosts))
+            (NSApplication.shared.delegate as! AppDelegate)
+                .setUserDefaultsOrderPosts(orderPosts)
+        }
+    }
+
+    func setOrderPosts(_ orderPosts: Bool) -> String {
+        return JsLoader.loadJs(
+            "Scripts/set_order_posts",
+            ["value": orderPosts ? "yes" : "no" ]
+        )
     }
 
     func navigateTab(direction: Int) -> String {

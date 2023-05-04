@@ -343,39 +343,52 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Window" id="aUF-d1-5bR">
+                            <menuItem title="Advanced" id="Jbs-8x-y7X">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                                <menu key="submenu" title="Advanced" id="UEP-1z-Fbm">
                                     <items>
-                                        <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
-                                            <connections>
-                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Zoom" id="fNt-Oo-tZN">
+                                        <menuItem title="Search Posts by Newest First" id="HFE-fV-jHf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="performZoom:" target="Ady-hI-5gd" id="eMz-qC-ekF"/>
+                                                <action selector="actionOrderPosts:" target="Ady-hI-5gd" id="Clc-2x-R8m"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="dXI-NN-CJJ"/>
-                                        <menuItem title="Show Previous Tab" keyEquivalent="[" id="R4o-n2-Eq4">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="968-9p-Yff">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="sWd-Nw-5Yy">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="1aj-Vd-R4P">
                                             <connections>
-                                                <action selector="actionPrevTab:" target="Ady-hI-5gd" id="hab-eC-6eV"/>
+                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="Ld1-64-TCH"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Next Tab" keyEquivalent="]" id="rbg-Mr-agO">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="actionNextTab:" target="Ady-hI-5gd" id="T2e-2O-5fx"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="3Et-lu-0wb"/>
-                                        <menuItem title="Bring All to Front" id="xNx-Bi-08u">
+                                        <menuItem title="Zoom" id="fi9-e6-CuK">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="dqT-e0-HLn"/>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="ZBg-Yl-Slp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="MfO-Tf-NiF"/>
+                                        <menuItem title="Show Previous Tab" keyEquivalent="[" id="ZAP-f2-l00">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionPrevTab:" target="Ady-hI-5gd" id="qU5-aU-Tpj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show Next Tab" keyEquivalent="]" id="hUi-kI-UXv">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionNextTab:" target="Ady-hI-5gd" id="Xaz-wg-nfq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="XVI-ph-DPZ"/>
+                                        <menuItem title="Bring All to Front" id="cvH-zl-Wxs">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ady-hI-5gd" id="2sT-lY-FVf"/>
                                             </connections>
                                         </menuItem>
                                     </items>

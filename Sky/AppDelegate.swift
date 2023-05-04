@@ -23,6 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let menuItem = NSApplication.shared.mainMenu?
+            .item(withTitle: "Advanced")?.submenu?
+            .item(withTitle: "Search Posts by Newest First")
+        let orderPosts = getUserDefaultsOrderPosts()
+        menuItem?.state = orderPosts ? .on : .off
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -56,6 +61,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             lastBadgeCount = totalBadgeCount
         }
+    }
+
+    enum UserDefaultKeys {
+        static let orderPosts = "orderPosts"
+    }
+
+    func getUserDefaultsOrderPosts() -> Bool {
+        let defaults = UserDefaults.standard
+        if let orderPosts = defaults.object(forKey: UserDefaultKeys.orderPosts) as? Bool {
+            return orderPosts
+        } else {
+            return false
+        }
+    }
+
+    func setUserDefaultsOrderPosts(_ orderPosts: Bool) {
+        UserDefaults.standard.set(
+            orderPosts,
+            forKey: UserDefaultKeys.orderPosts
+        )
     }
 
 }
