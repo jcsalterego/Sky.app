@@ -104,7 +104,12 @@ class ViewController: NSViewController {
 
     @IBAction func actionViewHome(_ sender: Any?) {
         NSLog("view home \(SkyUrls.home)")
-        self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 0, label: "Home"))
+        if webView.url!.absoluteString == SkyUrls.home {
+            NSLog("trying load new button first")
+            self.webView.evaluateJavaScript(clickLoadNewButtonNavbarByIndexOrLabel(index: 0, label: "Home"))
+        } else {
+            self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 0, label: "Home"))
+        }
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
@@ -114,7 +119,12 @@ class ViewController: NSViewController {
 
     @IBAction func actionViewNotifications(_ sender: Any?) {
         NSLog("view notifications \(SkyUrls.notifications)")
-        self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 2, label: "Notifications"))
+        if webView.url!.absoluteString == SkyUrls.notifications {
+            NSLog("trying load new button first")
+            self.webView.evaluateJavaScript(clickLoadNewButtonNavbarByIndexOrLabel(index: 2, label: "Notifications"))
+        } else {
+            self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 2, label: "Notifications"))
+        }
     }
 
     @IBAction func actionViewProfile(_ sender: Any?) {
@@ -167,6 +177,13 @@ class ViewController: NSViewController {
         return JsLoader.loadJs(
             "Scripts/navigate_tab",
             ["direction": "\(direction)"]
+        )
+    }
+
+    func clickLoadNewButtonNavbarByIndexOrLabel(index: Int, label: String) -> String {
+        return JsLoader.loadJs(
+            "Scripts/click_load_new_button_navbar_by_index_or_label",
+            ["index": "\(index)", "label": label]
         )
     }
 
