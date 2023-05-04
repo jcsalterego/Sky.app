@@ -12,6 +12,8 @@ class ViewController: NSViewController {
     // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
     struct Keycode {
         static let escape                    : UInt16 = 0x35
+        static let leftBracket               : UInt16 = 0x21
+        static let rightBracket              : UInt16 = 0x1E
     }
 
     enum SkyUrls {
@@ -151,6 +153,21 @@ class ViewController: NSViewController {
     @IBAction func actionNewPost(_ sender: Any?) {
         NSLog("new post \(SkyUrls.settings)")
         self.webView.evaluateJavaScript(clickNewPost());
+    }
+
+    @IBAction func actionNextTab(_ sender: Any?) {
+        self.webView.evaluateJavaScript(navigateTab(direction: 1));
+    }
+
+    @IBAction func actionPrevTab(_ sender: Any?) {
+        self.webView.evaluateJavaScript(navigateTab(direction: -1));
+    }
+
+    func navigateTab(direction: Int) -> String {
+        return JsLoader.loadJs(
+            "Scripts/navigate_tab",
+            ["direction": "\(direction)"]
+        )
     }
 
     func clickNavbarByIndexOrLabel(index: Int, label: String) -> String {

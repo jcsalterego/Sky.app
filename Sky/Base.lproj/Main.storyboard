@@ -352,13 +352,26 @@
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                        <menuItem title="Zoom" id="fNt-Oo-tZN">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
+                                                <action selector="performZoom:" target="Ady-hI-5gd" id="eMz-qC-ekF"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="dXI-NN-CJJ"/>
+                                        <menuItem title="Show Previous Tab" keyEquivalent="[" id="R4o-n2-Eq4">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionPrevTab:" target="Ady-hI-5gd" id="hab-eC-6eV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show Next Tab" keyEquivalent="]" id="rbg-Mr-agO">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionNextTab:" target="Ady-hI-5gd" id="T2e-2O-5fx"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="3Et-lu-0wb"/>
                                         <menuItem title="Bring All to Front" id="xNx-Bi-08u">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
