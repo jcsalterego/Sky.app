@@ -78,7 +78,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             NSLog("console.log: \(messageBody)")
         } else if let messageBody = message.body as? String {
             NSLog("console.log: \(messageBody)")
-        } else if let messageBody = message.body as? [String] {
+        } else if let messageBody = message.body as? [Any] {
             NSLog("console.log: \(messageBody)")
         } else {
             NSLog("console.log [unknown type \(type(of:message.body))]: \(message.body)")
