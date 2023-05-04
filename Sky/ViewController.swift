@@ -9,6 +9,11 @@ import WebKit
 
 class ViewController: NSViewController {
 
+    // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
+    struct Keycode {
+        static let escape                    : UInt16 = 0x35
+    }
+
     enum SkyUrls {
         static let host = "staging.bsky.app"
         static let root = "https://\(host)"
@@ -90,7 +95,7 @@ class ViewController: NSViewController {
     }
 
     override func keyDown(with event: NSEvent) {
-        if (event.keyCode == 53) {
+        if (event.keyCode == Keycode.escape) {
             self.webView.evaluateJavaScript(clickByLabel(label: "Cancel"))
         }
     }
