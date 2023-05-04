@@ -15,6 +15,8 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     ) {
         if message.name == "windowOpen" {
             windowOpen(message);
+        } else if message.name == "consoleLog" {
+            consoleLog(message);
         } else if message.name == "windowColorSchemeChange" {
             windowColorSchemeChange(message)
         } else if message.name == "fetch" {
@@ -68,6 +70,12 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                     handleFetchListNotifications(response)
                 }
             }
+        }
+    }
+
+    func consoleLog(_ message: WKScriptMessage) {
+        if let messageBody = message.body as? NSDictionary {
+            NSLog("console.log: \(messageBody)")
         }
     }
 
