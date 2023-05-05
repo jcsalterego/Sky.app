@@ -36,7 +36,7 @@ It has some neat features like keyboard shortcuts, Dark Mode Sync️, and notifi
 
 ## Credits
 
-App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese].
+App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 
 ## Changelog
 
