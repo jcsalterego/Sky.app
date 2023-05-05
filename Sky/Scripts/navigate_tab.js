@@ -111,7 +111,7 @@ function navigateTabElems(tabElems, descendentCount, direction) {
     var idx = 0;
     for (let tabElem of tabElems) {
         let child = getDescendent(tabElem, descendentCount);
-        if (child.style.color == 'rgb(0, 0, 0)') {
+        if (child.style.color === 'rgb(0, 0, 0)' || child.style.color === 'rgb(255, 255, 255)') {
             selected = idx;
             break;
         }
