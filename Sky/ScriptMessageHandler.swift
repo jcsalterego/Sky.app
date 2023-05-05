@@ -23,6 +23,8 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             fetch(message)
         } else if message.name == "ctrlTab" {
             ctrlTab(message)
+        } else if message.name == "loadAccessJwt" {
+            loadAccessJwt(message)
         } else {
             NSLog("unknown message: \(message)")
         }
@@ -95,6 +97,15 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 } else {
                     viewController.actionPrevTab(Optional.none)
                 }
+            }
+        }
+    }
+
+    func loadAccessJwt(_ message: WKScriptMessage) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        if let messageBody = message.body as? NSDictionary {
+            if let accessJwt = messageBody["accessJwt"] as? String {
+                appDelegate.accessJwt = accessJwt
             }
         }
     }

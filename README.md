@@ -43,6 +43,7 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 ### 0.0.9-pre
 
 * Fix Tab navigation in Dark Mode
+* `Advanced > Developer Console`
 
 ### 0.0.8
 

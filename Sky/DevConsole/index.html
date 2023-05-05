@@ -1,0 +1,178 @@
+<html>
+<head>
+<!-- WHEW! this is ugly -->
+<style type="text/css">
+  body {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  body, textarea {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+  body, form {
+    padding: 0;
+    margin: 0;
+  }
+  .auth-and-payload {
+    display: none;
+  }
+  .alert {
+    background-color: #da464a;
+  }
+  .success {
+    background-color: #0078c9;
+  }
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .left-gutter {
+    min-width: 7em;
+    text-align: right;
+  }
+  .left-gutter.label {
+    padding-top: 0.5em;
+  }
+  .right-gutter {
+    min-width: 5em;
+    text-align: center;
+  }
+  label {
+  }
+  .status-bar {
+    display: none;
+  }
+  .monospace {
+    font-family: monospace;
+  }
+  body, pre, code, input, textarea, select, option, .status-bar {
+    font-size: 14px;
+  }
+  .status-bar {
+    padding: 0.5em;
+  }
+  input[type="text"], input[type="password"], input[type="submit"], input[type="button"], select, option, textarea {
+    margin: 0.5em;
+  }
+  input[type="password"] {
+    min-width: 30em;
+  }
+  input[type="text"], input[type="password"] {
+    flex-grow: 1;
+  }
+  .response, .payload {
+    border: 2px #333 solid;
+    flex: 1;
+    min-height: 6em;
+  }
+  .container {
+    min-height: 100%;
+  }
+</style>
+</head>
+<body>
+  <div class="container flex-column">
+    <form class="flex-row">
+      <div class="left-gutter">
+      <select class="verb">
+        <option class="verb-get">GET</option>
+      </select>
+      </div>
+      <input class="url monospace" autofocus type="text" value="">
+      <div class="right-gutter">
+        <input type="submit" value="Fetch">
+      </div>
+    </form>
+    <div class="flex-row">
+      <div class="left-gutter label">Access JWT</div>
+      <input type="password" class="access-jwt" value="">
+          <div class="right-gutter">
+      <input class="load-access-jwt-button" type="button" value="Load">
+          </div>
+    </div>
+    <div class="auth-and-payload">
+      <div class="flex-row">
+        <label for="payload">Payload</label>
+        <textarea class="monospace payload">{}</textarea>
+      </div>
+    </div>
+    <textarea class="monospace response"></textarea>
+    <div class="status-bar"></div>
+  </div>
+</form>
+<script type="text/javascript">
+    async function changeVerb(ev) {
+        let verb = document.querySelector(".verb").value;
+        let authPayloadElem = document.querySelector(".auth-and-payload");
+        if (verb === "POST") {
+            authPayloadElem.style.display = "block";
+        } else {
+            authPayloadElem.style.display = "none";
+        }
+    }
+    async function run(ev) {
+        ev.preventDefault();
+        const url = document.querySelector(".url").value;
+        console.log("url", url);
+        let startTime = (new Date()).valueOf();
+        let method = "GET";
+        let verb = document.querySelector(".verb").value;
+        let headers = {};
+        if (verb == "POST") {
+            method = verb;
+        }
+        let accessJwt = document.querySelector(".access-jwt").value;
+        if (accessJwt.length > 0) {
+            headers["Authorization"] = `Bearer ${accessJwt}`;
+        }
+        let fetchOptions = {
+            method: method,
+            headers: headers,
+        };
+        const response = await fetch(url, fetchOptions);
+        let duration = (new Date()).valueOf() - startTime;
+        console.log("response", response);
+        let statusBarElem = document.querySelector(".status-bar");
+        let responseElem = document.querySelector(".response");
+        statusBarElem.style.display = "block";
+        if (response.status === 200) {
+            const text = await response.text();
+            const textLength = text.length;
+            let json = null;
+            try {
+                json = JSON.parse(text);
+            } catch {
+                // ignore
+            }
+            if (json !== null) {
+                json = JSON.stringify(json, null, 2);
+            }
+            responseElem.innerHTML = json;
+            statusBarElem.classList.remove("alert");
+            statusBarElem.classList.add("success");
+        } else {
+            responseElem.innerHTML = await response.text();
+            statusBarElem.classList.remove("success");
+            statusBarElem.classList.add("alert");
+        }
+        statusBarElem.innerText =
+            `HTTP ${response.status} in ${duration} ms`;
+    }
+
+    async function loadAccessJwt() {
+        window.webkit.messageHandlers.triggerLoadAccessJwt.postMessage({});
+    }
+    document.querySelector("form").addEventListener("submit", run);
+    document.querySelector(".verb").addEventListener("change", changeVerb);
+    document.querySelector(".load-access-jwt-button").addEventListener("click", loadAccessJwt);
+
+    document.querySelector(".verb-get").selected = true
+    document.querySelector(".url").value = "https://bsky.social/xrpc/app.bsky.actor.getProfile?actor=bsky.app"
+    changeVerb();
+
+</script>
+</body>

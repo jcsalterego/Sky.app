@@ -42,6 +42,7 @@ class ViewController: NSViewController {
         userContentController.add(scriptMessageHandler, name: "fetch")
         userContentController.add(scriptMessageHandler, name: "windowColorSchemeChange")
         userContentController.add(scriptMessageHandler, name: "windowOpen")
+        userContentController.add(scriptMessageHandler, name: "loadAccessJwt")
         userContentController.addUserScript(
             newScriptFromSource("Scripts/hook_fetch"))
         userContentController.addUserScript(
@@ -189,6 +190,20 @@ class ViewController: NSViewController {
 
     @IBAction func actionPrevTab(_ sender: Any?) {
         self.webView.evaluateJavaScript(navigateTab(direction: -1))
+    }
+
+    @IBAction func actionOpenDevConsole(_ sender: Any?) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        if let devConsoleWindowController = appDelegate.devConsoleWindowController {
+            devConsoleWindowController.showWindow(self)
+        }
+    }
+
+    func loadAccessJwt(completionHandler: ((Any?, Error?) -> Void)? = nil) {
+        self.webView.evaluateJavaScript(
+            JsLoader.loadJs("Scripts/load_access_jwt", [:]),
+            completionHandler: completionHandler
+        )
     }
 
     @IBAction func actionOrderPosts(_ sender: Any?) {

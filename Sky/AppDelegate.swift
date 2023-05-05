@@ -15,10 +15,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var notificationReadStatuses = [String:Int]()
     var firstRun = true
 
+    // TODO cleanup, sigh
+    var mainWindow: NSWindow? = nil
+    var devConsoleWindowController : NSWindowController?
+    var devConsoleViewController : DevConsoleViewController?
+    var accessJwt : String? = nil
+
     func applicationDidBecomeActive(_ notification: Notification) {
-        if firstRun, let mainWindow = NSApplication.shared.mainWindow {
-            mainWindow.backgroundColor = NSColor.white
+        if firstRun {
             firstRun = false
+
+            mainWindow = NSApplication.shared.mainWindow!
+            mainWindow?.backgroundColor = NSColor.white
+
+            // instantiate dev console
+            if let storyboard = mainWindow?.windowController?.storyboard {
+                devConsoleWindowController = storyboard.instantiateController(
+                    withIdentifier: "DevConsoleWindowController") as? NSWindowController
+            }
         }
     }
 
