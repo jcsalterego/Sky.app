@@ -40,6 +40,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.0.9-pre
+
+* Fix Tab navigation in Dark Mode
+
 ### 0.0.8
 
 * Using `⌘-1` for Home while you're already on the page will click the
