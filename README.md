@@ -40,6 +40,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.1.0
+
+* Notarized ✨
+
 ### 0.0.9
 
 * Fix Tab navigation in Dark Mode
