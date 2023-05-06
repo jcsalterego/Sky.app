@@ -1,14 +1,14 @@
 # Sky.app
 
-Sky.app is an unofficial MacOS app for Bluesky Social ([staging.bsky.app](https://staging.bsky.app/)),
-not to be confused with the [official app for iOS](https://apps.apple.com/us/app/bluesky-social/id6444370199).
+Sky.app is a MacOS container for the Bluesky Social website. It's a
+dedicated app featuring keyboard shortcuts, Dark Mode Sync, and
+notification badges.
 
-Sky.app has some neat features for MacOS:
+_If you're looking for the official BlueSky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-* keyboard shortcuts
-* Dark Mode Sync️
-* notification badges
-* Developer Console
+The current release is [**0.1.0**](https://github.com/jcsalterego/Sky.app/releases/latest).
+
+![](docs/screenshot.png)
 
 ## Installation
 
@@ -36,11 +36,9 @@ Sky.app has some neat features for MacOS:
 * `⌘-T` Open in Browser
 * `⌘-⇧-C` Copy Current URL
 
-## Screenshot
-
-![](docs/screenshot.png)
-
 ## Credits
+
+Made by [@jcsalterego.bsky.social](https://staging.bsky.app/profile/jcsalterego.bsky.social).
 
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 
