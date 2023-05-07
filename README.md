@@ -44,6 +44,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.1.1-pre
+
+* FIX: Attach photos to posts
+
 ### 0.1.0
 
 * Notarized ✨
