@@ -12,6 +12,7 @@
 		043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1929A5331800B06D18 /* JsLoader.swift */; };
 		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
 		048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCC2A093F3E00A8C919 /* Scripts.swift */; };
+		048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCE2A09472400A8C919 /* SkyUrls.swift */; };
 		04DB601B2A0558E7009818AD /* DevConsole in Resources */ = {isa = PBXBuildFile; fileRef = 04DB601A2A0558E7009818AD /* DevConsole */; };
 		04DB601D2A058B04009818AD /* DevConsoleScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */; };
 		04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847C921D99CE0009D1B0F /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		043A0F1929A5331800B06D18 /* JsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsLoader.swift; sourceTree = "<group>"; };
 		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
 		048BAFCC2A093F3E00A8C919 /* Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripts.swift; sourceTree = "<group>"; };
+		048BAFCE2A09472400A8C919 /* SkyUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUrls.swift; sourceTree = "<group>"; };
 		04DB601A2A0558E7009818AD /* DevConsole */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevConsole; sourceTree = "<group>"; };
 		04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConsoleScriptMessageHandler.swift; sourceTree = "<group>"; };
 		04E847C621D99CE0009D1B0F /* Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */,
 				041663E22A05376C001A667F /* DevConsoleViewController.swift */,
 				04E847CB21D99CE0009D1B0F /* ViewController.swift */,
+				048BAFCE2A09472400A8C919 /* SkyUrls.swift */,
 				04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */,
 				04E847CD21D99CE1009D1B0F /* Assets.xcassets */,
 				04E847CF21D99CE1009D1B0F /* Main.storyboard */,
@@ -301,6 +304,7 @@
 				04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */,
 				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
 				04DB601D2A058B04009818AD /* DevConsoleScriptMessageHandler.swift in Sources */,
+				048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */,
 				041663E32A05376C001A667F /* DevConsoleViewController.swift in Sources */,
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
 				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
