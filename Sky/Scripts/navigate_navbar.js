@@ -1,8 +1,9 @@
-function findByDivLabel(label) {
+function findByAriaLabel(label) {
     let found = false;
-    let elems = Array.from(document.querySelectorAll("div")).
-            filter(elem => elem.innerHTML === label);
+    let elems = filterVisible(document.querySelectorAll("[aria-label]")).
+        filter(elem => elem.getAttribute("aria-label") === label);
     if (elems.length > 0) {
+        found = true;
         for (let elem of elems) {
             elem.click();
         }
@@ -51,18 +52,20 @@ function getLoadNewButtons() {
             .filter(e => e.innerHTML.match(/load new/i))
     );
 }
-function clickNavbarByIndexOrLabel() {
-    let loadNewButtons = getLoadNewButtons();
-    if (loadNewButtons.length > 0) {
-        loadNewButtons.forEach(b => b.click());
-    } else {
-        let found = false;
-        if (!found) {
-            found = findByDivLabel('$__LABEL__');
-        }
-        if (!found) {
-            found = findByNavbarIndex($__INDEX__);
+function navigate(checkLoadNew, label, index) {
+    let found = false;
+    if (checkLoadNew) {
+        let loadNewButtons = getLoadNewButtons();
+        if (loadNewButtons.length > 0) {
+            loadNewButtons.forEach(b => b.click());
+            found = true;
         }
     }
+    if (!found) {
+        found = findByAriaLabel(label);
+    }
+    if (!found) {
+        found = findByNavbarIndex(index);
+    }
 }
-clickNavbarByIndexOrLabel();
+navigate($__CHECK_LOAD_NEW__, '$__LABEL__', $__INDEX__);

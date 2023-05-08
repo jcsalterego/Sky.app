@@ -7,27 +7,6 @@ import Foundation
 
 class Scripts {
 
-    static func clickByLabel(label: String) -> String {
-        return JsLoader.loadScriptContents(
-            "Scripts/click_by_label",
-            ["label": label]
-        )
-    }
-
-    static func clickLoadNewButtonNavbarByIndexOrLabel(index: Int, label: String) -> String {
-        return JsLoader.loadScriptContents(
-            "Scripts/click_load_new_button_navbar_by_index_or_label",
-            ["index": "\(index)", "label": label]
-        )
-    }
-
-    static func clickNavbarByIndexOrLabel(index: Int, label: String) -> String {
-        return JsLoader.loadScriptContents(
-            "Scripts/click_navbar_by_index_or_label",
-            ["index": "\(index)", "label": label]
-        )
-    }
-
     static func clickNewPost() -> String {
         return JsLoader.loadScriptContents(
             "Scripts/click_new_post", [:]
@@ -37,6 +16,20 @@ class Scripts {
     static func escOrBack() -> String {
         return JsLoader.loadScriptContents(
             "Scripts/esc_or_back", [:]
+        )
+    }
+
+    static func navigateNavbar(
+        checkLoadNew: Bool,
+        label: String,
+        index: Int
+    ) -> String {
+        return JsLoader.loadScriptContents(
+            "Scripts/navigate_navbar", [
+                "check_load_new": checkLoadNew ? "true" : "false",
+                "index": "\(index)",
+                "label": label,
+            ]
         )
     }
 

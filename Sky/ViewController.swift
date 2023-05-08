@@ -106,32 +106,55 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewHome(_ sender: Any?) {
-        if webView.url!.absoluteString == SkyUrls.home {
-            self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 0, label: "Home"))
-        } else {
-            self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 0, label: "Home"))
-        }
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.home)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "Home",
+                index: 0
+            )
+        )
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 1, label: "Search"))
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: false,
+                label: "Search",
+                index: 1
+            )
+        )
     }
 
     @IBAction func actionViewNotifications(_ sender: Any?) {
-        if webView.url!.absoluteString == SkyUrls.notifications {
-            NSLog("trying load new button first")
-            self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 2, label: "Notifications"))
-        } else {
-            self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 2, label: "Notifications"))
-        }
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.notifications)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "Notifications",
+                index: 2
+            )
+        )
     }
 
     @IBAction func actionViewProfile(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 3, label: "Profile"))
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: false,
+                label: "Profile",
+                index: 3
+            )
+        )
     }
 
     @IBAction func actionViewSettings(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: -1, label: "Settings"))
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: false,
+                label: "Settings",
+                index: -1
+            )
+        )
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
