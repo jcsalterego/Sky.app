@@ -28,12 +28,9 @@ class ViewController: NSViewController {
         let userContentController = WKUserContentController()
         let scriptMessageHandler = ScriptMessageHandler()
         scriptMessageHandler.viewController = self
-        userContentController.add(scriptMessageHandler, name: "consoleLog")
-        userContentController.add(scriptMessageHandler, name: "ctrlTab")
-        userContentController.add(scriptMessageHandler, name: "fetch")
-        userContentController.add(scriptMessageHandler, name: "windowColorSchemeChange")
-        userContentController.add(scriptMessageHandler, name: "windowOpen")
-        userContentController.add(scriptMessageHandler, name: "loadAccessJwt")
+        for name in scriptMessageHandler.names {
+            userContentController.add(scriptMessageHandler, name: name)
+        }
         userContentController.addUserScript(
             JsLoader.loadWKUserScript("Scripts/hook_fetch"))
         userContentController.addUserScript(

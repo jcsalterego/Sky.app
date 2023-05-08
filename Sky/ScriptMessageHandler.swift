@@ -9,22 +9,31 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     var logging = Bool()
     var viewController: ViewController!
 
+    let names = [
+        "consoleLog",
+        "ctrlTab",
+        "fetch",
+        "loadAccessJwt",
+        "windowColorSchemeChange",
+        "windowOpen",
+    ]
+
     func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        if message.name == "windowOpen" {
-            windowOpen(message)
-        } else if message.name == "consoleLog" {
+        if message.name == "consoleLog" {
             consoleLog(message)
-        } else if message.name == "windowColorSchemeChange" {
-            windowColorSchemeChange(message)
-        } else if message.name == "fetch" {
-            fetch(message)
         } else if message.name == "ctrlTab" {
             ctrlTab(message)
+        } else if message.name == "fetch" {
+            fetch(message)
         } else if message.name == "loadAccessJwt" {
             loadAccessJwt(message)
+        } else if message.name == "windowColorSchemeChange" {
+            windowColorSchemeChange(message)
+        } else if message.name == "windowOpen" {
+            windowOpen(message)
         } else {
             NSLog("unknown message: \(message)")
         }
