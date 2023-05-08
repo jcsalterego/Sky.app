@@ -5,33 +5,25 @@
 
 import WebKit
 
-class DevConsoleScriptMessageHandler: NSObject, WKScriptMessageHandler {
+class DevConsoleScriptMessageHandler : NSObject, WKScriptMessageHandler {
 
-    var logging = Bool()
     var viewController: DevConsoleViewController!
+
+    var nameFns:[String:(WKScriptMessage) -> Void] {
+        return [
+            "consoleLog": ScriptMessageHandler.consoleLog,
+            "triggerLoadAccessJwt": triggerLoadAccessJwt,
+        ]
+    }
 
     func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        if message.name == "consoleLog" {
-            consoleLog(message)
-        } else if message.name == "triggerLoadAccessJwt" {
-            triggerLoadAccessJwt(message)
+        if let fn = nameFns[message.name] {
+            fn(message)
         } else {
             NSLog("unknown message: \(message)")
-        }
-    }
-    
-    func consoleLog(_ message: WKScriptMessage) {
-        if let messageBody = message.body as? NSDictionary {
-            NSLog("console.log: \(messageBody)")
-        } else if let messageBody = message.body as? String {
-            NSLog("console.log: \(messageBody)")
-        } else if let messageBody = message.body as? [Any] {
-            NSLog("console.log: \(messageBody)")
-        } else {
-            NSLog("console.log [unknown type \(type(of:message.body))]: \(message.body)")
         }
     }
 

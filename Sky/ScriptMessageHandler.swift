@@ -11,7 +11,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
 
     var nameFns:[String:(WKScriptMessage) -> Void] {
         return [
-            "consoleLog": consoleLog,
+            "consoleLog": ScriptMessageHandler.consoleLog,
             "ctrlTab": ctrlTab,
             "fetch": fetch,
             "loadAccessJwt": loadAccessJwt,
@@ -78,7 +78,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         }
     }
 
-    func consoleLog(_ message: WKScriptMessage) {
+    class func consoleLog(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
             NSLog("console.log: \(messageBody)")
         } else if let messageBody = message.body as? String {
