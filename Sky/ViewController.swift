@@ -36,7 +36,7 @@ class ViewController: NSViewController {
         let userContentController = WKUserContentController()
         let scriptMessageHandler = ScriptMessageHandler()
         scriptMessageHandler.viewController = self
-        for name in scriptMessageHandler.names {
+        for name in scriptMessageHandler.nameFns.keys {
             userContentController.add(scriptMessageHandler, name: name)
         }
         for userScript in userScripts {
