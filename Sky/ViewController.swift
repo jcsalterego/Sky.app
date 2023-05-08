@@ -106,9 +106,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewHome(_ sender: Any?) {
-        NSLog("view home \(SkyUrls.home)")
         if webView.url!.absoluteString == SkyUrls.home {
-            NSLog("trying load new button first")
             self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 0, label: "Home"))
         } else {
             self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 0, label: "Home"))
@@ -116,12 +114,10 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
-        NSLog("view search \(SkyUrls.search)")
         self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 1, label: "Search"))
     }
 
     @IBAction func actionViewNotifications(_ sender: Any?) {
-        NSLog("view notifications \(SkyUrls.notifications)")
         if webView.url!.absoluteString == SkyUrls.notifications {
             NSLog("trying load new button first")
             self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 2, label: "Notifications"))
@@ -131,12 +127,10 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewProfile(_ sender: Any?) {
-        NSLog("view profile \(SkyUrls.settings)")
         self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 3, label: "Profile"))
     }
 
     @IBAction func actionViewSettings(_ sender: Any?) {
-        NSLog("view settings \(SkyUrls.settings)")
         self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: -1, label: "Settings"))
     }
 
