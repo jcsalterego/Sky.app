@@ -22,6 +22,14 @@ class ViewController: NSViewController {
 
     var outerScrollbarsEnabled = false
 
+    let userScripts = [
+      "hook_ctrl_tab",
+      "hook_fetch",
+      "hook_initial_disable_scrollbars",
+      "hook_window_color_scheme",
+      "hook_window_open",
+    ]
+
     override func loadView() {
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
@@ -31,16 +39,11 @@ class ViewController: NSViewController {
         for name in scriptMessageHandler.names {
             userContentController.add(scriptMessageHandler, name: name)
         }
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript("Scripts/hook_fetch"))
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript("Scripts/hook_initial_disable_scrollbars"))
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript("Scripts/hook_window_open"))
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript("Scripts/hook_window_color_scheme"))
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript("Scripts/hook_ctrl_tab"))
+        for userScript in userScripts {
+            userContentController.addUserScript(
+                JsLoader.loadWKUserScript(
+                    "Scripts/\(userScript)"))
+        }
 
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let orderPosts = appDelegate.getUserDefaultsOrderPosts()
