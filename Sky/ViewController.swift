@@ -113,7 +113,7 @@ class ViewController: NSViewController {
 
     override func keyDown(with event: NSEvent) {
         if (event.keyCode == Keycode.escape) {
-            self.webView.evaluateJavaScript(clickByLabel(label: "Cancel"))
+            self.webView.evaluateJavaScript(Scripts.clickByLabel(label: "Cancel"))
         } else if (
             event.modifierFlags.contains(.command)
             && event.keyCode == Keycode.k
@@ -126,35 +126,35 @@ class ViewController: NSViewController {
         NSLog("view home \(SkyUrls.home)")
         if webView.url!.absoluteString == SkyUrls.home {
             NSLog("trying load new button first")
-            self.webView.evaluateJavaScript(clickLoadNewButtonNavbarByIndexOrLabel(index: 0, label: "Home"))
+            self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 0, label: "Home"))
         } else {
-            self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 0, label: "Home"))
+            self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 0, label: "Home"))
         }
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
         NSLog("view search \(SkyUrls.search)")
-        self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 1, label: "Search"))
+        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 1, label: "Search"))
     }
 
     @IBAction func actionViewNotifications(_ sender: Any?) {
         NSLog("view notifications \(SkyUrls.notifications)")
         if webView.url!.absoluteString == SkyUrls.notifications {
             NSLog("trying load new button first")
-            self.webView.evaluateJavaScript(clickLoadNewButtonNavbarByIndexOrLabel(index: 2, label: "Notifications"))
+            self.webView.evaluateJavaScript(Scripts.clickLoadNewButtonNavbarByIndexOrLabel(index: 2, label: "Notifications"))
         } else {
-            self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 2, label: "Notifications"))
+            self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 2, label: "Notifications"))
         }
     }
 
     @IBAction func actionViewProfile(_ sender: Any?) {
         NSLog("view profile \(SkyUrls.settings)")
-        self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: 3, label: "Profile"))
+        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: 3, label: "Profile"))
     }
 
     @IBAction func actionViewSettings(_ sender: Any?) {
         NSLog("view settings \(SkyUrls.settings)")
-        self.webView.evaluateJavaScript(clickNavbarByIndexOrLabel(index: -1, label: "Settings"))
+        self.webView.evaluateJavaScript(Scripts.clickNavbarByIndexOrLabel(index: -1, label: "Settings"))
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
@@ -182,15 +182,15 @@ class ViewController: NSViewController {
 
     @IBAction func actionNewPost(_ sender: Any?) {
         NSLog("new post \(SkyUrls.settings)")
-        self.webView.evaluateJavaScript(clickNewPost())
+        self.webView.evaluateJavaScript(Scripts.clickNewPost())
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
-        self.webView.evaluateJavaScript(navigateTab(direction: 1))
+        self.webView.evaluateJavaScript(Scripts.navigateTab(direction: 1))
     }
 
     @IBAction func actionPrevTab(_ sender: Any?) {
-        self.webView.evaluateJavaScript(navigateTab(direction: -1))
+        self.webView.evaluateJavaScript(Scripts.navigateTab(direction: -1))
     }
 
     @IBAction func actionOpenDevConsole(_ sender: Any?) {
@@ -212,51 +212,10 @@ class ViewController: NSViewController {
             var orderPosts = menuItem.state == .on
             orderPosts = !orderPosts
             menuItem.state = orderPosts ? .on : .off
-            self.webView.evaluateJavaScript(setOrderPosts(orderPosts))
+            self.webView.evaluateJavaScript(Scripts.setOrderPosts(orderPosts))
             (NSApplication.shared.delegate as! AppDelegate)
                 .setUserDefaultsOrderPosts(orderPosts)
         }
-    }
-
-    func setOrderPosts(_ orderPosts: Bool) -> String {
-        return JsLoader.loadJs(
-            "Scripts/set_order_posts",
-            ["value": orderPosts ? "yes" : "no" ]
-        )
-    }
-
-    func navigateTab(direction: Int) -> String {
-        return JsLoader.loadJs(
-            "Scripts/navigate_tab",
-            ["direction": "\(direction)"]
-        )
-    }
-
-    func clickLoadNewButtonNavbarByIndexOrLabel(index: Int, label: String) -> String {
-        return JsLoader.loadJs(
-            "Scripts/click_load_new_button_navbar_by_index_or_label",
-            ["index": "\(index)", "label": label]
-        )
-    }
-
-    func clickNavbarByIndexOrLabel(index: Int, label: String) -> String {
-        return JsLoader.loadJs(
-            "Scripts/click_navbar_by_index_or_label",
-            ["index": "\(index)", "label": label]
-        )
-    }
-
-    func clickByLabel(label: String) -> String {
-        return JsLoader.loadJs(
-            "Scripts/click_by_label",
-            ["label": label]
-        )
-    }
-
-    func clickNewPost() -> String {
-        return JsLoader.loadJs(
-            "Scripts/click_new_post", [:]
-        )
     }
 
     enum WindowColorScheme {
