@@ -8,7 +8,7 @@ _If you're looking for the official BlueSky Social iOS app, [head on over to the
 
 The current release is [**0.1.2**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
-![](docs/screenshot.png)
+![](Docs/screenshot.png)
 
 ## Installation
 
