@@ -33,3 +33,4 @@ create-dmg --overwrite "${app}" ${dir}
 
 xcrun notarytool submit ${dir}*.dmg --keychain-profile "${keychain_profile}" --wait
 xcrun stapler staple ${dir}*.dmg
+spctl -a -vvvv -t open --context context:primary-signature --raw ${dir}*.dmg
