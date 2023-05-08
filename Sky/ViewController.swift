@@ -26,6 +26,7 @@ class ViewController: NSViewController {
       "hook_ctrl_tab",
       "hook_fetch",
       "hook_initial_disable_scrollbars",
+      "hook_page_up_down",
       "hook_window_color_scheme",
       "hook_window_open",
     ]
