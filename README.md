@@ -46,6 +46,13 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ### 0.1.2-pre
 
+* FIX: `⌘-Number` navigation in non-compact view
+* New keyboard shortcuts:
+  * Go back in various contexts: `Esc`
+  * Next page: `PgDn`, `SPC`
+  * Prev page: `PgUp`, `⇧-SPC`
+  * Go to Top: `Home`
+
 ### 0.1.1
 
 * FIX: Attach photos to posts
