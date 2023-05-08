@@ -41,7 +41,7 @@ class DevConsoleViewController : NSViewController {
         NSLog("populateAccessJwt")
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         self.hostingView.evaluateJavaScript(
-            JsLoader.loadJs("Scripts/populate_access_jwt",
+            JsLoader.loadScriptContents("Scripts/populate_access_jwt",
                 ["access_jwt": appDelegate.accessJwt!])
         )
 

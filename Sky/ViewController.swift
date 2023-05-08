@@ -44,20 +44,20 @@ class ViewController: NSViewController {
         userContentController.add(scriptMessageHandler, name: "windowOpen")
         userContentController.add(scriptMessageHandler, name: "loadAccessJwt")
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_fetch"))
+            JsLoader.loadWKUserScript("Scripts/hook_fetch"))
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_initial_disable_scrollbars"))
+            JsLoader.loadWKUserScript("Scripts/hook_initial_disable_scrollbars"))
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_window_open"))
+            JsLoader.loadWKUserScript("Scripts/hook_window_open"))
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_window_color_scheme"))
+            JsLoader.loadWKUserScript("Scripts/hook_window_color_scheme"))
         userContentController.addUserScript(
-            newScriptFromSource("Scripts/hook_ctrl_tab"))
+            JsLoader.loadWKUserScript("Scripts/hook_ctrl_tab"))
 
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let orderPosts = appDelegate.getUserDefaultsOrderPosts()
         userContentController.addUserScript(
-            newScriptFromSource(
+            JsLoader.loadWKUserScript(
                 "Scripts/set_order_posts",
                 ["value": orderPosts ? "yes" : "no" ]))
 
@@ -85,7 +85,7 @@ class ViewController: NSViewController {
             if shouldHaveOuterScrollbars != outerScrollbarsEnabled {
                 // change state
                 self.webView.evaluateJavaScript(
-                    JsLoader.loadJs(
+                    JsLoader.loadScriptContents(
                         "Scripts/toggle_outer_scrollbars",
                         ["enabled": String(shouldHaveOuterScrollbars)]
                     )
@@ -93,15 +93,6 @@ class ViewController: NSViewController {
                 outerScrollbarsEnabled = shouldHaveOuterScrollbars
             }
         }
-    }
-
-    func newScriptFromSource(_ name: String, _ context: [String: String] = [:]) -> WKUserScript {
-        let source = JsLoader.loadJs(name, context)
-        return WKUserScript(
-            source: source,
-            injectionTime: .atDocumentEnd,
-            forMainFrameOnly: false
-        )
     }
 
     override func viewDidLoad() {
@@ -202,7 +193,7 @@ class ViewController: NSViewController {
 
     func loadAccessJwt(completionHandler: ((Any?, Error?) -> Void)? = nil) {
         self.webView.evaluateJavaScript(
-            JsLoader.loadJs("Scripts/load_access_jwt", [:]),
+            JsLoader.loadScriptContents("Scripts/load_access_jwt", [:]),
             completionHandler: completionHandler
         )
     }
