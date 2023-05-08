@@ -34,6 +34,12 @@ class Scripts {
         )
     }
 
+    static func escOrBack() -> String {
+        return JsLoader.loadScriptContents(
+            "Scripts/esc_or_back", [:]
+        )
+    }
+
     static func navigateTab(direction: Int) -> String {
         return JsLoader.loadScriptContents(
             "Scripts/navigate_tab",
