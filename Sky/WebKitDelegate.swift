@@ -23,6 +23,26 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         }
     }
 
+    func buildImageGifBase64(_ url : URL) -> String? {
+        do {
+            let data = try Data(contentsOf: url)
+            let data64 = data.base64EncodedString()
+            if let data64enc = data64.addingPercentEncoding(withAllowedCharacters: .alphanumerics) {
+                return "data:image/gif;base64,\(data64enc)"
+            }
+        } catch {
+        }
+        return nil
+    }
+
+    func addGifData(_ webView: WKWebView, _ svg : String) {
+        if let blob = svg.addingPercentEncoding(withAllowedCharacters: .alphanumerics) {
+            webView.evaluateJavaScript(
+                Scripts.addGifData(blob)
+            )
+        }
+    }
+
     func webView(
         _ webView: WKWebView,
         runOpenPanelWith parameters: WKOpenPanelParameters,
@@ -34,6 +54,9 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         openPanel.begin { (result) in
             if result == NSApplication.ModalResponse.OK {
                 if let url = openPanel.url {
+                    if let gifBase64 = self.buildImageGifBase64(url){
+                        self.addGifData(webView, gifBase64)
+                    }
                     completionHandler([url])
                 }
             } else if result == NSApplication.ModalResponse.cancel {

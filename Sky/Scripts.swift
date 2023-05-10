@@ -47,4 +47,11 @@ class Scripts {
         )
     }
 
+    static func addGifData(_ blob: String) -> String {
+        return JsLoader.loadScriptContents(
+            "Scripts/add_gif_data",
+            ["blob": blob]
+        )
+    }
+
 }
