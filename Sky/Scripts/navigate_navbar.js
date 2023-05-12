@@ -1,7 +1,9 @@
 function findByAriaLabel(label) {
     let found = false;
-    let elems = filterVisible(document.querySelectorAll("[aria-label]")).
-        filter(elem => elem.getAttribute("aria-label") === label);
+    let elems = filterVisible(
+        Array.from(document.querySelectorAll("[aria-label]")).
+            filter(elem => elem.getAttribute("aria-label") === label)
+    );
     if (elems.length > 0) {
         found = true;
         for (let elem of elems) {
@@ -17,8 +19,8 @@ function findByNavbarIndex(index) {
     }
     let found = false;
     let elems = Array.from(document.querySelectorAll("div")).
-            filter(elem => elem.style.position === "absolute"
-                         && elem.style.bottom === "0px");
+        filter(elem => elem.style.position === "absolute"
+            && elem.style.bottom === "0px");
     if (elems.length > 0) {
         for (let elem of elems) {
             let children = elem.children;
