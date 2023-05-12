@@ -35,6 +35,7 @@ The current release is [**0.1.3**](https://github.com/jcsalterego/Sky.app/releas
 ### Other
 
 * `⌘-T` Open in Browser
+* `⌘-⇧-D` Toggle Dark Mode
 * `⌘-⇧-C` Copy Share URL
 * `^-⌘-⇧-C` Copy Current URL
 
