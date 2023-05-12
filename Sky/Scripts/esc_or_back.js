@@ -1,15 +1,7 @@
 function filterVisible(elems) {
+    $LOG(`elems.length = ${elems.length}`);
     return Array.from(elems).filter(elem => {
-        // check if any ancestors have display none
-        let visible = true;
-        while (elem !== null) {
-            if (window.getComputedStyle(elem).display === "none") {
-                visible = false;
-                break;
-            }
-            elem = elem.parentElement;
-        }
-        return visible;
+        return (elem.offsetParent !== null);
     });
 }
 function escOrBack() {
