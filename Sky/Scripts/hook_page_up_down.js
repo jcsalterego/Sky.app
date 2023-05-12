@@ -47,7 +47,6 @@ function pageUpDownEventHandler(ev) {
         } else if (ev.key === "End") {
             fs.forEach(f => f.scrollTop = f.scrollHeight - f.clientHeight);
         }
-        document.activeElement.blur();
     }
 }
 function setPageUpDown() {

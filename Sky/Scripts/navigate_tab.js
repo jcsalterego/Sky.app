@@ -124,7 +124,6 @@ function navigateTabElems(tabElems, descendentCount, direction) {
         nextIndex = nextIndex % total;
     }
     tabElems[nextIndex].click();
-    document.activeElement.blur();
 }
 
 function navigateTab(direction) {
