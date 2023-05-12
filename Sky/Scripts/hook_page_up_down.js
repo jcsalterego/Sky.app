@@ -20,7 +20,8 @@ function getElementsWithMaxScrollHeight() {
     return fs;
 }
 function pageUpDownEventHandler(ev) {
-    const KEYDOWN_KEYS = ["PageDown", "PageUp", "Home", " "];
+    const KEYDOWN_KEYS = ["PageDown", "PageUp", "Home", " ", "ArrowDown", "ArrowUp", "End"];
+    const SCROLL_DIFF = 50;
     if (ev.target === document.body
         && KEYDOWN_KEYS.indexOf(ev.key) > -1
     ) {
@@ -37,9 +38,16 @@ function pageUpDownEventHandler(ev) {
             fs.forEach(f => f.scrollTop += f.clientHeight)
         } else if (ev.key === "PageUp" || (ev.key === " " && ev.shiftKey === true)) {
             fs.forEach(f => f.scrollTop -= f.clientHeight)
+        } else if (ev.key === "ArrowDown") {
+            fs.forEach(f => f.scrollTop += SCROLL_DIFF);
+        } else if (ev.key === "ArrowUp") {
+            fs.forEach(f => f.scrollTop -= SCROLL_DIFF);
         } else if (ev.key === "Home") {
-            fs.forEach(f => f.scrollTop = 0)
+            fs.forEach(f => f.scrollTop = 0);
+        } else if (ev.key === "End") {
+            fs.forEach(f => f.scrollTop = f.scrollHeight - f.clientHeight);
         }
+        document.activeElement.blur();
     }
 }
 function setPageUpDown() {
