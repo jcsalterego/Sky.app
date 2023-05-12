@@ -6,7 +6,7 @@ notification badges.
 
 _If you're looking for the official BlueSky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.1.2**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.1.3**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
@@ -43,6 +43,14 @@ Made by [@jcsalterego.bsky.social](https://staging.bsky.app/profile/jcsalterego.
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 
 ## Changelog
+
+### 0.1.3
+
+* View > Toggle Dark Mode
+* Performance updates
+* ⌘-⇧-C now copies the Share URL (`staging.bsky.app` becomes `bsky.app`)
+* ^-⌘-⇧-C copies the Full URL, while increasing finger dexterity
+* Fix: ⌘-5 opens Settings in compacted mode
 
 ### 0.1.2
 
