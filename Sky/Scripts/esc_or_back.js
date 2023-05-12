@@ -8,13 +8,15 @@ function escOrBack() {
     if (document.location.pathname.indexOf("/search") === 0) {
         return;
     }
-    let elems = filterVisible(document.querySelectorAll("div[role='button']"))
-        .filter(elem => {
-            if (elem.getAttribute('aria-label') !== null) {
-                return ["back", "go back"].indexOf(elem.getAttribute('aria-label').toLowerCase()) > -1;
-            }
-            return false;
-        });
+    let elems = filterVisible(
+        Array.from(document.querySelectorAll("div[role='button']"))
+            .filter(elem => {
+                if (elem.getAttribute('aria-label') !== null) {
+                    return ["back", "go back"].indexOf(elem.getAttribute('aria-label').toLowerCase()) > -1;
+                }
+                return false;
+            })
+    );
     let backElems = elems.filter(
         e => "back" === e.getAttribute('aria-label').toLowerCase()
     );
