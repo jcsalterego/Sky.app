@@ -42,4 +42,18 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         }
     }
 
+    func webView(
+        _ webView: WKWebView,
+        runJavaScriptConfirmPanelWithMessage message: String,
+        initiatedByFrame frame: WKFrameInfo,
+        completionHandler: @escaping (Bool) -> Void
+    ) {
+        let alert = NSAlert()
+        alert.informativeText = message
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        let action = alert.runModal()
+        completionHandler(action == .alertFirstButtonReturn)
+    }
+
 }

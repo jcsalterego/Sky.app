@@ -218,6 +218,12 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func actionToggleDarkMode(_ sender: Any?) {
+        self.webView.evaluateJavaScript(
+            Scripts.toggleDarkMode()
+        )
+    }
+
     enum WindowColorScheme {
         case dark
         case light

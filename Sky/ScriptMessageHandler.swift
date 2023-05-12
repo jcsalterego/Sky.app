@@ -17,6 +17,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             "loadAccessJwt": loadAccessJwt,
             "windowColorSchemeChange": windowColorSchemeChange,
             "windowOpen": windowOpen,
+            "windowReload": windowReload,
         ]
     }
 
@@ -38,6 +39,10 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 NSWorkspace.shared.open(URL.init(string: url)!)
             }
         }
+    }
+
+    func windowReload(_ message: WKScriptMessage) {
+        viewController.webView.reload()
     }
 
     func windowColorSchemeChange(_ message: WKScriptMessage) {
