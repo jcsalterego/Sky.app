@@ -94,9 +94,15 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
-                                        <menuItem title="Copy URL" keyEquivalent="C" id="NTi-6D-KB5">
+                                        <menuItem title="Copy Share URL" keyEquivalent="C" id="NTi-6D-KB5">
                                             <connections>
-                                                <action selector="actionCopyLink:" target="Ady-hI-5gd" id="H5J-mP-a6p"/>
+                                                <action selector="actionCopyShareLink:" target="Ady-hI-5gd" id="wWw-1c-E4h"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy URL" keyEquivalent="C" id="lX7-EN-N1J">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionCopyLink:" target="Ady-hI-5gd" id="4Vp-es-aIR"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="tHo-4g-Z98"/>
