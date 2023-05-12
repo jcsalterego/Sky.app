@@ -22,13 +22,15 @@ class Scripts {
     static func navigateNavbar(
         checkLoadNew: Bool,
         label: String,
-        index: Int
+        index: Int,
+        url: String?
     ) -> String {
         return JsLoader.loadScriptContents(
             "Scripts/navigate_navbar", [
                 "check_load_new": checkLoadNew ? "true" : "false",
                 "index": "\(index)",
                 "label": label,
+                "url": url ?? "",
             ]
         )
     }

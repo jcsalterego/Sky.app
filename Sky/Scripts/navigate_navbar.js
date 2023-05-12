@@ -43,7 +43,7 @@ function getLoadNewButtons() {
             .filter(e => e.innerHTML.match(/load new/i))
     );
 }
-function navigate(checkLoadNew, label, index) {
+function navigate(checkLoadNew, label, index, url) {
     let found = false;
     if (checkLoadNew) {
         let loadNewButtons = getLoadNewButtons();
@@ -58,5 +58,10 @@ function navigate(checkLoadNew, label, index) {
     if (!found) {
         found = findByNavbarIndex(index);
     }
+    if (!found) {
+        if (url !== '') {
+            document.location.href = url;
+        }
+    }
 }
-navigate($__CHECK_LOAD_NEW__, '$__LABEL__', $__INDEX__);
+navigate($__CHECK_LOAD_NEW__, '$__LABEL__', $__INDEX__, '$__URL__');

@@ -112,7 +112,8 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Home",
-                index: 0
+                index: 0,
+                url: SkyUrls.home
             )
         )
     }
@@ -122,7 +123,8 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: false,
                 label: "Search",
-                index: 1
+                index: 1,
+                url: SkyUrls.search
             )
         )
     }
@@ -133,7 +135,8 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Notifications",
-                index: 2
+                index: 2,
+                url: SkyUrls.notifications
             )
         )
     }
@@ -143,7 +146,8 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: false,
                 label: "Profile",
-                index: 3
+                index: 3,
+                url: nil
             )
         )
     }
@@ -153,7 +157,8 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: false,
                 label: "Settings",
-                index: -1
+                index: -1,
+                url: SkyUrls.settings
             )
         )
     }
