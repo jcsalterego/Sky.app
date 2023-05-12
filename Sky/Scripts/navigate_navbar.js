@@ -33,7 +33,6 @@ function findByNavbarIndex(index) {
     return found;
 }
 function filterVisible(elems) {
-    $LOG(`elems.length = ${elems.length}`);
     return Array.from(elems).filter(elem => {
         return (elem.offsetParent !== null);
     });
