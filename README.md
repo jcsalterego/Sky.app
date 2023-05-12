@@ -30,11 +30,13 @@ The current release is [**0.1.3**](https://github.com/jcsalterego/Sky.app/releas
 * `⌘-2` Search (also `⌘-k`)
 * `⌘-3` Notifications
 * `⌘-4` Profile
+* `⌘-5` Settings
 
 ### Other
 
 * `⌘-T` Open in Browser
-* `⌘-⇧-C` Copy Current URL
+* `⌘-⇧-C` Copy Share URL
+* `^-⌘-⇧-C` Copy Current URL
 
 ## Credits
 
