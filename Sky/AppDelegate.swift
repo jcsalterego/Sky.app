@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // TODO cleanup, sigh
     var mainWindow: NSWindow? = nil
+    var windowDelegate: WindowDelegate? = nil
+
     var devConsoleWindowController : NSWindowController?
     var devConsoleViewController : DevConsoleViewController?
     var accessJwt : String? = nil
@@ -25,8 +27,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if firstRun {
             firstRun = false
 
-            mainWindow = NSApplication.shared.mainWindow!
-            mainWindow?.backgroundColor = NSColor.white
+            if let mainWindow = NSApplication.shared.mainWindow {
+                windowDelegate = WindowDelegate()
+                mainWindow.delegate = windowDelegate
+                windowDelegate!.updateWindowDesktopMode(mainWindow.frame.width)
+                mainWindow.backgroundColor = NSColor.white
+            }
 
             // instantiate dev console
             if let storyboard = mainWindow?.windowController?.storyboard {

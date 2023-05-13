@@ -152,6 +152,17 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionViewModeration(_ sender: Any?) {
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: false,
+                label: "Moderation",
+                index: -1,
+                url: SkyUrls.moderation
+            )
+        )
+    }
+
     @IBAction func actionViewSettings(_ sender: Any?) {
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(

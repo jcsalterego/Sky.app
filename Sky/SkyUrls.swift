@@ -9,5 +9,6 @@ enum SkyUrls {
     static let home = "\(root)/"
     static let search = "\(root)/search"
     static let notifications = "\(root)/notifications"
+    static let moderation = "\(root)/moderation"
     static let settings = "\(root)/settings"
 }

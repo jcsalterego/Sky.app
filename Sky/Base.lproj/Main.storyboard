@@ -329,12 +329,20 @@
                                                 <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="Nx4-lr-RrK"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Profile" keyEquivalent="4" id="W0R-Jf-REN" userLabel="Profiles">
+                                        <menuItem title="Moderation" hidden="YES" id="W0R-Jf-REN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="actionViewProfile:" target="Ady-hI-5gd" id="SyV-np-MXj"/>
+                                                <action selector="actionViewModeration:" target="Ady-hI-5gd" id="6S8-Ij-vzC"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Settings" keyEquivalent="5" id="Aqg-zh-zCt">
+                                        <menuItem title="Profile" hidden="YES" id="LZ2-q5-Ixa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionViewProfile:" target="Ady-hI-5gd" id="J9g-HD-AOg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Settings" hidden="YES" id="Aqg-zh-zCt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
                                             </connections>
@@ -351,6 +359,7 @@
                                                 <action selector="actionOpenInBrowser:" target="Ady-hI-5gd" id="HXe-cr-EII"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Bps-fs-Onc"/>
                                     </items>
                                 </menu>
                             </menuItem>
