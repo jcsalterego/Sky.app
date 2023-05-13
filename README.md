@@ -1,8 +1,7 @@
 # Sky.app
 
-Sky.app is a MacOS container for the Bluesky Social website. It's a
-dedicated app featuring keyboard shortcuts, Dark Mode Sync, and
-notification badges.
+Sky.app is a great way to use Bluesky Social on MacOS. It features
+keyboard shortcuts, Dark Mode Sync, and notification badges.
 
 _If you're looking for the official BlueSky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
