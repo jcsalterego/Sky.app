@@ -6,7 +6,7 @@ notification badges.
 
 _If you're looking for the official BlueSky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.1.3**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.1.4**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
@@ -26,11 +26,22 @@ The current release is [**0.1.3**](https://github.com/jcsalterego/Sky.app/releas
 * `⌘-⇧-R` Refresh
 * `⌘-⇧-]` Next Tab (or `^-Tab`)
 * `⌘-⇧-[` Previous Tab (or `^-⇧-Tab`)
+
+In Compact Mode:
+
 * `⌘-1` Home
 * `⌘-2` Search (also `⌘-k`)
 * `⌘-3` Notifications
 * `⌘-4` Profile
-* `⌘-5` Settings
+
+In Desktop Mode:
+
+* `⌘-1` Home
+* `⌘-2` Search (also `⌘-k`)
+* `⌘-3` Notifications
+* `⌘-4` Moderation
+* `⌘-5` Profile
+* `⌘-6` Settings
 
 ### Other
 
@@ -47,7 +58,11 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
-### 0.1.4-pre
+### 0.1.4
+
+* `⌘-1`, `⌘-2`, etc now follow the available navigation, depending on
+  whether you're in compact mode, or desktop mode
+* FIX: Some network calls failed to return correctly
 
 ### 0.1.3
 
@@ -55,7 +70,7 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 * Performance updates
 * ⌘-⇧-C now copies the Share URL (`staging.bsky.app` becomes `bsky.app`)
 * ^-⌘-⇧-C copies the Full URL, while increasing finger dexterity
-* Fix: ⌘-5 opens Settings in compacted mode
+* FIX: ⌘-5 opens Settings in compacted mode
 
 ### 0.1.2
 
