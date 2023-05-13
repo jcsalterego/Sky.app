@@ -23,13 +23,13 @@ class ViewController: NSViewController {
     var outerScrollbarsEnabled = false
 
     let userScripts = [
-      "hook_ctrl_tab",
-      "hook_fetch",
-      "hook_history_state",
-      "hook_initial_disable_scrollbars",
-      "hook_page_up_down",
-      "hook_window_color_scheme",
-      "hook_window_open",
+        "hook_ctrl_tab",
+        "hook_fetch",
+        "hook_history_state",
+        "hook_initial_disable_scrollbars",
+        "hook_page_up_down",
+        "hook_window_color_scheme",
+        "hook_window_open",
     ]
 
     override func loadView() {
