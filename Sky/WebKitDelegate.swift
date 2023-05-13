@@ -16,8 +16,16 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
     ) {
         if navigationAction.navigationType == WKNavigationType.linkActivated {
             decisionHandler(WKNavigationActionPolicy.cancel)
-            let request = navigationAction.request
-            NSWorkspace.shared.open(request.url!)
+            let requestURL = navigationAction.request.url!
+            if requestURL.host!.starts(with: "staging.bsky.app")
+                || requestURL.host!.starts(with: "bsky.app"
+            ) {
+                let url = URL(string: requestURL.absoluteString)
+                let urlRequest = URLRequest(url: url!)
+                webView.load(urlRequest)
+            } else {
+                NSWorkspace.shared.open(requestURL)
+            }
         } else {
             decisionHandler(WKNavigationActionPolicy.allow)
         }
