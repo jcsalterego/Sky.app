@@ -1,4 +1,3 @@
-
 function setFeatureOrderPosts(value) {
     let done = false;
     if (document !== undefined) {

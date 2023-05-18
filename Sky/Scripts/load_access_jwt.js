@@ -11,7 +11,9 @@ function loadAccessJwt() {
 
             if (accounts !== undefined && data !== undefined) {
                 let did = data.did;
-                let activeAccounts = accounts.filter(account => account.did === did);
+                let activeAccounts = accounts.filter(
+                    (account) => account.did === did
+                );
 
                 if (activeAccounts.length === 1) {
                     accessJwt = activeAccounts[0].accessJwt;
@@ -19,7 +21,8 @@ function loadAccessJwt() {
             }
         }
     }
-    window.webkit.messageHandlers.loadAccessJwt.
-        postMessage({"accessJwt": accessJwt});
+    window.webkit.messageHandlers.loadAccessJwt.postMessage({
+        accessJwt: accessJwt,
+    });
 }
 loadAccessJwt();

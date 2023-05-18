@@ -1,5 +1,4 @@
-
-window.toggleOuterScrollbars = function(enabled) {
+window.toggleOuterScrollbars = function (enabled) {
     const overflowProp = enabled ? "auto" : "hidden";
     let success = false;
     if (document !== undefined) {
@@ -10,7 +9,7 @@ window.toggleOuterScrollbars = function(enabled) {
         }
     }
     return success;
-}
+};
 
 function hookToggleOuterScrollbars(enabled) {
     let done = window.toggleOuterScrollbars(enabled);

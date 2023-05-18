@@ -1,8 +1,9 @@
 function findByAriaLabel(label) {
     let found = false;
     let elems = filterVisible(
-        Array.from(document.querySelectorAll("[aria-label]")).
-            filter(elem => elem.getAttribute("aria-label") === label)
+        Array.from(document.querySelectorAll("[aria-label]")).filter(
+            (elem) => elem.getAttribute("aria-label") === label
+        )
     );
     if (elems.length > 0) {
         found = true;
@@ -17,14 +18,15 @@ function findByNavbarIndex(index) {
         return false;
     }
     let found = false;
-    let elems = Array.from(document.querySelectorAll("div")).
-        filter(elem => elem.style.position === "absolute"
-            && elem.style.bottom === "0px");
+    let elems = Array.from(document.querySelectorAll("div")).filter(
+        (elem) =>
+            elem.style.position === "absolute" && elem.style.bottom === "0px"
+    );
     if (elems.length > 0) {
         for (let elem of elems) {
             let children = elem.children;
             if (children.length >= 4) {
-                children[index].click()
+                children[index].click();
                 found = true;
                 break;
             }
@@ -33,14 +35,15 @@ function findByNavbarIndex(index) {
     return found;
 }
 function filterVisible(elems) {
-    return Array.from(elems).filter(elem => {
-        return (elem.offsetParent !== null);
+    return Array.from(elems).filter((elem) => {
+        return elem.offsetParent !== null;
     });
 }
 function getLoadNewButtons() {
     return filterVisible(
-        Array.from(document.querySelectorAll("div[aria-label]"))
-            .filter(e => e.innerHTML.match(/load new/i))
+        Array.from(document.querySelectorAll("div[aria-label]")).filter((e) =>
+            e.innerHTML.match(/load new/i)
+        )
     );
 }
 function navigate(checkLoadNew, label, index, url) {
@@ -48,7 +51,7 @@ function navigate(checkLoadNew, label, index, url) {
     if (checkLoadNew) {
         let loadNewButtons = getLoadNewButtons();
         if (loadNewButtons.length > 0) {
-            loadNewButtons.forEach(b => b.click());
+            loadNewButtons.forEach((b) => b.click());
             found = true;
         }
     }
@@ -59,9 +62,9 @@ function navigate(checkLoadNew, label, index, url) {
         found = findByNavbarIndex(index);
     }
     if (!found) {
-        if (url !== '') {
+        if (url !== "") {
             document.location.href = url;
         }
     }
 }
-navigate($__CHECK_LOAD_NEW__, '$__LABEL__', $__INDEX__, '$__URL__');
+navigate($__CHECK_LOAD_NEW__, "$__LABEL__", $__INDEX__, "$__URL__");

@@ -1,4 +1,3 @@
-
 function getAncestor(elem, levels) {
     let parent = elem;
     for (let i = 0; i < levels; i++) {
@@ -16,13 +15,14 @@ function getDescendent(elem, levels) {
 }
 
 function filterVisible(elems) {
-    return Array.from(elems).filter(elem => {
-        return (elem.offsetParent !== null);
+    return Array.from(elems).filter((elem) => {
+        return elem.offsetParent !== null;
     });
 }
 
 function navigateHomeTabs(direction) {
-    let rootElem = undefined, tabElems = undefined;
+    let rootElem = undefined,
+        tabElems = undefined;
     if (rootElem === undefined) {
         let rootElems = filterVisible(
             document.querySelectorAll(`div[data-testid="homeScreenFeedTabs"]`)
@@ -33,8 +33,10 @@ function navigateHomeTabs(direction) {
     }
     if (rootElem === undefined) {
         let followingElems = filterVisible(
-            Array.from(document.querySelectorAll("div"))
-                .filter(elem => elem.innerHTML === "Following"));
+            Array.from(document.querySelectorAll("div")).filter(
+                (elem) => elem.innerHTML === "Following"
+            )
+        );
         if (followingElems.length == 1) {
             rootElem = getAncestor(followingElems[0], 2);
         }
@@ -53,11 +55,14 @@ function navigateHomeTabs(direction) {
 }
 
 function navigateProfileTabs(direction) {
-    let rootElem = undefined, tabElems = undefined;
+    let rootElem = undefined,
+        tabElems = undefined;
     if (rootElem === undefined) {
         let postsElems = filterVisible(
-            Array.from(document.querySelectorAll("div"))
-                .filter(elem => elem.innerHTML === "Posts"));
+            Array.from(document.querySelectorAll("div")).filter(
+                (elem) => elem.innerHTML === "Posts"
+            )
+        );
         if (postsElems.length == 1) {
             rootElem = getAncestor(postsElems[0], 3);
         }
@@ -75,11 +80,14 @@ function navigateProfileTabs(direction) {
 }
 
 function navigateSearchTabs(direction) {
-    let rootElem = undefined, tabElems = undefined;
+    let rootElem = undefined,
+        tabElems = undefined;
     if (rootElem === undefined) {
         let postsElems = filterVisible(
-            Array.from(document.querySelectorAll("div"))
-                .filter(elem => elem.innerHTML === "Posts"));
+            Array.from(document.querySelectorAll("div")).filter(
+                (elem) => elem.innerHTML === "Posts"
+            )
+        );
         if (postsElems.length == 1) {
             rootElem = getAncestor(postsElems[0], 3);
         }
@@ -102,7 +110,10 @@ function navigateTabElems(tabElems, descendentCount, direction) {
     var idx = 0;
     for (let tabElem of tabElems) {
         let child = getDescendent(tabElem, descendentCount);
-        if (child.style.color === 'rgb(0, 0, 0)' || child.style.color === 'rgb(255, 255, 255)') {
+        if (
+            child.style.color === "rgb(0, 0, 0)" ||
+            child.style.color === "rgb(255, 255, 255)"
+        ) {
             selected = idx;
             break;
         }
@@ -127,7 +138,7 @@ function navigateTabElems(tabElems, descendentCount, direction) {
 
 function navigateTab(direction) {
     let path = window.location.pathname;
-    if (path === '/') {
+    if (path === "/") {
         navigateHomeTabs(direction);
     } else if (path.match(/\/profile\//)) {
         navigateProfileTabs(direction);
