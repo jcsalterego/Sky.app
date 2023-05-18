@@ -59,6 +59,8 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ### 0.2.2-pre
 
+* Performance cleanup
+
 ### 0.2.1
 
 * Rewrite `staging.bsky.app` to `bsky.app`
