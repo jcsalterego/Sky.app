@@ -59,6 +59,7 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ### 0.2.2-pre
 
+* `Esc` clears search terms when searching
 * Performance cleanup
 
 ### 0.2.1

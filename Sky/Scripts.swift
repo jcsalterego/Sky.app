@@ -13,9 +13,9 @@ class Scripts {
         )
     }
 
-    static func escOrBack() -> String {
+    static func escGoesBack() -> String {
         return JsLoader.loadScriptContents(
-            "Scripts/esc_or_back", [:]
+            "Scripts/esc_goes_back", [:]
         )
     }
 

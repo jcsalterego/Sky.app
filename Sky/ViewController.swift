@@ -97,7 +97,7 @@ class ViewController: NSViewController {
 
     override func keyDown(with event: NSEvent) {
         if (event.keyCode == Keycode.escape) {
-            self.webView.evaluateJavaScript(Scripts.escOrBack())
+            self.webView.evaluateJavaScript(Scripts.escGoesBack())
         } else if (
             event.modifierFlags.contains(.command)
             && event.keyCode == Keycode.k
