@@ -17,10 +17,13 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         if navigationAction.navigationType == WKNavigationType.linkActivated {
             decisionHandler(WKNavigationActionPolicy.cancel)
             let requestURL = navigationAction.request.url!
-            if requestURL.host!.starts(with: "staging.bsky.app")
-                || requestURL.host!.starts(with: "bsky.app"
-            ) {
-                let url = URL(string: requestURL.absoluteString)
+            let host = requestURL.host!
+            if host == "staging.bsky.app" || host == "bsky.app" {
+                var urlString = requestURL.absoluteString
+                urlString = urlString.replacingOccurrences(
+                    of: "//staging.bsky.app/",
+                    with: "//bsky.app/")
+                let url = URL(string: urlString)
                 let urlRequest = URLRequest(url: url!)
                 webView.load(urlRequest)
             } else {

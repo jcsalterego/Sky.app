@@ -57,6 +57,10 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.2.1-pre
+
+* Rewrite `staging.bsky.app` to `bsky.app`
+
 ### 0.2.0
 
 * Use `bsky.app`
