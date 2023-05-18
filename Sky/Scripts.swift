@@ -7,9 +7,9 @@ import Foundation
 
 class Scripts {
 
-    static func clickNewPost() -> String {
+    static func clickByAriaLabel(_ ariaLabel: String) -> String {
         return JsLoader.loadScriptContents(
-            "Scripts/click_new_post", [:]
+            "Scripts/click_by_aria_label", ["aria_label": ariaLabel]
         )
     }
 

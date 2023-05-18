@@ -59,6 +59,9 @@ class ViewController: NSViewController {
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+
+        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
+
         view = webView
     }
 
@@ -198,8 +201,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNewPost(_ sender: Any?) {
-        NSLog("new post \(SkyUrls.settings)")
-        self.webView.evaluateJavaScript(Scripts.clickNewPost())
+        self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("Compose Post"))
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
