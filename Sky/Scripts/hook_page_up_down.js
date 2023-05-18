@@ -1,8 +1,4 @@
-function filterVisible(elems) {
-    return Array.from(elems).filter((elem) => {
-        return elem.offsetParent !== null;
-    });
-}
+$INCLUDE("_filter_visible.js");
 function getElementsWithMaxScrollHeight() {
     let ary = Array.from(document.querySelectorAll("div"))
         .filter((e) => e.scrollHeight > 0)

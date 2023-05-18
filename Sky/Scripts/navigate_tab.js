@@ -1,3 +1,4 @@
+$INCLUDE("_filter_visible.js");
 function getAncestor(elem, levels) {
     let parent = elem;
     for (let i = 0; i < levels; i++) {
@@ -5,7 +6,6 @@ function getAncestor(elem, levels) {
     }
     return parent;
 }
-
 function getDescendent(elem, levels) {
     let child = elem;
     for (let i = 0; i < levels; i++) {
@@ -13,13 +13,6 @@ function getDescendent(elem, levels) {
     }
     return child;
 }
-
-function filterVisible(elems) {
-    return Array.from(elems).filter((elem) => {
-        return elem.offsetParent !== null;
-    });
-}
-
 function navigateHomeTabs(direction) {
     let rootElem = undefined,
         tabElems = undefined;

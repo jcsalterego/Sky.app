@@ -1,3 +1,4 @@
+$INCLUDE("_filter_visible.js");
 function findByAriaLabel(label) {
     let found = false;
     let elems = filterVisible(
@@ -33,11 +34,6 @@ function findByNavbarIndex(index) {
         }
     }
     return found;
-}
-function filterVisible(elems) {
-    return Array.from(elems).filter((elem) => {
-        return elem.offsetParent !== null;
-    });
 }
 function getLoadNewButtons() {
     return filterVisible(
