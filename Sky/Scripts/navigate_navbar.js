@@ -1,18 +1,8 @@
-$INCLUDE("_filter_visible.js");
-function findByAriaLabel(label) {
-    let found = false;
-    let elems = filterVisible(
-        Array.from(document.querySelectorAll("[aria-label]")).filter(
-            (elem) => elem.getAttribute("aria-label") === label
-        )
-    );
-    if (elems.length > 0) {
-        found = true;
-        for (let elem of elems) {
-            elem.click();
-        }
-    }
-    return found;
+$INCLUDE("_find_all_by_aria_label.js");
+function clickByAriaLabel(label) {
+    let elems = findAllByAriaLabel(label);
+    elems.forEach((elem) => elem.click());
+    return elems.length > 0;
 }
 function findByNavbarIndex(index) {
     if (index == -1) {
@@ -52,7 +42,7 @@ function navigate(checkLoadNew, label, index, url) {
         }
     }
     if (!found) {
-        found = findByAriaLabel(label);
+        found = clickByAriaLabel(label);
     }
     if (!found) {
         found = findByNavbarIndex(index);
