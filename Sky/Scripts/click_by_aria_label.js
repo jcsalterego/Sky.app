@@ -1,8 +1,5 @@
-$INCLUDE("_filter_visible.js");
+$INCLUDE("_find_all_by_aria_label.js");
 function clickByAriaLabel(ariaLabel) {
-    let elems = filterVisible(
-        document.querySelectorAll(`[aria-label^="${ariaLabel}" i]`)
-    );
-    elems.forEach((elem) => elem.click());
+    return findAllByAriaLabel(ariaLabel).forEach((elem) => elem.click());
 }
 clickByAriaLabel("$__ARIA_LABEL__");
