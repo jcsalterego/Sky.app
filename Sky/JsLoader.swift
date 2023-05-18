@@ -35,50 +35,48 @@ class JsLoader {
     }
 
     class func loadScriptContents(
-        _ name: String,
+        _ scriptPath: String,
         _ context: [String: String] = [:]
     ) -> String {
-        let myFileURL = Bundle.main.url(forResource: name, withExtension: "js")
-        var myText = try! String(contentsOf: myFileURL!, encoding: String.Encoding.utf8)
+        let scriptURL = Bundle.main.url(forResource: scriptPath, withExtension: "js")
+        var scriptContents = try! String(contentsOf: scriptURL!, encoding: String.Encoding.utf8)
         for (key, value) in context {
             let jsKey = "$__\(key.uppercased())__"
-            myText = myText.replacingOccurrences(of: jsKey, with: value)
+            scriptContents = scriptContents.replacingOccurrences(of: jsKey, with: value)
         }
-        if myText.contains("$LOG") {
-            myText = myText.replacingOccurrences(
+        if scriptContents.contains("$LOG") {
+            scriptContents = scriptContents.replacingOccurrences(
                 of: "$LOG",
                 with: "window.webkit.messageHandlers.consoleLog.postMessage"
             )
         }
-        if myText.contains("$INCLUDE") {
+        if scriptContents.contains("$INCLUDE") {
+            let regex = try? NSRegularExpression(pattern: "\\$INCLUDE\\(['\"]([^'\"]+)['\"]\\)", options: [])
             var finalLines: [String] = []
-            let lines = myText.components(separatedBy: "\n")
-            for idx in lines.indices {
+            let lines = scriptContents.components(separatedBy: "\n")
+            for line in lines {
                 var found = false
-                let line = lines[idx]
-                if let regex = try? NSRegularExpression(pattern: "\\$INCLUDE\\(['\"](.+)['\"]\\)", options: []) {
-                    let nsRange = NSRange(myText.startIndex..., in: line)
-                    let matches = regex.matches(in: line, range: nsRange)
-                    for match in matches {
-                        let firstMatchRange = match.range(at: 1)
-                        let swiftRange = Range(firstMatchRange, in: myText)
-                        let includeFile = myText[swiftRange!]
-                        var includePath = resolveIncludePath(String(includeFile), referencePath: name)
-                        includePath = includePath.replacingOccurrences(of: ".js", with: "")
-                        let innerScript = loadScriptContents(includePath)
-                        for innerScriptLine in innerScript.components(separatedBy: "\n") {
-                            finalLines.append(innerScriptLine)
-                        }
-                        found = true
+                let nsRange = NSRange(line.startIndex..., in: line)
+                let matches = regex!.matches(in: line, range: nsRange)
+                for match in matches {
+                    let firstMatchRange = match.range(at: 1)
+                    let swiftRange = Range(firstMatchRange, in: line)
+                    let includeFile = line[swiftRange!]
+                    var includePath = resolveIncludePath(String(includeFile), referencePath: scriptPath)
+                    includePath = includePath.replacingOccurrences(of: ".js", with: "")
+                    let innerScript = loadScriptContents(includePath)
+                    for innerScriptLine in innerScript.components(separatedBy: "\n") {
+                        finalLines.append(innerScriptLine)
                     }
+                    found = true
                 }
                 if !found {
                     finalLines.append(line)
                 }
             }
-            myText = finalLines.joined(separator: "\n")
+            scriptContents = finalLines.joined(separator: "\n")
         }
-        return myText
+        return scriptContents
     }
 
 }
