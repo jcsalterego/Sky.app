@@ -9,18 +9,15 @@ function findByNavbarIndex(index) {
         return false;
     }
     let found = false;
-    let elems = Array.from(document.querySelectorAll("div")).filter(
-        (elem) =>
-            elem.style.position === "absolute" && elem.style.bottom === "0px"
+    let elems = document.querySelectorAll(
+        "div[style*='position: absolute'][style*='bottom: 0']"
     );
-    if (elems.length > 0) {
-        for (let elem of elems) {
-            let children = elem.children;
-            if (children.length >= 4) {
-                children[index].click();
-                found = true;
-                break;
-            }
+    for (let elem of elems) {
+        let children = elem.children;
+        if (children.length >= 4) {
+            children[index].click();
+            found = true;
+            break;
         }
     }
     return found;
