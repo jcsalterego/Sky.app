@@ -51,7 +51,7 @@ In Desktop Mode:
 
 ## Credits
 
-Made by [@jcsalterego.bsky.social](https://staging.bsky.app/profile/jcsalterego.bsky.social).
+Made by [@jcsalterego.bsky.social](https://bsky.app/profile/jcsalterego.bsky.social).
 
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 

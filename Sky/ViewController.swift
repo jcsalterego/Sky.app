@@ -190,14 +190,6 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func actionCopyShareLink(_ sender: Any?) {
-        let pasteboard = NSPasteboard.general
-        let urlString = webView.url!.absoluteString
-            .replacingOccurrences(of: "staging.bsky.app", with: "bsky.app")
-        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        pasteboard.setString(urlString, forType: NSPasteboard.PasteboardType.string)
-    }
-
     @IBAction func actionCopyLink(_ sender: Any?) {
         let pasteboard = NSPasteboard.general
         let urlString = webView.url!.absoluteString
