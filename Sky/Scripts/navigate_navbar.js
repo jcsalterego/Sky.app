@@ -1,4 +1,5 @@
 $INCLUDE("_find_all_by_aria_label.js");
+$INCLUDE("_manage_hidden_divs");
 function clickByAriaLabel(label) {
     let elems = findAllByAriaLabel(label);
     elems.forEach((elem) => elem.click());
@@ -49,6 +50,6 @@ function navigate(checkLoadNew, label, index, url) {
             document.location.href = url;
         }
     }
-    document.dispatchEvent(new Event("navChange"));
+    manageHiddenDivs();
 }
 navigate($__CHECK_LOAD_NEW__, "$__LABEL__", $__INDEX__, "$__URL__");

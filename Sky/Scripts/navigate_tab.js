@@ -1,4 +1,5 @@
 $INCLUDE("_filter_visible.js");
+$INCLUDE("_manage_hidden_divs");
 function getAncestor(elem, levels) {
     let parent = elem;
     for (let i = 0; i < levels; i++) {
@@ -138,7 +139,7 @@ function navigateTab(direction) {
     } else if (path.match(/\/search/)) {
         navigateSearchTabs(direction);
     }
-    document.dispatchEvent(new Event("navChange"));
+    manageHiddenDivs();
 }
 
 navigateTab($__DIRECTION__);
