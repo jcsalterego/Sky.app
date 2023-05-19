@@ -138,6 +138,7 @@ function navigateTab(direction) {
     } else if (path.match(/\/search/)) {
         navigateSearchTabs(direction);
     }
+    document.dispatchEvent(new Event("navChange"));
 }
 
 navigateTab($__DIRECTION__);

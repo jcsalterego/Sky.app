@@ -49,5 +49,6 @@ function navigate(checkLoadNew, label, index, url) {
             document.location.href = url;
         }
     }
+    document.dispatchEvent(new Event("navChange"));
 }
 navigate($__CHECK_LOAD_NEW__, "$__LABEL__", $__INDEX__, "$__URL__");
