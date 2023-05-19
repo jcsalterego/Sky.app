@@ -32,7 +32,10 @@ function hideHiddenDivs() {
         let shadowId = origParent.dataset.shadowId;
         if (shadowId == null) {
             // sufficiently unique ID
-            shadowId = (new Date()).valueOf()+"-"+(Math.random()+"").substring(2, 10);
+            shadowId =
+                new Date().valueOf() +
+                "-" +
+                (Math.random() + "").substring(2, 10);
             origParent.dataset.shadowId = shadowId;
         }
         shadowRealm.append(elem);
