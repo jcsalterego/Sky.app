@@ -1,8 +1,10 @@
 async function overrideGet(...args) {
     const url = args[0];
     const response = await window._fetch(...args);
+    const contentType = response.headers.get("Content-Type");
     if (
-        response.headers.get("Content-Type").match(/application\/json/) === null
+        contentType === null ||
+        contentType.match(/application\/json/) === null
     ) {
         return response;
     }
