@@ -1,6 +1,7 @@
 $INCLUDE("_manage_hidden_divs");
+$INCLUDE("_with_retry");
 
-function hookManageHiddenDivs() {
+function addManageHiddenDivsResizeHook() {
     let done = false;
     if (document !== undefined && document.body !== undefined) {
         if (document.body.dataset.manageHiddenDivs === undefined) {
@@ -9,10 +10,7 @@ function hookManageHiddenDivs() {
         }
         done = true;
     }
-    if (!done) {
-        // try again 200ms
-        window.setTimeout(hookManageHiddenDivs, 200);
-    }
+    return done;
 }
 
-hookManageHiddenDivs();
+withRetry(addManageHiddenDivsResizeHook);

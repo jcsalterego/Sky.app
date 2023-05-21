@@ -1,3 +1,5 @@
+$INCLUDE("_with_retry");
+
 function setCtrlTab() {
     let done = false;
     if (document !== undefined) {
@@ -20,12 +22,4 @@ function setCtrlTab() {
     return done;
 }
 
-function hookCtrlTab() {
-    let done = setCtrlTab();
-    if (!done) {
-        // try again 200ms
-        window.setTimeout(hookCtrlTab, 200);
-    }
-}
-
-hookCtrlTab();
+withRetry(setCtrlTab);

@@ -1,3 +1,5 @@
+$INCLUDE("_with_retry");
+
 window.toggleOuterScrollbars = function (enabled) {
     const overflowProp = enabled ? "auto" : "hidden";
     let success = false;
@@ -11,12 +13,4 @@ window.toggleOuterScrollbars = function (enabled) {
     return success;
 };
 
-function hookToggleOuterScrollbars(enabled) {
-    let done = window.toggleOuterScrollbars(enabled);
-    if (!done) {
-        // try again 200ms
-        window.setTimeout(() => hookToggleOuterScrollbars(enabled), 200);
-    }
-}
-
-hookToggleOuterScrollbars($__ENABLED__);
+withRetry(() => window.toggleOuterScrollbars($__ENABLED__));

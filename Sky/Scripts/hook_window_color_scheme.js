@@ -1,3 +1,4 @@
+$INCLUDE("_with_retry");
 function setColorScheme(darkMode) {
     const DARK_MODE_FOREGROUND = "#79787c";
     const DARK_MODE_BACKGROUND = "#000000";
@@ -38,7 +39,8 @@ function setColorScheme(darkMode) {
     }, 10);
 }
 
-function hookColorSchemeChange() {
+function setColorSchemeChange() {
+    let done = false;
     let elems = Array.from(document.querySelectorAll("#root div div"));
     if (elems.length > 0) {
         let elem = elems[0];
@@ -68,9 +70,8 @@ function hookColorSchemeChange() {
             // elem.parentElement.style.border = "1px solid red";
             elem.dataset.windowColorSchemeObserverSet = true;
         }
-    } else {
-        // try again 200ms
-        window.setTimeout(hookColorSchemeChange, 200);
+        done = true;
     }
+    return done;
 }
-hookColorSchemeChange();
+withRetry(setColorSchemeChange);

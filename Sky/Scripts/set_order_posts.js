@@ -1,3 +1,4 @@
+$INCLUDE("_with_retry");
 function setFeatureOrderPosts(value) {
     let done = false;
     if (document !== undefined) {
@@ -10,12 +11,4 @@ function setFeatureOrderPosts(value) {
     return done;
 }
 
-function hookFeatureOrderPosts(value) {
-    let done = setFeatureOrderPosts(value);
-    if (!done) {
-        // try again 200ms
-        window.setTimeout(() => hookFeatureOrderPosts(value), 200);
-    }
-}
-
-hookFeatureOrderPosts("$__VALUE__");
+withRetry(() => setFeatureOrderPosts("$__VALUE__"));

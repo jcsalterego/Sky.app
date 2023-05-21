@@ -1,4 +1,5 @@
 $INCLUDE("_filter_visible.js");
+$INCLUDE("_with_retry");
 function getElementsWithMaxScrollHeight() {
     let ary = Array.from(document.querySelectorAll("div"))
         .filter((e) => e.scrollHeight > 0)
@@ -74,11 +75,4 @@ function setPageUpDown() {
     }
     return done;
 }
-function hookPageUpDown() {
-    let done = setPageUpDown();
-    if (!done) {
-        // try again 200ms
-        window.setTimeout(hookPageUpDown, 200);
-    }
-}
-hookPageUpDown();
+withRetry(setPageUpDown);
