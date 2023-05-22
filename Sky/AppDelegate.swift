@@ -23,6 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var devConsoleViewController : DevConsoleViewController?
     var accessJwt : String? = nil
 
+    var localStorageMirror = [String:String]()
+
     func applicationDidBecomeActive(_ notification: Notification) {
         if firstRun {
             firstRun = false
@@ -101,6 +103,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             orderPosts,
             forKey: UserDefaultKeys.orderPosts
         )
+    }
+
+    func setLocalStorage(key: String, jsonValue: String) {
+        localStorageMirror[key] = jsonValue
     }
 
 }

@@ -8,6 +8,9 @@ function hookLocalStorage() {
                 localStorage.setItem.bind(localStorage);
             localStorage.setItem = function (...args) {
                 window._localStorageSetItem(...args);
+                window.webkit.messageHandlers.localStorageSetItem.postMessage({
+                    args: args,
+                });
             };
         }
         if (window._localStorageGetItem === undefined) {

@@ -15,6 +15,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             "ctrlTab": ctrlTab,
             "fetch": fetch,
             "loadAccessJwt": loadAccessJwt,
+            "localStorageSetItem": localStorageSetItem,
             "windowColorSchemeChange": windowColorSchemeChange,
             "windowOpen": windowOpen,
             "windowReload": windowReload,
@@ -112,6 +113,19 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         if let messageBody = message.body as? NSDictionary {
             if let accessJwt = messageBody["accessJwt"] as? String {
                 appDelegate.accessJwt = accessJwt
+            }
+        }
+    }
+
+    func localStorageSetItem(_ message: WKScriptMessage) {
+        if let messageBody = message.body as? NSDictionary {
+            if let args = messageBody["args"] as? [String] {
+                if args.count == 2 {
+                    let itemKey = args[0]
+                    let jsonValue = args[1]
+                    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                    appDelegate.setLocalStorage(key: itemKey, jsonValue: jsonValue)
+                }
             }
         }
     }
