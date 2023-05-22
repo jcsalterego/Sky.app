@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 if let storyboard = mainWindow.windowController?.storyboard {
                     muteWordsEditorWindowController = storyboard.instantiateController(
-                        withIdentifier: "MuteWordsEditorWindowController") as? NSWindowController
+                        withIdentifier: "MuteWordsEditorWindowController") as? MuteWordsWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }

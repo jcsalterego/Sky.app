@@ -240,7 +240,7 @@ class ViewController: NSViewController {
     @IBAction func actionLaunchMuteWordsEditor(_ sender: Any?) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         if let muteWordsEditorWindowController = appDelegate.muteWordsEditorWindowController {
-            muteWordsEditorWindowController.showWindow(self)
+            NSApplication.shared.runModal(for: muteWordsEditorWindowController.window!)
         }
     }
 

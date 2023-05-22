@@ -530,7 +530,7 @@
         <!--Window Controller-->
         <scene sceneID="wgQ-qf-L5y">
             <objects>
-                <windowController storyboardIdentifier="MuteWordsEditorWindowController" id="5GR-rw-bAr" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MuteWordsEditorWindowController" id="5GR-rw-bAr" customClass="MuteWordsWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Mute Words" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oJ6-zK-buh">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
