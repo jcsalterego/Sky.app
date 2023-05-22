@@ -633,7 +633,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="actionMuteWordsAdd:" target="ZZ4-D9-aGO" id="D8r-3m-3Mx"/>
+                                    <action selector="actionMuteWordsAdd:" target="ZZ4-D9-aGO" id="Umg-B4-5Bf"/>
                                 </connections>
                             </button>
                             <button identifier="removeButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZQ-OY-7DS">
@@ -650,7 +650,7 @@
                             <button identifier="cancelButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uv6-aL-QdD">
                                 <rect key="frame" x="355" y="13" width="115" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xdx-vy-e4G">
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xdx-vy-e4G">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -658,18 +658,18 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="actionMuteWordsCancel:" target="ZZ4-D9-aGO" id="hiR-Qy-tCU"/>
+                                    <action selector="actionMuteWordsClose:" target="ZZ4-D9-aGO" id="hiR-Qy-tCU"/>
                                 </connections>
                             </button>
                             <button identifier="saveAndApplyButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBq-LW-For">
                                 <rect key="frame" x="355" y="45" width="115" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Save &amp; Apply" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLq-py-Jsa">
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLq-py-Jsa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="actionMuteWordsSaveAndApply:" target="ZZ4-D9-aGO" id="OiP-xP-C2q"/>
+                                    <action selector="actionMuteWordsSave:" target="ZZ4-D9-aGO" id="OiP-xP-C2q"/>
                                 </connections>
                             </button>
                             <button identifier="editButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6e-Ku-fcR">
@@ -688,7 +688,7 @@ Gw
                     <connections>
                         <outlet property="editButton" destination="a6e-Ku-fcR" id="24O-KW-glC"/>
                         <outlet property="removeButton" destination="BZQ-OY-7DS" id="MmP-Bb-2N4"/>
-                        <outlet property="saveAndApplyButton" destination="VBq-LW-For" id="v6k-kW-KyH"/>
+                        <outlet property="saveButton" destination="VBq-LW-For" id="v6k-kW-KyH"/>
                         <outlet property="tableView" destination="8tX-bB-drQ" id="APy-6d-CVp"/>
                     </connections>
                 </viewController>

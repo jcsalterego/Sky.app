@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // TODO cleanup, sigh
     var mainWindow: NSWindow? = nil
     var windowDelegate: WindowDelegate? = nil
+    var mainViewController : ViewController?
 
     var devConsoleWindowController : NSWindowController?
     var devConsoleViewController : DevConsoleViewController?

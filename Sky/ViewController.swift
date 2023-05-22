@@ -35,6 +35,9 @@ class ViewController: NSViewController {
     ]
 
     override func loadView() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.mainViewController = self
+
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
@@ -49,7 +52,6 @@ class ViewController: NSViewController {
                     "Scripts/\(userScript)"))
         }
 
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let orderPosts = appDelegate.getUserDefaultsOrderPosts()
         userContentController.addUserScript(
             JsLoader.loadWKUserScript(
