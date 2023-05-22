@@ -368,7 +368,7 @@
                                                     <menuItem title="Edit..." id="ftW-4c-2Kp">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                         <connections>
-                                                            <action selector="actionEditMuteWords:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
+                                                            <action selector="actionLaunchMuteWordsEditor:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Not enabled" enabled="NO" id="6bO-7u-kBp">

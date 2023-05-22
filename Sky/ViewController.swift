@@ -235,7 +235,7 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionEditMuteWords(_ sender: Any?) {
+    @IBAction func actionLaunchMuteWordsEditor(_ sender: Any?) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         if let muteWordsEditorWindowController = appDelegate.muteWordsEditorWindowController {
             muteWordsEditorWindowController.showWindow(self)
