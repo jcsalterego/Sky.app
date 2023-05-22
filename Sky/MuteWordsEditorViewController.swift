@@ -31,11 +31,13 @@ class MuteWordsEditorViewController:
 
     override func viewWillAppear() {
         super.viewWillAppear()
+        NSLog("viewWillAppear")
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("viewDidLoad")
 
         hasChanged = false
         needsReload = false
