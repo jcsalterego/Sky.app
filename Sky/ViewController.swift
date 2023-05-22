@@ -218,13 +218,6 @@ class ViewController: NSViewController {
         }
     }
 
-    func loadAccessJwt(completionHandler: ((Any?, Error?) -> Void)? = nil) {
-        self.webView.evaluateJavaScript(
-            JsLoader.loadScriptContents("Scripts/load_access_jwt", [:]),
-            completionHandler: completionHandler
-        )
-    }
-
     @IBAction func actionOrderPosts(_ sender: Any?) {
         if let menuItem = sender as? NSMenuItem {
             var orderPosts = menuItem.state == .on
