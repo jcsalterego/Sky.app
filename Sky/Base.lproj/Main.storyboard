@@ -361,6 +361,22 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Advanced" id="UEP-1z-Fbm">
                                     <items>
+                                        <menuItem title="Mute Words" id="beO-bL-nwt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Mute Words" id="faJ-s1-pDB">
+                                                <items>
+                                                    <menuItem title="Edit..." id="ftW-4c-2Kp">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionEditMuteWords:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Not enabled" enabled="NO" id="6bO-7u-kBp">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem title="Search Posts by Newest First" id="HFE-fV-jHf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -510,6 +526,44 @@
                 <customObject id="gIy-lZ-cq5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="563" y="462"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="wgQ-qf-L5y">
+            <objects>
+                <windowController storyboardIdentifier="MuteWordsEditorWindowController" id="5GR-rw-bAr" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oJ6-zK-buh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+                        <view key="contentView" id="JSn-Md-6S2">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="5GR-rw-bAr" id="83w-o9-xcu"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="G2I-6p-8Uq" kind="relationship" relationship="window.shadowedContentViewController" id="cRB-jX-iMH"/>
+                    </connections>
+                </windowController>
+                <customObject id="gEW-eF-Y9d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="51"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fXH-dZ-Oym">
+            <objects>
+                <viewController id="G2I-6p-8Uq" sceneMemberID="viewController">
+                    <view key="view" id="MQI-Sp-kcn">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="ZZ4-D9-aGO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="462"/>
         </scene>
     </scenes>
 </document>

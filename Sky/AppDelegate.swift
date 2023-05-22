@@ -23,6 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var devConsoleViewController : DevConsoleViewController?
     var accessJwt : String? = nil
 
+    var muteWordsEditorWindowController : NSWindowController?
+    var muteWordsEditorViewController : MuteWordsEditorViewController?
+
     var localStorageMirror = [String:String]()
 
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -39,6 +42,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let storyboard = mainWindow.windowController?.storyboard {
                     devConsoleWindowController = storyboard.instantiateController(
                         withIdentifier: "DevConsoleWindowController") as? NSWindowController
+                } else {
+                    NSLog("fail to load storyboard")
+                }
+
+                if let storyboard = mainWindow.windowController?.storyboard {
+                    muteWordsEditorWindowController = storyboard.instantiateController(
+                        withIdentifier: "MuteWordsEditorWindowController") as? NSWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }

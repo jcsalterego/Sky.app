@@ -235,6 +235,13 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionEditMuteWords(_ sender: Any?) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        if let muteWordsEditorWindowController = appDelegate.muteWordsEditorWindowController {
+            muteWordsEditorWindowController.showWindow(self)
+        }
+    }
+
     enum WindowColorScheme {
         case dark
         case light
