@@ -28,6 +28,7 @@ class ViewController: NSViewController {
         "hook_manage_hidden_divs",
         "hook_history_state",
         "hook_initial_disable_scrollbars",
+        "hook_local_storage",
         "hook_page_up_down",
         "hook_window_color_scheme",
         "hook_window_open",
