@@ -8,9 +8,9 @@ import SwiftUI
 import WebKit
 
 class DevConsoleViewController : NSViewController {
-    
+
     var hostingView: WKWebView!
-    
+
     override func loadView() {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.devConsoleViewController = self
@@ -27,7 +27,7 @@ class DevConsoleViewController : NSViewController {
         view.addSubview(hostingView)
         hostingView.autoresizingMask = [.width, .height]
         hostingView.frame = view.frame
-        
+
         let url = Bundle.main.url(
             forResource: "index",
             withExtension: "html",
@@ -36,15 +36,11 @@ class DevConsoleViewController : NSViewController {
         let myRequest = URLRequest(url: url)
         hostingView.load(myRequest)
     }
-    
-    func populateAccessJwt() {
-        NSLog("populateAccessJwt")
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        self.hostingView.evaluateJavaScript(
-            JsLoader.loadScriptContents("Scripts/populate_access_jwt",
-                ["access_jwt": appDelegate.accessJwt!])
-        )
 
+    func setAccessJwt(_ accessJwt: String) {
+        hostingView.evaluateJavaScript(
+            JsLoader.loadScriptContents("Scripts/populate_access_jwt",
+                ["access_jwt": accessJwt]))
     }
-    
+
 }

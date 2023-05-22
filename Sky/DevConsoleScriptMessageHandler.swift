@@ -29,9 +29,8 @@ class DevConsoleScriptMessageHandler : NSObject, WKScriptMessageHandler {
 
     func triggerLoadAccessJwt(_ message: WKScriptMessage) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        let viewController = appDelegate.mainWindow?.contentViewController as! ViewController
-        viewController.loadAccessJwt() { id, error in
-            appDelegate.devConsoleViewController?.populateAccessJwt()
+        if let accessJwt = appDelegate.getActiveAccessJwt() {
+            viewController?.setAccessJwt(accessJwt)
         }
     }
 

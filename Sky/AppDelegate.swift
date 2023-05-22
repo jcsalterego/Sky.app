@@ -111,4 +111,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         localStorageMirror[key] = jsonValue
     }
 
+    func getActiveAccessJwt() -> String? {
+        var accessToken: String? = nil
+        if let rootJsonData = localStorageMirror["root"]?.data(using:.utf8) {
+            let rootLocalStorage = try? JSONDecoder().decode(
+                RootLocalStorage.self,
+                from: rootJsonData
+            )
+            if let session = rootLocalStorage?.session,
+                let me = rootLocalStorage?.me
+            {
+                for account in session.accounts {
+                    if account.did == me.did {
+                        accessToken = account.accessJwt
+                        break
+                    }
+                }
+            }
+        }
+        return accessToken
+    }
+
 }
