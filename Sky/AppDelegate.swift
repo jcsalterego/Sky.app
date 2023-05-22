@@ -26,6 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var localStorageMirror = [String:String]()
 
     func applicationDidBecomeActive(_ notification: Notification) {
+        // TODO don't use firstRun
         if firstRun {
             firstRun = false
 
@@ -34,12 +35,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 mainWindow.delegate = windowDelegate
                 windowDelegate!.updateWindowDesktopMode(mainWindow.frame.width)
                 mainWindow.backgroundColor = NSColor.white
-            }
 
-            // instantiate dev console
-            if let storyboard = mainWindow?.windowController?.storyboard {
-                devConsoleWindowController = storyboard.instantiateController(
-                    withIdentifier: "DevConsoleWindowController") as? NSWindowController
+                if let storyboard = mainWindow.windowController?.storyboard {
+                    devConsoleWindowController = storyboard.instantiateController(
+                        withIdentifier: "DevConsoleWindowController") as? NSWindowController
+                } else {
+                    NSLog("fail to load storyboard")
+                }
             }
         }
     }
