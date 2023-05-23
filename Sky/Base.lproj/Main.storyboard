@@ -558,25 +558,25 @@
                 <customObject id="ZZ4-D9-aGO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="G2I-6p-8Uq" customClass="MuteWordsEditorViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MQI-Sp-kcn">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="280"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-Fm-4LP">
-                                <rect key="frame" x="20" y="20" width="334" height="240"/>
+                                <rect key="frame" x="20" y="53" width="440" height="206"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="GFe-5j-1MO">
-                                    <rect key="frame" x="1" y="1" width="332" height="238"/>
+                                    <rect key="frame" x="1" y="1" width="438" height="204"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="95g-nc-hg5" viewBased="YES" id="8tX-bB-drQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="332" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="438" height="176"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="muteWordColumn" width="320" minWidth="200" maxWidth="1000" headerToolTip="" id="LSr-Ye-355">
+                                                <tableColumn identifier="muteWordColumn" width="426" minWidth="200" maxWidth="1000" headerToolTip="" id="LSr-Ye-355">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Mute Word">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -589,11 +589,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="muteWordCell" id="fK8-gH-W20">
-                                                            <rect key="frame" x="8" y="0.0" width="315" height="17"/>
+                                                            <rect key="frame" x="8" y="0.0" width="421" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="421" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufj-mp-s6u">
                                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -621,79 +621,53 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" wantsLayer="YES" id="95g-nc-hg5">
-                                    <rect key="frame" x="0.0" y="0.0" width="332" height="28"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="28"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button identifier="addButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjv-Ty-Rbv">
-                                <rect key="frame" x="357" y="233" width="110" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ajb-wY-dfL">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kye-VG-WKI">
+                                <rect key="frame" x="147" y="16" width="184" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Refresh timeline if needed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SwW-wA-bzw">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="actionMuteWordsAdd:" target="ZZ4-D9-aGO" id="Umg-B4-5Bf"/>
-                                </connections>
                             </button>
-                            <button identifier="removeButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZQ-OY-7DS">
-                                <rect key="frame" x="357" y="201" width="110" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="66c-dH-Bee">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-Bb-jNQ">
+                                <rect key="frame" x="17" y="17" width="75" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="I48-T1-0c9">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
+                                    <segments>
+                                        <segment label="+" width="32"/>
+                                        <segment label="-" width="32" enabled="NO" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
                                 <connections>
-                                    <action selector="actionMuteWordsRemove:" target="ZZ4-D9-aGO" id="5rx-k1-zmG"/>
+                                    <action selector="actionMuteWordsAddOrRemove:" target="ZZ4-D9-aGO" id="Jy9-Pf-moj"/>
                                 </connections>
-                            </button>
-                            <button identifier="cancelButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uv6-aL-QdD">
-                                <rect key="frame" x="355" y="13" width="115" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xdx-vy-e4G">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="actionMuteWordsClose:" target="ZZ4-D9-aGO" id="hiR-Qy-tCU"/>
-                                </connections>
-                            </button>
-                            <button identifier="saveAndApplyButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBq-LW-For">
-                                <rect key="frame" x="355" y="45" width="115" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLq-py-Jsa">
+                            </segmentedControl>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUE-5Y-ytG">
+                                <rect key="frame" x="392" y="13" width="75" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Opu-Yw-2Oz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="actionMuteWordsSave:" target="ZZ4-D9-aGO" id="OiP-xP-C2q"/>
-                                </connections>
-                            </button>
-                            <button identifier="editButton" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6e-Ku-fcR">
-                                <rect key="frame" x="357" y="169" width="110" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24q-X7-vBP">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="actionMuteWordsEdit:" target="ZZ4-D9-aGO" id="nRv-1y-TbI"/>
+                                    <action selector="actionMuteWordsClose:" target="ZZ4-D9-aGO" id="4KX-Nd-0rJ"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="editButton" destination="a6e-Ku-fcR" id="24O-KW-glC"/>
-                        <outlet property="removeButton" destination="BZQ-OY-7DS" id="MmP-Bb-2N4"/>
-                        <outlet property="saveButton" destination="VBq-LW-For" id="v6k-kW-KyH"/>
+                        <outlet property="addRemoveButtons" destination="fTg-Bb-jNQ" id="Rvc-H3-6vZ"/>
+                        <outlet property="refreshIfNeededCheckbox" destination="kye-VG-WKI" id="qHV-cG-pn5"/>
                         <outlet property="tableView" destination="8tX-bB-drQ" id="APy-6d-CVp"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1084" y="463"/>
+            <point key="canvasLocation" x="1084" y="462.5"/>
         </scene>
     </scenes>
 </document>

@@ -14,9 +14,8 @@ class MuteWordsEditorViewController:
     NSTableViewDelegate
 {
     @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var editButton: NSButton!
-    @IBOutlet weak var removeButton: NSButton!
-    @IBOutlet weak var saveButton: NSButton!
+    @IBOutlet weak var addRemoveButtons: NSSegmentedControl!
+    @IBOutlet weak var refreshIfNeededCheckbox: NSButton!
 
     let PLACEHOLDER_TEXT = "long eggs"
 
@@ -63,9 +62,11 @@ class MuteWordsEditorViewController:
 
     func refreshButtons() {
         let isEnabled = tableView.selectedRow != -1
-        editButton.isEnabled = isEnabled
-        removeButton.isEnabled = isEnabled
-        saveButton.isEnabled = hasChanged
+        setRemoveButtonEnabled(isEnabled)
+    }
+
+    func setRemoveButtonEnabled(_ enabled: Bool) {
+        addRemoveButtons.setEnabled(enabled, forSegment: 1)
     }
 
     @IBAction func actionMuteWordsEdit(_ sender: Any?) {
@@ -112,6 +113,18 @@ class MuteWordsEditorViewController:
         muteWords[row] = MuteWord(value: value, isEnabled: true)
     }
 
+    @IBAction func actionMuteWordsAddOrRemove(_ sender: Any?) {
+        let selectedSegment = addRemoveButtons.selectedSegment
+        if selectedSegment == 0 {
+            // add
+            actionMuteWordsAdd(sender)
+        } else {
+            // remove
+            actionMuteWordsRemove(sender)
+        }
+
+    }
+
     @IBAction func actionMuteWordsAdd(_ sender: Any?) {
         NSLog("actionMuteWordsAdd")
 
@@ -146,6 +159,8 @@ class MuteWordsEditorViewController:
             let stringValue = textField.stringValue
             addMuteWord(stringValue)
         }
+
+        actionMuteWordsSave(nil)
     }
 
     func addMuteWord(_ muteWord: String) {
@@ -166,6 +181,7 @@ class MuteWordsEditorViewController:
         NSLog("actionMuteWordsRemove")
         let selectedRow = tableView.selectedRow
         muteWords.remove(at: selectedRow)
+        actionMuteWordsSave(nil)
         changeData()
     }
 
@@ -205,21 +221,9 @@ class MuteWordsEditorViewController:
             }
         }
 
-        if needsReload {
-            // Set the message as the NSAlert text
-            let alert = NSAlert()
-            alert.messageText = "Reload with updated mute words?"
-
-            alert.addButton(withTitle: "Reload")
-            alert.addButton(withTitle: "Don't Reload")
-
-            // Display the NSAlert
-            let action = alert.runModal()
-            if action == .alertFirstButtonReturn {
-                // OK
-                let appDelegate = NSApplication.shared.delegate as! AppDelegate
-                appDelegate.mainViewController?.actionRefresh(nil)
-            }
+        if needsReload && refreshIfNeededCheckbox.state == .on {
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            appDelegate.mainViewController?.actionRefresh(nil)
         }
         view.window!.close()
     }
