@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041663E32A05376C001A667F /* DevConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041663E22A05376C001A667F /* DevConsoleViewController.swift */; };
 		043A0F1829A5330E00B06D18 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 043A0F1729A5330E00B06D18 /* Scripts */; };
 		043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1929A5331800B06D18 /* JsLoader.swift */; };
 		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
@@ -19,8 +18,9 @@
 		0499FB832A1C0D79009226EE /* MuteWordsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB822A1C0D79009226EE /* MuteWordsWindowController.swift */; };
 		0499FB852A1C4007009226EE /* MuteWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB842A1C4007009226EE /* MuteWord.swift */; };
 		0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB862A1C5A89009226EE /* UserDefaultKeys.swift */; };
-		04DB601B2A0558E7009818AD /* DevConsole in Resources */ = {isa = PBXBuildFile; fileRef = 04DB601A2A0558E7009818AD /* DevConsole */; };
-		04DB601D2A058B04009818AD /* DevConsoleScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */; };
+		04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */; };
+		04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166572A1D01D6004B459A /* DevConsoleViewController.swift */; };
+		04C1665E2A1D0230004B459A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C1665C2A1D0205004B459A /* index.html */; };
 		04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847C921D99CE0009D1B0F /* AppDelegate.swift */; };
 		04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847CB21D99CE0009D1B0F /* ViewController.swift */; };
 		04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E847CD21D99CE1009D1B0F /* Assets.xcassets */; };
@@ -49,7 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041663E22A05376C001A667F /* DevConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConsoleViewController.swift; sourceTree = "<group>"; };
 		043A0F1729A5330E00B06D18 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		043A0F1929A5331800B06D18 /* JsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsLoader.swift; sourceTree = "<group>"; };
 		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
@@ -61,8 +60,9 @@
 		0499FB822A1C0D79009226EE /* MuteWordsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteWordsWindowController.swift; sourceTree = "<group>"; };
 		0499FB842A1C4007009226EE /* MuteWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteWord.swift; sourceTree = "<group>"; };
 		0499FB862A1C5A89009226EE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
-		04DB601A2A0558E7009818AD /* DevConsole */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevConsole; sourceTree = "<group>"; };
-		04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConsoleScriptMessageHandler.swift; sourceTree = "<group>"; };
+		04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevConsoleScriptMessageHandler.swift; sourceTree = "<group>"; };
+		04C166572A1D01D6004B459A /* DevConsoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevConsoleViewController.swift; sourceTree = "<group>"; };
+		04C1665C2A1D0205004B459A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		04E847C621D99CE0009D1B0F /* Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E847C921D99CE0009D1B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E847CB21D99CE0009D1B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +106,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C166542A1D019A004B459A /* MuteWords */ = {
+			isa = PBXGroup;
+			children = (
+				0499FB842A1C4007009226EE /* MuteWord.swift */,
+				0499FB7E2A1BCF41009226EE /* MuteWordsEditorViewController.swift */,
+				0499FB822A1C0D79009226EE /* MuteWordsWindowController.swift */,
+			);
+			path = MuteWords;
+			sourceTree = "<group>";
+		};
+		04C166552A1D01CF004B459A /* DevConsole */ = {
+			isa = PBXGroup;
+			children = (
+				04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */,
+				04C166572A1D01D6004B459A /* DevConsoleViewController.swift */,
+				04C1665C2A1D0205004B459A /* index.html */,
+			);
+			path = DevConsole;
+			sourceTree = "<group>";
+		};
 		04E847BD21D99CE0009D1B0F = {
 			isa = PBXGroup;
 			children = (
@@ -130,16 +150,12 @@
 		04E847C821D99CE0009D1B0F /* Sky */ = {
 			isa = PBXGroup;
 			children = (
-				04DB601A2A0558E7009818AD /* DevConsole */,
+				04C166552A1D01CF004B459A /* DevConsole */,
+				04C166542A1D019A004B459A /* MuteWords */,
 				043A0F1729A5330E00B06D18 /* Scripts */,
 				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
 				0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */,
-				04DB601C2A058B04009818AD /* DevConsoleScriptMessageHandler.swift */,
-				041663E22A05376C001A667F /* DevConsoleViewController.swift */,
 				043A0F1929A5331800B06D18 /* JsLoader.swift */,
-				0499FB7E2A1BCF41009226EE /* MuteWordsEditorViewController.swift */,
-				0499FB842A1C4007009226EE /* MuteWord.swift */,
-				0499FB822A1C0D79009226EE /* MuteWordsWindowController.swift */,
 				043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */,
 				048BAFCC2A093F3E00A8C919 /* Scripts.swift */,
 				048BAFCE2A09472400A8C919 /* SkyUrls.swift */,
@@ -289,8 +305,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DB601B2A0558E7009818AD /* DevConsole in Resources */,
 				043A0F1829A5330E00B06D18 /* Scripts in Resources */,
+				04C1665E2A1D0230004B459A /* index.html in Resources */,
 				04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */,
 				04E847D121D99CE1009D1B0F /* Main.storyboard in Resources */,
 			);
@@ -320,18 +336,18 @@
 				048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */,
 				0499FB7F2A1BCF41009226EE /* MuteWordsEditorViewController.swift in Sources */,
 				043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */,
+				04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */,
 				045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */,
 				0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */,
 				0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */,
 				04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */,
 				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
-				04DB601D2A058B04009818AD /* DevConsoleScriptMessageHandler.swift in Sources */,
 				0499FB832A1C0D79009226EE /* MuteWordsWindowController.swift in Sources */,
 				048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */,
-				041663E32A05376C001A667F /* DevConsoleViewController.swift in Sources */,
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
 				0499FB852A1C4007009226EE /* MuteWord.swift in Sources */,
 				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
+				04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
