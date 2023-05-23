@@ -361,6 +361,32 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Advanced" id="UEP-1z-Fbm">
                                     <items>
+                                        <menuItem title="Mute Terms" id="beO-bL-nwt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Mute Terms" id="faJ-s1-pDB">
+                                                <items>
+                                                    <menuItem title="Edit..." keyEquivalent="m" id="ftW-4c-2Kp">
+                                                        <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                                        <connections>
+                                                            <action selector="actionLaunchMuteTermsEditor:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem isSeparatorItem="YES" id="tET-jR-P4X"/>
+                                                    <menuItem title="Reset Statistics" id="AuF-ol-y28">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionResetStatistics:" target="Voe-Tx-rLC" id="2On-aE-8Xm"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Not enabled" enabled="NO" id="6bO-7u-kBp">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Voe-Tx-rLC" id="gts-iG-TnQ"/>
+                                                </connections>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem title="Search Posts by Newest First" id="HFE-fV-jHf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -436,7 +462,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Sky" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-188"/>
+            <point key="canvasLocation" x="74" y="-200"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -445,7 +471,7 @@
                     <window key="window" title="Sky" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindow" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="1305" y="216" width="375" height="667"/>
+                        <rect key="contentRect" x="1305" y="216" width="375" height="271"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="375" height="667"/>
                         <connections>
@@ -458,20 +484,20 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="74.5" y="51.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1077"/>
+            <point key="canvasLocation" x="75" y="462"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="bdf-pU-Lel">
@@ -496,7 +522,7 @@
                 </windowController>
                 <customObject id="Ea8-ei-kcA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-405" y="589"/>
+            <point key="canvasLocation" x="563" y="51"/>
         </scene>
         <!--Dev Console View Controller-->
         <scene sceneID="dgQ-Ti-2Pp">
@@ -509,7 +535,149 @@
                 </viewController>
                 <customObject id="gIy-lZ-cq5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="200"/>
+            <point key="canvasLocation" x="563" y="462"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="wgQ-qf-L5y">
+            <objects>
+                <windowController storyboardIdentifier="MuteTermsEditorWindowController" id="5GR-rw-bAr" customClass="MuteTermsWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Mute Terms" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oJ6-zK-buh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <view key="contentView" id="JSn-Md-6S2">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="5GR-rw-bAr" id="83w-o9-xcu"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="G2I-6p-8Uq" kind="relationship" relationship="window.shadowedContentViewController" id="cRB-jX-iMH"/>
+                    </connections>
+                </windowController>
+                <customObject id="gEW-eF-Y9d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1084" y="51"/>
+        </scene>
+        <!--Mute Terms Editor View Controller-->
+        <scene sceneID="fXH-dZ-Oym">
+            <objects>
+                <customObject id="ZZ4-D9-aGO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="G2I-6p-8Uq" customClass="MuteTermsEditorViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="MQI-Sp-kcn">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="279"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-Fm-4LP">
+                                <rect key="frame" x="20" y="53" width="440" height="206"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" id="GFe-5j-1MO">
+                                    <rect key="frame" x="1" y="1" width="438" height="204"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="95g-nc-hg5" viewBased="YES" id="8tX-bB-drQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="438" height="176"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="17" height="0.0"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="muteTermColumn" width="426" minWidth="200" maxWidth="1000" headerToolTip="" id="LSr-Ye-355">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Mute Term">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="H5b-Wq-Cg8">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="muteTermCell" id="fK8-gH-W20">
+                                                            <rect key="frame" x="8" y="0.0" width="421" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="421" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufj-mp-s6u">
+                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="ldB-0K-Pbh" id="Jj6-oJ-Ovy"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="FgF-hn-KoP">
+                                    <rect key="frame" x="1" y="189" width="438" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="PoA-DX-2Mr">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="95g-nc-hg5">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kye-VG-WKI">
+                                <rect key="frame" x="147" y="16" width="184" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Refresh timeline if needed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SwW-wA-bzw">
+                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-Bb-jNQ">
+                                <rect key="frame" x="17" y="17" width="75" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="I48-T1-0c9">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="+" width="32"/>
+                                        <segment label="-" width="32" enabled="NO" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="actionMuteTermsAddOrRemove:" target="ZZ4-D9-aGO" id="Jy9-Pf-moj"/>
+                                </connections>
+                            </segmentedControl>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUE-5Y-ytG">
+                                <rect key="frame" x="392" y="13" width="75" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Opu-Yw-2Oz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="actionMuteTermsClose:" target="ZZ4-D9-aGO" id="4KX-Nd-0rJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="addRemoveButtons" destination="fTg-Bb-jNQ" id="Rvc-H3-6vZ"/>
+                        <outlet property="refreshIfNeededCheckbox" destination="kye-VG-WKI" id="qHV-cG-pn5"/>
+                        <outlet property="tableView" destination="8tX-bB-drQ" id="APy-6d-CVp"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1084" y="462.5"/>
         </scene>
     </scenes>
 </document>

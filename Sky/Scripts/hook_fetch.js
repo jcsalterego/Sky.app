@@ -1,3 +1,5 @@
+$INCLUDE("_filters.js");
+
 async function overrideGet(...args) {
     const url = args[0];
     const response = await window._fetch(...args);
@@ -28,6 +30,39 @@ async function overrideGet(...args) {
         responseData.sort((post2, post1) =>
             post1.post.createdAt < post2.post.createdAt ? -1 : 1
         );
+        altered = true;
+    }
+
+    let muteTermValues = [];
+    if (localStorage.getItem("muteTerms") !== null) {
+        try {
+            let muteTerms = JSON.parse(localStorage.getItem("muteTerms"));
+            muteTermValues = muteTerms
+                .filter((t) => t.isEnabled)
+                .map((t) => t.value);
+        } catch {
+            console.warn(
+                "Could not parse muteTerms",
+                localStorage.getItem("muteTerms")
+            );
+        }
+    }
+
+    if (
+        (url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0 ||
+            url.indexOf("/xrpc/app.bsky.unspecced.getPopular") ||
+            url.indexOf("/xrpc/app.bsky.unspecced.getAuthorFeed") ||
+            url.indexOf("/xrpc/app.bsky.notification.listNotifications")) &&
+        muteTermValues.length > 0
+    ) {
+        let results = filterTimelineWithStats(responseData, muteTermValues);
+        responseData = results.timeline;
+        let hits = results.hits;
+        if (hits > 0) {
+            webkit.messageHandlers.incrementMuteTermsHits.postMessage({
+                hits: hits,
+            });
+        }
         altered = true;
     }
 

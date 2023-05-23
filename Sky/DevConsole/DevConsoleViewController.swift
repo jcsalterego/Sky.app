@@ -30,8 +30,7 @@ class DevConsoleViewController : NSViewController {
 
         let url = Bundle.main.url(
             forResource: "index",
-            withExtension: "html",
-            subdirectory: "DevConsole"
+            withExtension: "html"
         )!
         let myRequest = URLRequest(url: url)
         hostingView.load(myRequest)

@@ -20,6 +20,8 @@ class ViewController: NSViewController {
     var webView: WKWebView!
     var webKitDelegate: WebKitDelegate!
 
+    var muteWordsWkUserScript: WKUserScript?
+
     var outerScrollbarsEnabled = false
 
     let userScripts = [
@@ -35,6 +37,9 @@ class ViewController: NSViewController {
     ]
 
     override func loadView() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.mainViewController = self
+
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
@@ -49,18 +54,29 @@ class ViewController: NSViewController {
                     "Scripts/\(userScript)"))
         }
 
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let orderPosts = appDelegate.getUserDefaultsOrderPosts()
         userContentController.addUserScript(
             JsLoader.loadWKUserScript(
                 "Scripts/set_order_posts",
                 ["value": orderPosts ? "yes" : "no" ]))
 
+
+        if let muteTermsJson = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.muteTerms) as? String
+        {
+            muteWordsWkUserScript = JsLoader.loadWKUserScript(
+                "Scripts/save_mute_terms",
+                ["mute_terms_json": muteTermsJson]
+            )
+            userContentController.addUserScript(muteWordsWkUserScript!)
+        }
+
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+
         view = webView
     }
 
@@ -178,6 +194,30 @@ class ViewController: NSViewController {
 
     @IBAction func actionRefresh(_ sender: Any?) {
         (NSApplication.shared.delegate as! AppDelegate).clearNotifCounts()
+
+        var newUserScripts: [WKUserScript] = []
+        let userContentController = webView.configuration.userContentController
+        for userScript in userContentController.userScripts {
+            if userScript != muteWordsWkUserScript {
+                newUserScripts.append(userScript)
+            }
+        }
+        if let muteTermsJson = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.muteTerms) as? String
+        {
+            newUserScripts.append(
+                JsLoader.loadWKUserScript(
+                    "Scripts/save_mute_terms",
+                    ["mute_terms_json": muteTermsJson]
+                )
+            )
+        }
+
+        userContentController.removeAllUserScripts()
+        for userScript in newUserScripts {
+            userContentController.addUserScript(userScript)
+        }
+
         webView.reload()
     }
 
@@ -233,6 +273,13 @@ class ViewController: NSViewController {
         self.webView.evaluateJavaScript(
             Scripts.toggleDarkMode()
         )
+    }
+
+    @IBAction func actionLaunchMuteTermsEditor(_ sender: Any?) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        if let muteTermsEditorWindowController = appDelegate.muteTermsEditorWindowController {
+            NSApplication.shared.runModal(for: muteTermsEditorWindowController.window!)
+        }
     }
 
     enum WindowColorScheme {

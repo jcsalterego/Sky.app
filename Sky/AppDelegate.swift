@@ -15,13 +15,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var notificationReadStatuses = [String:Int]()
     var firstRun = true
 
+    var mutedTermsHits = 0
+
     // TODO cleanup, sigh
     var mainWindow: NSWindow? = nil
     var windowDelegate: WindowDelegate? = nil
+    var mainViewController : ViewController?
 
     var devConsoleWindowController : NSWindowController?
     var devConsoleViewController : DevConsoleViewController?
     var accessJwt : String? = nil
+
+    var muteTermsEditorWindowController : NSWindowController?
+    var muteTermsEditorViewController : MuteTermsEditorViewController?
 
     var localStorageMirror = [String:String]()
 
@@ -39,6 +45,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let storyboard = mainWindow.windowController?.storyboard {
                     devConsoleWindowController = storyboard.instantiateController(
                         withIdentifier: "DevConsoleWindowController") as? NSWindowController
+                } else {
+                    NSLog("fail to load storyboard")
+                }
+
+                if let storyboard = mainWindow.windowController?.storyboard {
+                    muteTermsEditorWindowController = storyboard.instantiateController(
+                        withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }
@@ -87,10 +100,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    enum UserDefaultKeys {
-        static let orderPosts = "orderPosts"
-    }
-
     func getUserDefaultsOrderPosts() -> Bool {
         let defaults = UserDefaults.standard
         if let orderPosts = defaults.object(forKey: UserDefaultKeys.orderPosts) as? Bool {
@@ -130,6 +139,77 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         return accessToken
+    }
+
+    func getMuteTerms() -> [MuteTerm] {
+        var muteTerms: [MuteTerm] = []
+        if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteTerms) as? String {
+            if let rootJsonData = json.data(using:.utf8) {
+                if let muteTermsFromJson = try? JSONDecoder().decode(
+                    [MuteTerm].self,
+                    from: rootJsonData
+                ) {
+                    muteTerms = muteTermsFromJson
+                }
+            }
+        }
+        return muteTerms
+    }
+
+    func saveMuteTerms(_ muteTerms: [MuteTerm]) {
+        var json: String? = nil
+        let jsonEncoder = JSONEncoder()
+        if let jsonResultData = try? jsonEncoder.encode(muteTerms) {
+            json = String(data: jsonResultData, encoding: .utf8)!
+        }
+
+        if json != nil {
+            UserDefaults.standard.set(
+                json,
+                forKey: UserDefaultKeys.muteTerms
+            )
+
+            mainViewController?.webView.evaluateJavaScript(
+                JsLoader.loadScriptContents(
+                    "Scripts/save_mute_terms",
+                    ["mute_terms_json": json!]
+                )
+            )
+        }
+    }
+
+    @IBAction func actionResetStatistics(_ sender: Any?) {
+        mutedTermsHits = 0
+    }
+
+    func addMutedTermsHits(_ hits: Int) {
+        mutedTermsHits += hits
+    }
+
+}
+
+extension AppDelegate: NSMenuDelegate {
+
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        if let lastItem = menu.item(at: menu.numberOfItems - 1) {
+            let resetStatisticsTitle = "Reset Statistics"
+            let resetStatistics = menu.item(withTitle: resetStatisticsTitle)!
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            let count = appDelegate.getMuteTerms().count
+            var title = ""
+            if count == 0 {
+                title = "No mute terms enabled"
+                resetStatistics.isHidden = true
+                resetStatistics.isEnabled = true
+            } else {
+                let label = count == 1 ? "mute term" : "mute terms"
+                let hitsLabel = mutedTermsHits == 1 ? "hit" : "hits"
+                title = "\(count) \(label) enabled; \(mutedTermsHits) \(hitsLabel) filtered"
+                resetStatistics.isHidden = false
+                resetStatistics.isEnabled = true
+            }
+            lastItem.title = title
+        }
     }
 
 }
