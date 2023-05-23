@@ -98,10 +98,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    enum UserDefaultKeys {
-        static let orderPosts = "orderPosts"
-    }
-
     func getUserDefaultsOrderPosts() -> Bool {
         let defaults = UserDefaults.standard
         if let orderPosts = defaults.object(forKey: UserDefaultKeys.orderPosts) as? Bool {
@@ -141,6 +137,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         return accessToken
+    }
+
+    func getMuteWords() -> [MuteWord] {
+        var muteWords: [MuteWord] = []
+        if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteWords) as? String {
+            if let rootJsonData = json.data(using:.utf8) {
+                if let muteWordsFromJson = try? JSONDecoder().decode(
+                    [MuteWord].self,
+                    from: rootJsonData
+                ) {
+                    NSLog("muteWordsFromJson = \(muteWordsFromJson)")
+                    muteWords = muteWordsFromJson
+                }
+            }
+        }
+        return muteWords
+    }
+
+    func saveMuteWords(_ muteWords: [MuteWord]) {
+        var json: String? = nil
+        let jsonEncoder = JSONEncoder()
+        if let jsonResultData = try? jsonEncoder.encode(muteWords) {
+            json = String(data: jsonResultData, encoding: .utf8)!
+        }
+
+        if json != nil {
+            UserDefaults.standard.set(
+                json,
+                forKey: UserDefaultKeys.muteWords
+            )
+
+            mainViewController?.webView.evaluateJavaScript(
+                JsLoader.loadScriptContents(
+                    "Scripts/save_mute_words",
+                    ["mute_words_json": json!]
+                )
+            )
+        }
     }
 
 }

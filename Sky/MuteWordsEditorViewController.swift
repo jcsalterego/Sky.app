@@ -20,11 +20,6 @@ class MuteWordsEditorViewController:
 
     let PLACEHOLDER_TEXT = "long eggs"
 
-    struct MuteWord {
-        var value: String
-        var isEnabled: Bool
-    }
-
     var muteWords: [MuteWord] = []
     var hasChanged = false
     var needsReload = false
@@ -43,14 +38,23 @@ class MuteWordsEditorViewController:
         needsReload = false
 
         // load muteWords
-        muteWords.append(MuteWord(value: "test", isEnabled: true))
-        muteWords.append(MuteWord(value: "foo bar", isEnabled: false))
-        muteWords.append(MuteWord(value: "aloha", isEnabled: true))
+        loadMuteWords()
 
         tableView.delegate = self
         tableView.dataSource = self
 
         tableView.doubleAction = #selector(actionMuteWordsEdit)
+    }
+
+    func loadMuteWords() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        let appMuteWords = appDelegate.getMuteWords()
+        muteWords.append(contentsOf: appMuteWords)
+    }
+
+    func saveMuteWords() {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.saveMuteWords(muteWords)
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -168,6 +172,7 @@ class MuteWordsEditorViewController:
     @IBAction func actionMuteWordsSave(_ sender: Any?) {
         NSLog("actionMuteWordsSave")
 
+        saveMuteWords()
         hasChanged = false
         needsReload = true
         refreshButtons()

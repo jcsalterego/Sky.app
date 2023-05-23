@@ -58,6 +58,18 @@ class ViewController: NSViewController {
                 "Scripts/set_order_posts",
                 ["value": orderPosts ? "yes" : "no" ]))
 
+
+        if let muteWordsJson = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.muteWords) as? String?
+        {
+            userContentController.addUserScript(
+                JsLoader.loadWKUserScript(
+                    "Scripts/save_mute_words",
+                    ["mute_words_json": muteWordsJson!]
+                )
+            )
+        }
+
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
