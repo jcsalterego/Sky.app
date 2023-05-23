@@ -176,8 +176,9 @@ class MuteTermsEditorViewController:
 
     @IBAction func actionMuteTermsRemove(_ sender: Any?) {
         NSLog("actionMuteTermsRemove")
-        let selectedRow = tableView.selectedRow
-        muteTerms.remove(at: selectedRow)
+        for rowIndex in tableView.selectedRowIndexes.sorted().reversed() {
+            muteTerms.remove(at: rowIndex)
+        }
         actionMuteTermsSave(nil)
         changeData()
     }
