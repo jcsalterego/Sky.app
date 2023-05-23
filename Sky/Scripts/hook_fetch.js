@@ -49,7 +49,8 @@ async function overrideGet(...args) {
     }
 
     if (
-        url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0 &&
+        (url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0 ||
+            url.indexOf("/xrpc/app.bsky.unspecced.getPopular")) &&
         muteTermValues.length > 0
     ) {
         let results = filterTimelineWithStats(responseData, muteTermValues);
