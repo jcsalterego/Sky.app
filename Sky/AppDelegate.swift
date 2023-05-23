@@ -178,3 +178,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
+
+extension AppDelegate: NSMenuDelegate {
+
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        if let lastItem = menu.item(at: menu.numberOfItems - 1) {
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            let count = appDelegate.getMuteTerms().count
+            var title = ""
+            if count == 0 {
+                title = "No mute terms enabled"
+            } else {
+                let label = count == 1 ? "mute term" : "mute terms"
+                title = "\(count) \(label) enabled"
+            }
+            lastItem.title = title
+        }
+    }
+
+}

@@ -375,6 +375,9 @@
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                     </menuItem>
                                                 </items>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Voe-Tx-rLC" id="gts-iG-TnQ"/>
+                                                </connections>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Search Posts by Newest First" id="HFE-fV-jHf">
