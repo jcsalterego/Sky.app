@@ -34,6 +34,11 @@ export function newTimelineFeedFilterMap(filters, stats) {
     let fn = function (timelineFeedItem, stats) {
         let candidates = [];
 
+        let record = timelineFeedItem.record;
+        if (record !== undefined) {
+            candidates = candidates.concat(findCandidates(record));
+        }
+
         let post = timelineFeedItem.post;
         if (post !== undefined && post.record !== undefined) {
             candidates = candidates.concat(findCandidates(post.record));
@@ -109,8 +114,14 @@ export function newTimelineFeedFilterMap(filters, stats) {
 }
 
 export function filterTimeline(timeline, filters, stats) {
-    timeline.feed = timeline.feed.map(newTimelineFeedFilterMap(filters, stats));
-    timeline.feed = timeline.feed.filter((item) => item !== null);
+    const keys = ["feed", "notifications"];
+    for (let key of keys) {
+        if (timeline[key] !== undefined) {
+            timeline[key] = timeline[key]
+                .map(newTimelineFeedFilterMap(filters, stats))
+                .filter((item) => item !== null);
+        }
+    }
     return timeline;
 }
 
