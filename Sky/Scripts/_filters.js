@@ -1,31 +1,29 @@
-export function findCandidates(postRecord, post) {
+export function findCandidates(record) {
     let candidates = [];
-    if (postRecord !== undefined) {
-        candidates.push([postRecord.text, post.author]);
-
-        let embed = postRecord.embed;
-        if (embed !== undefined) {
-            let externalEmbed = embed["external"];
-            if (externalEmbed !== undefined) {
-                let title = externalEmbed.title;
-                if (title !== undefined) {
-                    candidates.push([title, post.author]);
-                }
-
-                let description = externalEmbed.description;
-                if (description !== undefined) {
-                    candidates.push([description, post.author]);
+    if (record.text !== undefined) {
+        candidates.push(record.text);
+    }
+    if (record.value !== undefined && record.value.text !== undefined) {
+        candidates.push(record.value.text);
+    }
+    let embed = record.embed;
+    if (embed !== undefined) {
+        if (embed.$type === "app.bsky.embed.images") {
+            for (let image of embed["images"]) {
+                let alt = image.alt;
+                if (alt !== undefined) {
+                    candidates.push(alt);
                 }
             }
-
-            let imagesEmbed = embed["images"];
-            if (imagesEmbed !== undefined) {
-                for (let image of imagesEmbed) {
-                    let alt = image.alt;
-                    if (alt !== undefined) {
-                        candidates.push([alt, post.author]);
-                    }
-                }
+        } else if (embed.$type === "app.bsky.embed.external") {
+            let externalEmbed = embed["external"];
+            let title = externalEmbed.title;
+            if (title !== undefined) {
+                candidates.push(title);
+            }
+            let description = externalEmbed.description;
+            if (description !== undefined) {
+                candidates.push(description);
             }
         }
     }
@@ -34,44 +32,53 @@ export function findCandidates(postRecord, post) {
 
 export function newTimelineFeedFilterMap(filters, stats) {
     let fn = function (timelineFeedItem, stats) {
-        let found = null;
         let candidates = [];
 
         let post = timelineFeedItem.post;
-        if (post !== undefined) {
-            let postRecord = post.record;
-            if (postRecord !== undefined) {
-                candidates = candidates.concat(
-                    findCandidates(postRecord, post)
-                );
-            }
+        if (post !== undefined && post.record !== undefined) {
+            candidates = candidates.concat(findCandidates(post.record));
         }
 
         let reply = timelineFeedItem.reply;
         if (reply !== undefined) {
-            let replyRoot = reply.root;
-            if (replyRoot !== undefined) {
-                let replyRootRecord = replyRoot.record;
-                if (replyRootRecord !== undefined) {
+            if (reply.root !== undefined) {
+                if (reply.root.record !== undefined) {
                     candidates = candidates.concat(
-                        findCandidates(replyRootRecord, replyRoot)
+                        findCandidates(reply.root.record)
+                    );
+                }
+                if (
+                    reply.root.embed !== undefined &&
+                    reply.root.embed.record !== undefined &&
+                    reply.root.embed.record.embeds !== undefined
+                ) {
+                    for (let embed of reply.root.embed.record.embeds) {
+                        if (embed.record !== undefined) {
+                            candidates = candidates.concat(
+                                findCandidates(embed.record)
+                            );
+                        }
+                    }
+                }
+            }
+            if (reply.embed !== undefined) {
+                if (reply.embed.record !== undefined) {
+                    candidates = candidates.concat(
+                        findCandidates(reply.embed.record)
                     );
                 }
             }
-            let replyParent = reply.parent;
-            if (replyParent !== undefined) {
-                let replyParentRecord = replyParent.record;
-                if (replyParentRecord !== undefined) {
-                    candidates = candidates.concat(
-                        findCandidates(replyParentRecord, replyParent)
-                    );
-                }
+            if (
+                reply.parent !== undefined &&
+                reply.parent.record !== undefined
+            ) {
+                candidates = candidates.concat(
+                    findCandidates(reply.parent.record)
+                );
             }
         }
 
-        for (let candidateInfo of candidates) {
-            let candidate = candidateInfo[0];
-            let record = candidateInfo[1];
+        for (let candidate of candidates) {
             let lowercaseFilters = filters.map((filter) =>
                 filter.toLowerCase()
             );
@@ -80,26 +87,22 @@ export function newTimelineFeedFilterMap(filters, stats) {
                     candidate.toLowerCase().includes(filter)
                 )
             ) {
-                found = record;
+                timelineFeedItem = null;
                 stats.hits++;
                 break;
             }
-        }
-
-        if (found !== null) {
-            if (found.viewer === undefined) {
-                found.viewer = {};
-            }
-            found.viewer.muted = true;
-            stats.hits++;
         }
 
         return timelineFeedItem;
     };
     return function (item) {
         item = fn(item, stats);
-        if (item.embed !== undefined && item.embed.record !== undefined) {
-            item.embed.record = fn(item.embed.record);
+        if (
+            item !== null &&
+            item.embed !== undefined &&
+            item.embed.record !== undefined
+        ) {
+            item.embed.record = fn(item.embed.record, stats);
         }
         return item;
     };
@@ -107,6 +110,7 @@ export function newTimelineFeedFilterMap(filters, stats) {
 
 export function filterTimeline(timeline, filters, stats) {
     timeline.feed = timeline.feed.map(newTimelineFeedFilterMap(filters, stats));
+    timeline.feed = timeline.feed.filter((item) => item !== null);
     return timeline;
 }
 
