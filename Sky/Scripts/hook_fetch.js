@@ -33,15 +33,33 @@ async function overrideGet(...args) {
         altered = true;
     }
 
-    if (url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0) {
-        let results = filterTimelineWithStats(responseData, ["FEEL"]);
-        $LOG(["responseData", responseData]);
+    let muteTermValues = [];
+    if (localStorage.getItem("muteTerms") !== null) {
+        try {
+            let muteTerms = JSON.parse(localStorage.getItem("muteTerms"));
+            muteTermValues = muteTerms
+                .filter((t) => t.isEnabled)
+                .map((t) => t.value);
+        } catch {
+            console.warn(
+                "Could not parse muteTerms",
+                localStorage.getItem("muteTerms")
+            );
+        }
+    }
+
+    if (
+        url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0 &&
+        muteTermValues.length > 0
+    ) {
+        let results = filterTimelineWithStats(responseData, muteTermValues);
         responseData = results.timeline;
-        hits = results.hits;
-        $LOG(`hits = ${hits}`);
-        webkit.messageHandlers.incrementMuteTermsHits.postMessage({
-            hits: hits,
-        });
+        let hits = results.hits;
+        if (hits > 0) {
+            webkit.messageHandlers.incrementMuteTermsHits.postMessage({
+                hits: hits,
+            });
+        }
         altered = true;
     }
 

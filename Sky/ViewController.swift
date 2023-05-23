@@ -20,6 +20,8 @@ class ViewController: NSViewController {
     var webView: WKWebView!
     var webKitDelegate: WebKitDelegate!
 
+    var muteWordsWkUserScript: WKUserScript?
+
     var outerScrollbarsEnabled = false
 
     let userScripts = [
@@ -62,12 +64,11 @@ class ViewController: NSViewController {
         if let muteTermsJson = UserDefaults.standard.object(
             forKey: UserDefaultKeys.muteTerms) as? String
         {
-            userContentController.addUserScript(
-                JsLoader.loadWKUserScript(
-                    "Scripts/save_mute_terms",
-                    ["mute_terms_json": muteTermsJson]
-                )
+            muteWordsWkUserScript = JsLoader.loadWKUserScript(
+                "Scripts/save_mute_terms",
+                ["mute_terms_json": muteTermsJson]
             )
+            userContentController.addUserScript(muteWordsWkUserScript!)
         }
 
         webConfiguration.userContentController = userContentController
@@ -193,6 +194,31 @@ class ViewController: NSViewController {
 
     @IBAction func actionRefresh(_ sender: Any?) {
         (NSApplication.shared.delegate as! AppDelegate).clearNotifCounts()
+
+        var newUserScripts: [WKUserScript] = []
+        let userContentController = webView.configuration.userContentController
+        for userScript in userContentController.userScripts {
+            if userScript != muteWordsWkUserScript {
+                newUserScripts.append(userScript)
+            }
+        }
+        if let muteTermsJson = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.muteTerms) as? String
+        {
+            NSLog("refresh muteTermsJson = \(muteTermsJson)")
+            newUserScripts.append(
+                JsLoader.loadWKUserScript(
+                    "Scripts/save_mute_terms",
+                    ["mute_terms_json": muteTermsJson]
+                )
+            )
+        }
+
+        userContentController.removeAllUserScripts()
+        for userScript in newUserScripts {
+            userContentController.addUserScript(userScript)
+        }
+
         webView.reload()
     }
 

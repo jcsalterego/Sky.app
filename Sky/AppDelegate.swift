@@ -149,7 +149,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     [MuteTerm].self,
                     from: rootJsonData
                 ) {
-                    NSLog("muteTermsFromJson = \(muteTermsFromJson)")
                     muteTerms = muteTermsFromJson
                 }
             }
