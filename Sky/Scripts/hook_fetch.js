@@ -1,3 +1,5 @@
+$INCLUDE("_filters.js");
+
 async function overrideGet(...args) {
     const url = args[0];
     const response = await window._fetch(...args);
@@ -28,6 +30,18 @@ async function overrideGet(...args) {
         responseData.sort((post2, post1) =>
             post1.post.createdAt < post2.post.createdAt ? -1 : 1
         );
+        altered = true;
+    }
+
+    if (url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0) {
+        let results = filterTimelineWithStats(responseData, ["FEEL"]);
+        $LOG(["responseData", responseData]);
+        responseData = results.timeline;
+        hits = results.hits;
+        $LOG(`hits = ${hits}`);
+        webkit.messageHandlers.incrementMuteTermsHits.postMessage({
+            hits: hits,
+        });
         altered = true;
     }
 

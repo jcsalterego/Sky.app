@@ -14,6 +14,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             "consoleLog": ScriptMessageHandler.consoleLog,
             "ctrlTab": ctrlTab,
             "fetch": fetch,
+            "incrementMuteTermsHits": incrementMuteTermsHits,
             "loadAccessJwt": loadAccessJwt,
             "localStorageSetItem": localStorageSetItem,
             "windowColorSchemeChange": windowColorSchemeChange,
@@ -126,6 +127,15 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                     let appDelegate = NSApplication.shared.delegate as! AppDelegate
                     appDelegate.setLocalStorage(key: itemKey, jsonValue: jsonValue)
                 }
+            }
+        }
+    }
+
+    func incrementMuteTermsHits(_ message: WKScriptMessage) {
+        if let messageBody = message.body as? NSDictionary {
+            if let hits = messageBody["hits"] as? Int {
+                let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                appDelegate.addMutedTermsHits(hits)
             }
         }
     }

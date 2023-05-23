@@ -183,6 +183,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mutedTermsHits = 0
     }
 
+    func addMutedTermsHits(_ hits: Int) {
+        mutedTermsHits += hits
+    }
+
 }
 
 extension AppDelegate: NSMenuDelegate {
