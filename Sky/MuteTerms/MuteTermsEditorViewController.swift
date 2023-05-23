@@ -24,13 +24,11 @@ class MuteTermsEditorViewController:
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        NSLog("viewWillAppear")
         tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("viewDidLoad")
 
         needsReload = false
 
@@ -68,7 +66,6 @@ class MuteTermsEditorViewController:
     }
 
     @IBAction func actionMuteTermsEdit(_ sender: Any?) {
-        NSLog("actionMuteTermsEdit")
         let selectedRow = tableView.selectedRow
         let muteTerm = muteTerms[selectedRow]
 
@@ -124,8 +121,6 @@ class MuteTermsEditorViewController:
     }
 
     @IBAction func actionMuteTermsAdd(_ sender: Any?) {
-        NSLog("actionMuteTermsAdd")
-
         // Set the message as the NSAlert text
         let alert = NSAlert()
         alert.messageText = "Add mute term"
@@ -175,7 +170,6 @@ class MuteTermsEditorViewController:
     }
 
     @IBAction func actionMuteTermsRemove(_ sender: Any?) {
-        NSLog("actionMuteTermsRemove")
         for rowIndex in tableView.selectedRowIndexes.sorted().reversed() {
             muteTerms.remove(at: rowIndex)
         }
@@ -184,16 +178,12 @@ class MuteTermsEditorViewController:
     }
 
     @IBAction func actionMuteTermsSave(_ sender: Any?) {
-        NSLog("actionMuteTermsSave")
-
         saveMuteTerms()
         needsReload = true
         refreshButtons()
     }
 
     @IBAction func actionMuteTermsClose(_ sender: Any?) {
-        NSLog("actionMuteTermsClose")
-
         if needsReload && refreshIfNeededCheckbox.state == .on {
             let appDelegate = NSApplication.shared.delegate as! AppDelegate
             appDelegate.mainViewController?.actionRefresh(nil)
