@@ -205,7 +205,6 @@ class ViewController: NSViewController {
         if let muteTermsJson = UserDefaults.standard.object(
             forKey: UserDefaultKeys.muteTerms) as? String
         {
-            NSLog("refresh muteTermsJson = \(muteTermsJson)")
             newUserScripts.append(
                 JsLoader.loadWKUserScript(
                     "Scripts/save_mute_terms",
