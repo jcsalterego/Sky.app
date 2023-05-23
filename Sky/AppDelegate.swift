@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var notificationReadStatuses = [String:Int]()
     var firstRun = true
 
+    var mutedTermsHits = 0
+
     // TODO cleanup, sigh
     var mainWindow: NSWindow? = nil
     var windowDelegate: WindowDelegate? = nil
@@ -177,20 +179,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    @IBAction func actionResetStatistics(_ sender: Any?) {
+        mutedTermsHits = 0
+    }
+
 }
 
 extension AppDelegate: NSMenuDelegate {
 
     func menuNeedsUpdate(_ menu: NSMenu) {
         if let lastItem = menu.item(at: menu.numberOfItems - 1) {
+            let resetStatisticsTitle = "Reset Statistics"
+            let resetStatistics = menu.item(withTitle: resetStatisticsTitle)!
             let appDelegate = NSApplication.shared.delegate as! AppDelegate
             let count = appDelegate.getMuteTerms().count
             var title = ""
             if count == 0 {
                 title = "No mute terms enabled"
+                resetStatistics.isHidden = true
+                resetStatistics.isEnabled = true
             } else {
                 let label = count == 1 ? "mute term" : "mute terms"
-                title = "\(count) \(label) enabled"
+                let hitsLabel = mutedTermsHits == 1 ? "hit" : "hits"
+                title = "\(count) \(label) enabled; \(mutedTermsHits) \(hitsLabel) filtered"
+                resetStatistics.isHidden = false
+                resetStatistics.isEnabled = true
             }
             lastItem.title = title
         }

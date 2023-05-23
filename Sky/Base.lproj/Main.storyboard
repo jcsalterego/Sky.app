@@ -371,6 +371,13 @@
                                                             <action selector="actionLaunchMuteTermsEditor:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
                                                         </connections>
                                                     </menuItem>
+                                                    <menuItem isSeparatorItem="YES" id="tET-jR-P4X"/>
+                                                    <menuItem title="Reset Statistics" id="AuF-ol-y28">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionResetStatistics:" target="Voe-Tx-rLC" id="2On-aE-8Xm"/>
+                                                        </connections>
+                                                    </menuItem>
                                                     <menuItem title="Not enabled" enabled="NO" id="6bO-7u-kBp">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                     </menuItem>
