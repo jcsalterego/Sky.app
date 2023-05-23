@@ -20,7 +20,6 @@ class MuteWordsEditorViewController:
     let PLACEHOLDER_TEXT = "long eggs"
 
     var muteWords: [MuteWord] = []
-    var hasChanged = false
     var needsReload = false
 
     override func viewWillAppear() {
@@ -33,7 +32,6 @@ class MuteWordsEditorViewController:
         super.viewDidLoad()
         NSLog("viewDidLoad")
 
-        hasChanged = false
         needsReload = false
 
         // load muteWords
@@ -172,7 +170,6 @@ class MuteWordsEditorViewController:
     }
 
     func changeData() {
-        hasChanged = true
         tableView.reloadData()
         refreshButtons()
     }
@@ -189,37 +186,12 @@ class MuteWordsEditorViewController:
         NSLog("actionMuteWordsSave")
 
         saveMuteWords()
-        hasChanged = false
         needsReload = true
         refreshButtons()
     }
 
     @IBAction func actionMuteWordsClose(_ sender: Any?) {
         NSLog("actionMuteWordsClose")
-
-        if hasChanged {
-            // Set the message as the NSAlert text
-            let alert = NSAlert()
-            alert.messageText = "Save changes before closing?"
-
-            alert.addButton(withTitle: "Save")
-            alert.addButton(withTitle: "Don't Save")
-            alert.addButton(withTitle: "Cancel")
-
-            // Display the NSAlert
-            let action = alert.runModal()
-
-            NSLog("action = \(action)")
-            if action == .alertFirstButtonReturn {
-                // save
-                actionMuteWordsSave(nil)
-            } else if action == .alertSecondButtonReturn {
-                // don't save
-            } else {
-                // cancel
-                return
-            }
-        }
 
         if needsReload && refreshIfNeededCheckbox.state == .on {
             let appDelegate = NSApplication.shared.delegate as! AppDelegate

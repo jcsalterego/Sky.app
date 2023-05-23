@@ -75,6 +75,9 @@ class ViewController: NSViewController {
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+
+        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
+
         view = webView
     }
 
