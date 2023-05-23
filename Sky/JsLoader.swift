@@ -44,6 +44,10 @@ class JsLoader {
             let jsKey = "$__\(key.uppercased())__"
             scriptContents = scriptContents.replacingOccurrences(of: jsKey, with: value)
         }
+        scriptContents = scriptContents.replacingOccurrences(
+            of: "export function",
+            with: "function"
+        )
         if scriptContents.contains("$LOG") {
             scriptContents = scriptContents.replacingOccurrences(
                 of: "$LOG",
