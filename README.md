@@ -59,6 +59,8 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ### 0.2.2-pre
 
+* Mute Terms: hide posts and notifications with certain words. `Advanced > Mute Terms > Edit...`
+* FIX: Dev Console loading error
 * `Esc` clears search terms when searching
 * Performance cleanup
 
