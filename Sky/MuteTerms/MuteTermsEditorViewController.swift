@@ -68,35 +68,23 @@ class MuteTermsEditorViewController:
     @IBAction func actionMuteTermsEdit(_ sender: Any?) {
         let selectedRow = tableView.selectedRow
         let muteTerm = muteTerms[selectedRow]
-
-        // Set the message as the NSAlert text
         let alert = NSAlert()
         alert.messageText = "Edit mute term"
         alert.informativeText = "Mute terms are case-insensitive."
-
-        // Add an input NSTextField for the prompt
         let inputFrame = NSRect(
             x: 0,
             y: 0,
             width: 300,
             height: 24
         )
-
         let textField = NSTextField(frame: inputFrame)
         textField.placeholderString = PLACEHOLDER_TEXT
         textField.stringValue = muteTerm.value
         alert.accessoryView = textField
-
-        // Add a confirmation button “OK”
-        // and cancel button “Cancel”
         alert.addButton(withTitle: "OK")
         alert.addButton(withTitle: "Cancel")
-
         alert.window.initialFirstResponder = textField
-
-        // Display the NSAlert
         let action = alert.runModal()
-
         if action == .alertFirstButtonReturn {
             let stringValue = textField.stringValue
             updateMuteTerm(selectedRow, stringValue)
@@ -111,49 +99,35 @@ class MuteTermsEditorViewController:
     @IBAction func actionMuteTermsAddOrRemove(_ sender: Any?) {
         let selectedSegment = addRemoveButtons.selectedSegment
         if selectedSegment == 0 {
-            // add
             actionMuteTermsAdd(sender)
         } else {
-            // remove
             actionMuteTermsRemove(sender)
         }
 
     }
 
     @IBAction func actionMuteTermsAdd(_ sender: Any?) {
-        // Set the message as the NSAlert text
         let alert = NSAlert()
         alert.messageText = "Add mute term"
         alert.informativeText = "Mute terms are case-insensitive."
-
-        // Add an input NSTextField for the prompt
         let inputFrame = NSRect(
             x: 0,
             y: 0,
             width: 300,
             height: 24
         )
-
         let textField = NSTextField(frame: inputFrame)
         textField.placeholderString = PLACEHOLDER_TEXT
         alert.accessoryView = textField
-
-        // Add a confirmation button “OK”
-        // and cancel button “Cancel”
         alert.addButton(withTitle: "OK")
         alert.addButton(withTitle: "Cancel")
-
         alert.window.initialFirstResponder = textField
-
-        // Display the NSAlert
         let action = alert.runModal()
-
         if action == .alertFirstButtonReturn {
             let stringValue = textField.stringValue
             addMuteTerm(stringValue)
+            actionMuteTermsSave(nil)
         }
-
-        actionMuteTermsSave(nil)
     }
 
     func addMuteTerm(_ muteTerm: String) {
