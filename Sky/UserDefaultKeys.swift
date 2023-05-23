@@ -5,5 +5,5 @@
 
 enum UserDefaultKeys {
     static let orderPosts = "orderPosts"
-    static let muteWords = "muteWords"
+    static let muteTerms = "muteTerms"
 }

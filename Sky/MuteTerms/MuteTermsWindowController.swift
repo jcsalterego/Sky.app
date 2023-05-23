@@ -1,11 +1,11 @@
 //
-//  MuteWordsWindowController.swift
+//  MuteTermsWindowController.swift
 //  Sky
 //
 
 import AppKit
 
-class MuteWordsWindowController : NSWindowController, NSWindowDelegate {
+class MuteTermsWindowController : NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()

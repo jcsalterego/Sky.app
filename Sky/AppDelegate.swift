@@ -24,8 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var devConsoleViewController : DevConsoleViewController?
     var accessJwt : String? = nil
 
-    var muteWordsEditorWindowController : NSWindowController?
-    var muteWordsEditorViewController : MuteWordsEditorViewController?
+    var muteTermsEditorWindowController : NSWindowController?
+    var muteTermsEditorViewController : MuteTermsEditorViewController?
 
     var localStorageMirror = [String:String]()
 
@@ -48,8 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
 
                 if let storyboard = mainWindow.windowController?.storyboard {
-                    muteWordsEditorWindowController = storyboard.instantiateController(
-                        withIdentifier: "MuteWordsEditorWindowController") as? MuteWordsWindowController
+                    muteTermsEditorWindowController = storyboard.instantiateController(
+                        withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }
@@ -139,39 +139,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return accessToken
     }
 
-    func getMuteWords() -> [MuteWord] {
-        var muteWords: [MuteWord] = []
-        if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteWords) as? String {
+    func getMuteTerms() -> [MuteTerm] {
+        var muteTerms: [MuteTerm] = []
+        if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteTerms) as? String {
             if let rootJsonData = json.data(using:.utf8) {
-                if let muteWordsFromJson = try? JSONDecoder().decode(
-                    [MuteWord].self,
+                if let muteTermsFromJson = try? JSONDecoder().decode(
+                    [MuteTerm].self,
                     from: rootJsonData
                 ) {
-                    NSLog("muteWordsFromJson = \(muteWordsFromJson)")
-                    muteWords = muteWordsFromJson
+                    NSLog("muteTermsFromJson = \(muteTermsFromJson)")
+                    muteTerms = muteTermsFromJson
                 }
             }
         }
-        return muteWords
+        return muteTerms
     }
 
-    func saveMuteWords(_ muteWords: [MuteWord]) {
+    func saveMuteTerms(_ muteTerms: [MuteTerm]) {
         var json: String? = nil
         let jsonEncoder = JSONEncoder()
-        if let jsonResultData = try? jsonEncoder.encode(muteWords) {
+        if let jsonResultData = try? jsonEncoder.encode(muteTerms) {
             json = String(data: jsonResultData, encoding: .utf8)!
         }
 
         if json != nil {
             UserDefaults.standard.set(
                 json,
-                forKey: UserDefaultKeys.muteWords
+                forKey: UserDefaultKeys.muteTerms
             )
 
             mainViewController?.webView.evaluateJavaScript(
                 JsLoader.loadScriptContents(
-                    "Scripts/save_mute_words",
-                    ["mute_words_json": json!]
+                    "Scripts/save_mute_terms",
+                    ["mute_terms_json": json!]
                 )
             )
         }

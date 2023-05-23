@@ -1,5 +1,5 @@
 //
-//  EditMuteWordsViewController.swift
+//  MuteTermsEditorViewController.swift
 //  Sky
 //
 
@@ -8,7 +8,7 @@ import AppKit
 import SwiftUI
 import WebKit
 
-class MuteWordsEditorViewController:
+class MuteTermsEditorViewController:
     NSViewController,
     NSTableViewDataSource,
     NSTableViewDelegate
@@ -19,7 +19,7 @@ class MuteWordsEditorViewController:
 
     let PLACEHOLDER_TEXT = "long eggs"
 
-    var muteWords: [MuteWord] = []
+    var muteTerms: [MuteTerm] = []
     var needsReload = false
 
     override func viewWillAppear() {
@@ -34,24 +34,24 @@ class MuteWordsEditorViewController:
 
         needsReload = false
 
-        // load muteWords
-        loadMuteWords()
+        // load muteTerms
+        loadMuteTerms()
 
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.doubleAction = #selector(actionMuteWordsEdit)
+        tableView.doubleAction = #selector(actionMuteTermsEdit)
     }
 
-    func loadMuteWords() {
+    func loadMuteTerms() {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        let appMuteWords = appDelegate.getMuteWords()
-        muteWords.append(contentsOf: appMuteWords)
+        let appMuteTerms = appDelegate.getMuteTerms()
+        muteTerms.append(contentsOf: appMuteTerms)
     }
 
-    func saveMuteWords() {
+    func saveMuteTerms() {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        appDelegate.saveMuteWords(muteWords)
+        appDelegate.saveMuteTerms(muteTerms)
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -67,15 +67,15 @@ class MuteWordsEditorViewController:
         addRemoveButtons.setEnabled(enabled, forSegment: 1)
     }
 
-    @IBAction func actionMuteWordsEdit(_ sender: Any?) {
-        NSLog("actionMuteWordsEdit")
+    @IBAction func actionMuteTermsEdit(_ sender: Any?) {
+        NSLog("actionMuteTermsEdit")
         let selectedRow = tableView.selectedRow
-        let muteWord = muteWords[selectedRow]
+        let muteTerm = muteTerms[selectedRow]
 
         // Set the message as the NSAlert text
         let alert = NSAlert()
-        alert.messageText = "Edit mute word"
-        alert.informativeText = "Mute words are case-insensitive."
+        alert.messageText = "Edit mute term"
+        alert.informativeText = "Mute terms are case-insensitive."
 
         // Add an input NSTextField for the prompt
         let inputFrame = NSRect(
@@ -87,7 +87,7 @@ class MuteWordsEditorViewController:
 
         let textField = NSTextField(frame: inputFrame)
         textField.placeholderString = PLACEHOLDER_TEXT
-        textField.stringValue = muteWord.value
+        textField.stringValue = muteTerm.value
         alert.accessoryView = textField
 
         // Add a confirmation button “OK”
@@ -102,34 +102,34 @@ class MuteWordsEditorViewController:
 
         if action == .alertFirstButtonReturn {
             let stringValue = textField.stringValue
-            updateMuteWord(selectedRow, stringValue)
+            updateMuteTerm(selectedRow, stringValue)
             changeData()
         }
     }
 
-    func updateMuteWord(_ row: Int, _ value : String) {
-        muteWords[row] = MuteWord(value: value, isEnabled: true)
+    func updateMuteTerm(_ row: Int, _ value : String) {
+        muteTerms[row] = MuteTerm(value: value, isEnabled: true)
     }
 
-    @IBAction func actionMuteWordsAddOrRemove(_ sender: Any?) {
+    @IBAction func actionMuteTermsAddOrRemove(_ sender: Any?) {
         let selectedSegment = addRemoveButtons.selectedSegment
         if selectedSegment == 0 {
             // add
-            actionMuteWordsAdd(sender)
+            actionMuteTermsAdd(sender)
         } else {
             // remove
-            actionMuteWordsRemove(sender)
+            actionMuteTermsRemove(sender)
         }
 
     }
 
-    @IBAction func actionMuteWordsAdd(_ sender: Any?) {
-        NSLog("actionMuteWordsAdd")
+    @IBAction func actionMuteTermsAdd(_ sender: Any?) {
+        NSLog("actionMuteTermsAdd")
 
         // Set the message as the NSAlert text
         let alert = NSAlert()
-        alert.messageText = "Add mute word"
-        alert.informativeText = "Mute words are case-insensitive."
+        alert.messageText = "Add mute term"
+        alert.informativeText = "Mute terms are case-insensitive."
 
         // Add an input NSTextField for the prompt
         let inputFrame = NSRect(
@@ -155,16 +155,16 @@ class MuteWordsEditorViewController:
 
         if action == .alertFirstButtonReturn {
             let stringValue = textField.stringValue
-            addMuteWord(stringValue)
+            addMuteTerm(stringValue)
         }
 
-        actionMuteWordsSave(nil)
+        actionMuteTermsSave(nil)
     }
 
-    func addMuteWord(_ muteWord: String) {
-        let trimmed = muteWord.trimmingCharacters(in: .whitespacesAndNewlines)
+    func addMuteTerm(_ muteTerm: String) {
+        let trimmed = muteTerm.trimmingCharacters(in: .whitespacesAndNewlines)
         if !trimmed.isEmpty {
-            muteWords.append(MuteWord(value: trimmed, isEnabled: true))
+            muteTerms.append(MuteTerm(value: trimmed, isEnabled: true))
             changeData()
         }
     }
@@ -174,24 +174,24 @@ class MuteWordsEditorViewController:
         refreshButtons()
     }
 
-    @IBAction func actionMuteWordsRemove(_ sender: Any?) {
-        NSLog("actionMuteWordsRemove")
+    @IBAction func actionMuteTermsRemove(_ sender: Any?) {
+        NSLog("actionMuteTermsRemove")
         let selectedRow = tableView.selectedRow
-        muteWords.remove(at: selectedRow)
-        actionMuteWordsSave(nil)
+        muteTerms.remove(at: selectedRow)
+        actionMuteTermsSave(nil)
         changeData()
     }
 
-    @IBAction func actionMuteWordsSave(_ sender: Any?) {
-        NSLog("actionMuteWordsSave")
+    @IBAction func actionMuteTermsSave(_ sender: Any?) {
+        NSLog("actionMuteTermsSave")
 
-        saveMuteWords()
+        saveMuteTerms()
         needsReload = true
         refreshButtons()
     }
 
-    @IBAction func actionMuteWordsClose(_ sender: Any?) {
-        NSLog("actionMuteWordsClose")
+    @IBAction func actionMuteTermsClose(_ sender: Any?) {
+        NSLog("actionMuteTermsClose")
 
         if needsReload && refreshIfNeededCheckbox.state == .on {
             let appDelegate = NSApplication.shared.delegate as! AppDelegate
@@ -205,7 +205,7 @@ class MuteWordsEditorViewController:
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return muteWords.count
+        return muteTerms.count
     }
 
     func tableView(
@@ -213,14 +213,14 @@ class MuteWordsEditorViewController:
         viewFor tableColumn: NSTableColumn?,
         row: Int
     ) -> NSView? {
-        let currentMuteWord = muteWords[row]
-        if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "muteWordColumn") {
-            let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "muteWordCell")
+        let currentMuteTerm = muteTerms[row]
+        if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "muteTermColumn") {
+            let cellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "muteTermCell")
             if let cellView = tableView.makeView(
                 withIdentifier: cellIdentifier,
                 owner: self) as? NSTableCellView
             {
-                cellView.textField?.stringValue = currentMuteWord.value
+                cellView.textField?.stringValue = currentMuteTerm.value
                 return cellView
             }
         }

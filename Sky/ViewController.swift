@@ -59,13 +59,13 @@ class ViewController: NSViewController {
                 ["value": orderPosts ? "yes" : "no" ]))
 
 
-        if let muteWordsJson = UserDefaults.standard.object(
-            forKey: UserDefaultKeys.muteWords) as? String?
+        if let muteTermsJson = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.muteTerms) as? String
         {
             userContentController.addUserScript(
                 JsLoader.loadWKUserScript(
-                    "Scripts/save_mute_words",
-                    ["mute_words_json": muteWordsJson!]
+                    "Scripts/save_mute_terms",
+                    ["mute_terms_json": muteTermsJson]
                 )
             )
         }
@@ -75,8 +75,6 @@ class ViewController: NSViewController {
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
-
-        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
 
         view = webView
     }
@@ -252,10 +250,10 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionLaunchMuteWordsEditor(_ sender: Any?) {
+    @IBAction func actionLaunchMuteTermsEditor(_ sender: Any?) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        if let muteWordsEditorWindowController = appDelegate.muteWordsEditorWindowController {
-            NSApplication.shared.runModal(for: muteWordsEditorWindowController.window!)
+        if let muteTermsEditorWindowController = appDelegate.muteTermsEditorWindowController {
+            NSApplication.shared.runModal(for: muteTermsEditorWindowController.window!)
         }
     }
 
