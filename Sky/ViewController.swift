@@ -65,8 +65,8 @@ class ViewController: NSViewController {
             forKey: UserDefaultKeys.muteTerms) as? String
         {
             muteWordsWkUserScript = JsLoader.loadWKUserScript(
-                "Scripts/save_mute_terms",
-                ["mute_terms_json": muteTermsJson]
+                "Scripts/local_storage_set_item",
+                ["key": "muteTerms", "value": muteTermsJson]
             )
             userContentController.addUserScript(muteWordsWkUserScript!)
         }
@@ -207,8 +207,8 @@ class ViewController: NSViewController {
         {
             newUserScripts.append(
                 JsLoader.loadWKUserScript(
-                    "Scripts/save_mute_terms",
-                    ["mute_terms_json": muteTermsJson]
+                    "Scripts/local_storage_set_item",
+                    ["key": "muteTerms", "value": muteTermsJson]
                 )
             )
         }
