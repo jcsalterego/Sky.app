@@ -40,8 +40,13 @@ export function newTimelineFeedFilterMap(filters, stats) {
         }
 
         let post = timelineFeedItem.post;
-        if (post !== undefined && post.record !== undefined) {
-            candidates = candidates.concat(findCandidates(post.record));
+        if (post !== undefined) {
+            if (post.text !== undefined) {
+                candidates = candidates.concat(findCandidates(post));
+            }
+            if (post.record !== undefined) {
+                candidates = candidates.concat(findCandidates(post.record));
+            }
         }
 
         let reply = timelineFeedItem.reply;
@@ -114,12 +119,18 @@ export function newTimelineFeedFilterMap(filters, stats) {
 }
 
 export function filterTimeline(timeline, filters, stats) {
-    const keys = ["feed", "notifications"];
-    for (let key of keys) {
-        if (timeline[key] !== undefined) {
-            timeline[key] = timeline[key]
-                .map(newTimelineFeedFilterMap(filters, stats))
-                .filter((item) => item !== null);
+    if (Array.isArray(timeline)) {
+        timeline = timeline
+            .map(newTimelineFeedFilterMap(filters, stats))
+            .filter((item) => item !== null);
+    } else {
+        const keys = ["feed", "notifications"];
+        for (let key of keys) {
+            if (timeline[key] !== undefined) {
+                timeline[key] = timeline[key]
+                    .map(newTimelineFeedFilterMap(filters, stats))
+                    .filter((item) => item !== null);
+            }
         }
     }
     return timeline;
