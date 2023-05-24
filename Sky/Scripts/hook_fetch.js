@@ -23,8 +23,9 @@ async function overrideGet(...args) {
     let altered = false;
 
     let isSearch = url.indexOf("https://search.bsky.social/search/posts") === 0;
+    let featureOrderPosts = localStorage.getItem("featureOrderPosts") === "yes";
 
-    if (isSearch && document.body.dataset.featureOrderPosts === "yes") {
+    if (isSearch && featureOrderPosts) {
         responseData.sort((post2, post1) =>
             post1.post.createdAt < post2.post.createdAt ? -1 : 1
         );

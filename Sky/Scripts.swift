@@ -42,10 +42,10 @@ class Scripts {
         )
     }
 
-    static func setOrderPosts(_ orderPosts: Bool) -> String {
+    static func localStorageSetItem(key: String, value: String) -> String {
         return JsLoader.loadScriptContents(
-            "Scripts/set_order_posts",
-            ["value": orderPosts ? "yes" : "no" ]
+            "Scripts/local_storage_set_item",
+            ["key": key, "value": value]
         )
     }
 

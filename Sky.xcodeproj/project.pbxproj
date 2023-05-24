@@ -11,6 +11,7 @@
 		043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1929A5331800B06D18 /* JsLoader.swift */; };
 		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
 		045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */; };
+		048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048239162A1E55D600715D01 /* LocalStorageKeys.swift */; };
 		048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCC2A093F3E00A8C919 /* Scripts.swift */; };
 		048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCE2A09472400A8C919 /* SkyUrls.swift */; };
 		0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */; };
@@ -53,6 +54,7 @@
 		043A0F1929A5331800B06D18 /* JsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsLoader.swift; sourceTree = "<group>"; };
 		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
 		045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowDelegate.swift; sourceTree = "<group>"; };
+		048239162A1E55D600715D01 /* LocalStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageKeys.swift; sourceTree = "<group>"; };
 		048BAFCC2A093F3E00A8C919 /* Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripts.swift; sourceTree = "<group>"; };
 		048BAFCE2A09472400A8C919 /* SkyUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUrls.swift; sourceTree = "<group>"; };
 		0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootLocalStorage.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
 				0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */,
 				043A0F1929A5331800B06D18 /* JsLoader.swift */,
+				048239162A1E55D600715D01 /* LocalStorageKeys.swift */,
 				043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */,
 				048BAFCC2A093F3E00A8C919 /* Scripts.swift */,
 				048BAFCE2A09472400A8C919 /* SkyUrls.swift */,
@@ -346,6 +349,7 @@
 				048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */,
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
 				0499FB852A1C4007009226EE /* MuteTerm.swift in Sources */,
+				048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */,
 				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
 				04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */,
 			);

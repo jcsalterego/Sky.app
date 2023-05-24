@@ -172,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             mainViewController?.webView.evaluateJavaScript(
                 JsLoader.loadScriptContents(
                     "Scripts/local_storage_set_item",
-                    ["key": "muteTerms", "value": json!]
+                    ["key": LocalStorageKeys.muteTerms, "value": json!]
                 )
             )
         }

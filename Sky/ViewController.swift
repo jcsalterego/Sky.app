@@ -21,6 +21,7 @@ class ViewController: NSViewController {
     var webKitDelegate: WebKitDelegate!
 
     var muteWordsWkUserScript: WKUserScript?
+    var orderPostsWkUserScript: WKUserScript?
 
     var outerScrollbarsEnabled = false
 
@@ -54,22 +55,23 @@ class ViewController: NSViewController {
                     "Scripts/\(userScript)"))
         }
 
-        let orderPosts = appDelegate.getUserDefaultsOrderPosts()
-        userContentController.addUserScript(
-            JsLoader.loadWKUserScript(
-                "Scripts/set_order_posts",
-                ["value": orderPosts ? "yes" : "no" ]))
-
-
         if let muteTermsJson = UserDefaults.standard.object(
             forKey: UserDefaultKeys.muteTerms) as? String
         {
             muteWordsWkUserScript = JsLoader.loadWKUserScript(
                 "Scripts/local_storage_set_item",
-                ["key": "muteTerms", "value": muteTermsJson]
+                ["key": LocalStorageKeys.muteTerms, "value": muteTermsJson]
             )
             userContentController.addUserScript(muteWordsWkUserScript!)
         }
+
+        let orderPosts = appDelegate.getUserDefaultsOrderPosts()
+        let orderPostsValue = orderPosts ? "yes" : "no"
+        orderPostsWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.orderPosts, "value": orderPostsValue]
+        )
+        userContentController.addUserScript(orderPostsWkUserScript!)
 
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -195,10 +197,13 @@ class ViewController: NSViewController {
     @IBAction func actionRefresh(_ sender: Any?) {
         (NSApplication.shared.delegate as! AppDelegate).clearNotifCounts()
 
+        let scriptsToRefresh = [
+            muteWordsWkUserScript,
+        ]
         var newUserScripts: [WKUserScript] = []
         let userContentController = webView.configuration.userContentController
         for userScript in userContentController.userScripts {
-            if userScript != muteWordsWkUserScript {
+            if !scriptsToRefresh.contains(userScript) {
                 newUserScripts.append(userScript)
             }
         }
@@ -208,7 +213,7 @@ class ViewController: NSViewController {
             newUserScripts.append(
                 JsLoader.loadWKUserScript(
                     "Scripts/local_storage_set_item",
-                    ["key": "muteTerms", "value": muteTermsJson]
+                    ["key": LocalStorageKeys.muteTerms, "value": muteTermsJson]
                 )
             )
         }
@@ -263,10 +268,20 @@ class ViewController: NSViewController {
             var orderPosts = menuItem.state == .on
             orderPosts = !orderPosts
             menuItem.state = orderPosts ? .on : .off
-            self.webView.evaluateJavaScript(Scripts.setOrderPosts(orderPosts))
+            setOrderPosts(orderPosts)
             (NSApplication.shared.delegate as! AppDelegate)
                 .setUserDefaultsOrderPosts(orderPosts)
         }
+    }
+
+    func setOrderPosts(_ orderPosts: Bool) {
+        let orderPostsValue = orderPosts ? "yes" : "no"
+        self.webView.evaluateJavaScript(
+            Scripts.localStorageSetItem(
+                key: LocalStorageKeys.orderPosts,
+                value: orderPostsValue
+            )
+        )
     }
 
     @IBAction func actionToggleDarkMode(_ sender: Any?) {
