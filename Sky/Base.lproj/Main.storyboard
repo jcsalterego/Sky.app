@@ -306,7 +306,7 @@
                             </menuItem>
                             <menuItem title="View" id="8Tj-At-g07">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="View" id="oIs-FJ-jib">
+                                <menu key="submenu" title="View" autoenablesItems="NO" id="oIs-FJ-jib">
                                     <items>
                                         <menuItem title="Home" keyEquivalent="1" id="LE2-aR-0XJ" userLabel="Home">
                                             <connections>
@@ -342,6 +342,22 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2GO-Mh-Pot"/>
+                                        <menuItem title="Actual Size" keyEquivalent="0" id="vBi-ho-dYr">
+                                            <connections>
+                                                <action selector="actionActualSize:" target="Ady-hI-5gd" id="NcA-Ba-0Rh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom In" keyEquivalent="+" id="Glx-YK-StX">
+                                            <connections>
+                                                <action selector="actionZoomIn:" target="Ady-hI-5gd" id="Al5-IK-KcK"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom Out" keyEquivalent="-" id="0Hj-K6-7Tb">
+                                            <connections>
+                                                <action selector="actionZoomOut:" target="Ady-hI-5gd" id="9J8-9Q-oaz"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="vWQ-2z-ZVe"/>
                                         <menuItem title="Toggle Dark Mode" keyEquivalent="D" id="sDs-WP-qC5">
                                             <connections>
                                                 <action selector="actionToggleDarkMode:" target="Ady-hI-5gd" id="fJI-7C-ZPZ"/>
@@ -355,6 +371,9 @@
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Bps-fs-Onc"/>
                                     </items>
+                                    <connections>
+                                        <outlet property="delegate" destination="Voe-Tx-rLC" id="Iz6-uD-6wU"/>
+                                    </connections>
                                 </menu>
                             </menuItem>
                             <menuItem title="Advanced" id="Jbs-8x-y7X">

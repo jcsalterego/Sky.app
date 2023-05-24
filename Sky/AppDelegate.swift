@@ -141,6 +141,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return accessToken
     }
 
+    func getZoomFactor() -> Double {
+        var zoomFactor = 1.0
+        if let zoomFactorPref = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.zoomFactor) as? Double
+        {
+            zoomFactor = zoomFactorPref
+        }
+        return zoomFactor
+    }
+
+    func setZoomFactor(_ zoomFactor: Double) {
+        UserDefaults.standard.set(zoomFactor, forKey: UserDefaultKeys.zoomFactor)
+    }
+
     func getMuteTerms() -> [MuteTerm] {
         var muteTerms: [MuteTerm] = []
         if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteTerms) as? String {
@@ -186,11 +200,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mutedTermsHits += hits
     }
 
+
+    static let ZOOM_FACTORS = [0.75, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.35]
+
+    enum ZoomFactorPosition {
+        case maxZoomedIn
+        case maxZoomedOut
+        case actualSize
+        case other
+    }
+
+    func getZoomFactorPosition() -> ZoomFactorPosition {
+        let ZOOM_FACTORS = AppDelegate.ZOOM_FACTORS
+        let zoomFactor = getZoomFactor()
+        if let pos = ZOOM_FACTORS.firstIndex(of: zoomFactor) {
+            if pos == 0 {
+                return .maxZoomedOut
+            } else if pos == ZOOM_FACTORS.count - 1 {
+                return .maxZoomedIn
+            } else if pos == ZOOM_FACTORS.firstIndex(of: 1.0) {
+                return .actualSize
+            }
+        }
+        return .other
+    }
+
 }
 
 extension AppDelegate: NSMenuDelegate {
 
     func menuNeedsUpdate(_ menu: NSMenu) {
+        if menu.title == "Mute Terms" {
+            menuTermsNeedUpdate(menu)
+        } else if menu.title == "View" {
+            viewNeedsUpdate(menu)
+        }
+    }
+
+    func menuTermsNeedUpdate(_ menu: NSMenu) {
         if let lastItem = menu.item(at: menu.numberOfItems - 1) {
             let resetStatisticsTitle = "Reset Statistics"
             let resetStatistics = menu.item(withTitle: resetStatisticsTitle)!
@@ -210,6 +257,16 @@ extension AppDelegate: NSMenuDelegate {
             }
             lastItem.title = title
         }
+    }
+
+    func viewNeedsUpdate(_ menu: NSMenu) {
+        let zoomFactorPosition = getZoomFactorPosition()
+        menu.item(withTitle: "Actual Size")?.isEnabled =
+            zoomFactorPosition != .actualSize
+        menu.item(withTitle: "Zoom In")?.isEnabled =
+            zoomFactorPosition != .maxZoomedIn
+        menu.item(withTitle: "Zoom Out")?.isEnabled =
+            zoomFactorPosition != .maxZoomedOut
     }
 
 }

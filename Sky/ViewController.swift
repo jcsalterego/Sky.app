@@ -22,6 +22,7 @@ class ViewController: NSViewController {
 
     var muteWordsWkUserScript: WKUserScript?
     var orderPostsWkUserScript: WKUserScript?
+    var setZoomFactorWkUserScript: WKUserScript?
 
     var outerScrollbarsEnabled = false
 
@@ -73,11 +74,20 @@ class ViewController: NSViewController {
         )
         userContentController.addUserScript(orderPostsWkUserScript!)
 
+        let zoomFactor = appDelegate.getZoomFactor()
+        setZoomFactorWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/set_zoom_factor",
+            ["zoom_factor": "\(zoomFactor)"]
+        )
+        userContentController.addUserScript(setZoomFactorWkUserScript!)
+
         webConfiguration.userContentController = userContentController
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+
+        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
 
         view = webView
     }
@@ -195,10 +205,12 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
-        (NSApplication.shared.delegate as! AppDelegate).clearNotifCounts()
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.clearNotifCounts()
 
         let scriptsToRefresh = [
             muteWordsWkUserScript,
+            setZoomFactorWkUserScript,
         ]
         var newUserScripts: [WKUserScript] = []
         let userContentController = webView.configuration.userContentController
@@ -217,6 +229,15 @@ class ViewController: NSViewController {
                 )
             )
         }
+
+        let zoomFactor = appDelegate.getZoomFactor()
+        newUserScripts.append(
+            JsLoader.loadWKUserScript(
+                "Scripts/set_zoom_factor",
+                ["zoom_factor": "\(zoomFactor)"]
+            )
+        )
+
 
         userContentController.removeAllUserScripts()
         for userScript in newUserScripts {
@@ -312,6 +333,40 @@ class ViewController: NSViewController {
             self.webView.window!.backgroundColor = NSColor.white
             self.webView.window!.appearance = NSAppearance(named: .aqua)
         }
+    }
+
+    func adjustAndApplyZoomFactor(_ adjustValue: Int) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        let ZOOM_FACTORS = AppDelegate.ZOOM_FACTORS
+        var zoomFactor = appDelegate.getZoomFactor()
+
+        if adjustValue != 0, var pos = ZOOM_FACTORS.firstIndex(of: zoomFactor) {
+            pos += adjustValue
+            pos = max(0, pos)
+            pos = min(pos, ZOOM_FACTORS.count - 1)
+            zoomFactor = ZOOM_FACTORS[pos]
+        } else {
+            zoomFactor = 1.0
+        }
+        appDelegate.setZoomFactor(zoomFactor)
+        self.webView.evaluateJavaScript(
+            JsLoader.loadScriptContents(
+                "Scripts/set_zoom_factor",
+                ["zoom_factor": "\(zoomFactor)"]
+            )
+        )
+    }
+
+    @IBAction func actionZoomIn(_ sender: Any?) {
+        adjustAndApplyZoomFactor(1)
+    }
+
+    @IBAction func actionZoomOut(_ sender: Any?) {
+        adjustAndApplyZoomFactor(-1)
+    }
+
+    @IBAction func actionActualSize(_ sender: Any?) {
+        adjustAndApplyZoomFactor(0)
     }
 
 }
