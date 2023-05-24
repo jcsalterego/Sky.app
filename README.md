@@ -57,6 +57,12 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 
 ## Changelog
 
+### 0.2.4-pre
+
+* Zoom support
+* Clean up "Search Posts By Newest First" loading
+* Mute Terms also apply to search results
+
 ### 0.2.3
 
 * Mute Terms: hide posts and notifications with certain words. `Advanced > Mute Terms > Edit...`
