@@ -42,14 +42,12 @@ class MuteTermsEditorViewController:
     }
 
     func loadMuteTerms() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        let appMuteTerms = appDelegate.getMuteTerms()
+        let appMuteTerms = AppDelegate.shared.getMuteTerms()
         muteTerms.append(contentsOf: appMuteTerms)
     }
 
     func saveMuteTerms() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        appDelegate.saveMuteTerms(muteTerms)
+        AppDelegate.shared.saveMuteTerms(muteTerms)
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -159,8 +157,7 @@ class MuteTermsEditorViewController:
 
     @IBAction func actionMuteTermsClose(_ sender: Any?) {
         if needsReload && refreshIfNeededCheckbox.state == .on {
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.mainViewController?.actionRefresh(nil)
+            AppDelegate.shared.mainViewController?.actionRefresh(nil)
         }
         view.window!.close()
     }

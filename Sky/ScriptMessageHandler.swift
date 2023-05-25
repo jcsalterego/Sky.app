@@ -60,16 +60,15 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     }
 
     func handleFetchListNotifications(_ doc : NSDictionary) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         if let notificationsList = doc["notifications"] as? [NSDictionary] {
             for notification in notificationsList {
                 if let isRead = notification["isRead"] as? Int,
                    let uri = notification["uri"] as? String
                 {
-                    appDelegate.setNotificationReadStatus(uri: uri, isRead: isRead)
+                    AppDelegate.shared.setNotificationReadStatus(uri: uri, isRead: isRead)
                 }
             }
-            appDelegate.refreshBadge()
+            AppDelegate.shared.refreshBadge()
         }
     }
 
@@ -110,10 +109,9 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     }
 
     func loadAccessJwt(_ message: WKScriptMessage) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         if let messageBody = message.body as? NSDictionary {
             if let accessJwt = messageBody["accessJwt"] as? String {
-                appDelegate.accessJwt = accessJwt
+                AppDelegate.shared.accessJwt = accessJwt
             }
         }
     }
@@ -124,8 +122,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 if args.count == 2 {
                     let itemKey = args[0]
                     let jsonValue = args[1]
-                    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-                    appDelegate.setLocalStorage(key: itemKey, jsonValue: jsonValue)
+                    AppDelegate.shared.setLocalStorage(key: itemKey, jsonValue: jsonValue)
                 }
             }
         }
@@ -134,8 +131,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     func incrementMuteTermsHits(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
             if let hits = messageBody["hits"] as? Int {
-                let appDelegate = NSApplication.shared.delegate as! AppDelegate
-                appDelegate.addMutedTermsHits(hits)
+                AppDelegate.shared.addMutedTermsHits(hits)
             }
         }
     }

@@ -31,6 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var localStorageMirror = [String:String]()
 
+    class var shared: AppDelegate {
+        get {
+            return NSApplication.shared.delegate as! AppDelegate
+        }
+    }
+
     func applicationDidBecomeActive(_ notification: Notification) {
         // TODO don't use firstRun
         if firstRun {
@@ -241,8 +247,7 @@ extension AppDelegate: NSMenuDelegate {
         if let lastItem = menu.item(at: menu.numberOfItems - 1) {
             let resetStatisticsTitle = "Reset Statistics"
             let resetStatistics = menu.item(withTitle: resetStatisticsTitle)!
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            let count = appDelegate.getMuteTerms().count
+            let count = AppDelegate.shared.getMuteTerms().count
             var title = ""
             if count == 0 {
                 title = "No mute terms enabled"

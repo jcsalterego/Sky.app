@@ -39,8 +39,7 @@ class ViewController: NSViewController {
     ]
 
     override func loadView() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        appDelegate.mainViewController = self
+        AppDelegate.shared.mainViewController = self
 
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
@@ -66,7 +65,7 @@ class ViewController: NSViewController {
             userContentController.addUserScript(muteWordsWkUserScript!)
         }
 
-        let orderPosts = appDelegate.getUserDefaultsOrderPosts()
+        let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
         orderPostsWkUserScript = JsLoader.loadWKUserScript(
             "Scripts/local_storage_set_item",
@@ -74,7 +73,7 @@ class ViewController: NSViewController {
         )
         userContentController.addUserScript(orderPostsWkUserScript!)
 
-        let zoomFactor = appDelegate.getZoomFactor()
+        let zoomFactor = AppDelegate.shared.getZoomFactor()
         setZoomFactorWkUserScript = JsLoader.loadWKUserScript(
             "Scripts/set_zoom_factor",
             ["zoom_factor": "\(zoomFactor)"]
@@ -208,8 +207,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        appDelegate.clearNotifCounts()
+        AppDelegate.shared.clearNotifCounts()
 
         let scriptsToRefresh = [
             muteWordsWkUserScript,
@@ -233,7 +231,7 @@ class ViewController: NSViewController {
             )
         }
 
-        let zoomFactor = appDelegate.getZoomFactor()
+        let zoomFactor = AppDelegate.shared.getZoomFactor()
         newUserScripts.append(
             JsLoader.loadWKUserScript(
                 "Scripts/set_zoom_factor",
@@ -281,8 +279,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionOpenDevConsole(_ sender: Any?) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        if let devConsoleWindowController = appDelegate.devConsoleWindowController {
+        if let devConsoleWindowController = AppDelegate.shared.devConsoleWindowController {
             devConsoleWindowController.showWindow(self)
         }
     }
@@ -293,8 +290,7 @@ class ViewController: NSViewController {
             orderPosts = !orderPosts
             menuItem.state = orderPosts ? .on : .off
             setOrderPosts(orderPosts)
-            (NSApplication.shared.delegate as! AppDelegate)
-                .setUserDefaultsOrderPosts(orderPosts)
+            AppDelegate.shared.setUserDefaultsOrderPosts(orderPosts)
         }
     }
 
@@ -315,8 +311,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionLaunchMuteTermsEditor(_ sender: Any?) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        if let muteTermsEditorWindowController = appDelegate.muteTermsEditorWindowController {
+        if let muteTermsEditorWindowController = AppDelegate.shared.muteTermsEditorWindowController {
             NSApplication.shared.runModal(for: muteTermsEditorWindowController.window!)
         }
     }
@@ -339,9 +334,8 @@ class ViewController: NSViewController {
     }
 
     func adjustAndApplyZoomFactor(_ adjustValue: Int) {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let ZOOM_FACTORS = AppDelegate.ZOOM_FACTORS
-        var zoomFactor = appDelegate.getZoomFactor()
+        var zoomFactor = AppDelegate.shared.getZoomFactor()
 
         if adjustValue != 0, var pos = ZOOM_FACTORS.firstIndex(of: zoomFactor) {
             pos += adjustValue
@@ -351,7 +345,7 @@ class ViewController: NSViewController {
         } else {
             zoomFactor = 1.0
         }
-        appDelegate.setZoomFactor(zoomFactor)
+        AppDelegate.shared.setZoomFactor(zoomFactor)
         self.webView.evaluateJavaScript(
             JsLoader.loadScriptContents(
                 "Scripts/set_zoom_factor",

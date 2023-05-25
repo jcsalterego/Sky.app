@@ -12,8 +12,7 @@ class DevConsoleViewController : NSViewController {
     var hostingView: WKWebView!
 
     override func loadView() {
-        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        appDelegate.devConsoleViewController = self
+        AppDelegate.shared.devConsoleViewController = self
 
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
