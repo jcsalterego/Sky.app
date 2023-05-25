@@ -87,6 +87,11 @@ class ViewController: NSViewController {
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
 
+        // defaults write jcsalterego.Sky webInspector -bool TRUE
+        if let webInspector = UserDefaults.standard.object(forKey: UserDefaultKeys.webInspector) as? Bool {
+            webView.configuration.preferences.setValue(webInspector, forKey: "developerExtrasEnabled")
+        }
+
         view = webView
     }
 
