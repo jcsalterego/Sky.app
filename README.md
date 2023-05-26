@@ -30,17 +30,19 @@ In Compact Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search (also `⌘-k`)
-* `⌘-3` Notifications
-* `⌘-4` Profile
+* `⌘-3` My Feeds
+* `⌘-4` Notifications
+* `⌘-5` Profile
 
 In Desktop Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search (also `⌘-k`)
-* `⌘-3` Notifications
-* `⌘-4` Moderation
-* `⌘-5` Profile
-* `⌘-6` Settings
+* `⌘-3` My Feeds
+* `⌘-4` Notifications
+* `⌘-5` Moderation
+* `⌘-6` Profile
+* `⌘-7` Settings
 
 ### Other
 
@@ -56,6 +58,10 @@ Made by [@jcsalterego.bsky.social](https://bsky.app/profile/jcsalterego.bsky.soc
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 
 ## Changelog
+
+### 0.2.5-pre
+
+* Update View Menu and navigation hotkeys
 
 ### 0.2.4
 
