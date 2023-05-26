@@ -25,9 +25,7 @@ function findByNavbarIndex(index) {
 }
 function getLoadNewButtons() {
     return filterVisible(
-        Array.from(document.querySelectorAll("div[aria-label]")).filter((e) =>
-            e.innerHTML.match(/load new/i)
-        )
+        document.querySelectorAll("div[aria-label^=\"load new\" i]")
     );
 }
 function navigate(checkLoadNew, label, index, url) {

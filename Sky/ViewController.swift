@@ -161,13 +161,25 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionViewMyFeeds(_ sender: Any?) {
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.feeds)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "My Feeds",
+                index: 2,
+                url: SkyUrls.notifications
+            )
+        )
+    }
+
     @IBAction func actionViewNotifications(_ sender: Any?) {
         let checkLoadNew = (webView.url!.absoluteString == SkyUrls.notifications)
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Notifications",
-                index: 2,
+                index: 3,
                 url: SkyUrls.notifications
             )
         )
@@ -178,7 +190,7 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: false,
                 label: "Profile",
-                index: 3,
+                index: 4,
                 url: nil
             )
         )

@@ -30,21 +30,24 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         let viewMenu = mainMenu.item(withTitle: "View")?.submenu
 
         let moderationMenuItem = viewMenu?.item(withTitle: "Moderation")
+        let myFeedsMenuItem = viewMenu?.item(withTitle: "My Feeds")
         let profileMenuItem = viewMenu?.item(withTitle: "Profile")
         let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
 
+        // COMMON: home, search, my feeds, notifications
         if desktopMode {
-            // show moderation, profile, settings
-            showMenuItem(moderationMenuItem!, commandNumber: 4)
-            showMenuItem(profileMenuItem!, commandNumber: 5)
-            showMenuItem(settingsMenuItem!, commandNumber: 6)
+            // SHOW: moderation, profile, settings
+            showMenuItem(moderationMenuItem!, commandNumber: 5)
+            showMenuItem(profileMenuItem!, commandNumber: 6)
+            showMenuItem(settingsMenuItem!, commandNumber: 7)
         } else {
             // hide moderation, settings, profile
             hideMenuItem(moderationMenuItem!)
             hideMenuItem(settingsMenuItem!)
             hideMenuItem(profileMenuItem!)
-            // show settings
-            showMenuItem(profileMenuItem!, commandNumber: 4)
+
+            // SHOW: profile
+            showMenuItem(profileMenuItem!, commandNumber: 5)
         }
     }
 
