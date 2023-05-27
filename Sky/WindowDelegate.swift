@@ -30,7 +30,6 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         let viewMenu = mainMenu.item(withTitle: "View")?.submenu
 
         let moderationMenuItem = viewMenu?.item(withTitle: "Moderation")
-        let myFeedsMenuItem = viewMenu?.item(withTitle: "My Feeds")
         let profileMenuItem = viewMenu?.item(withTitle: "Profile")
         let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
 
