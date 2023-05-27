@@ -19,6 +19,7 @@
 		0499FB832A1C0D79009226EE /* MuteTermsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB822A1C0D79009226EE /* MuteTermsWindowController.swift */; };
 		0499FB852A1C4007009226EE /* MuteTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB842A1C4007009226EE /* MuteTerm.swift */; };
 		0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB862A1C5A89009226EE /* UserDefaultKeys.swift */; };
+		04B938922A22399A0023838B /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 04B938912A22399A0023838B /* Sparkle */; };
 		04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */; };
 		04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166572A1D01D6004B459A /* DevConsoleViewController.swift */; };
 		04C1665E2A1D0230004B459A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C1665C2A1D0205004B459A /* index.html */; };
@@ -88,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E847F721D99DEE009D1B0F /* WebKit.framework in Frameworks */,
+				04B938922A22399A0023838B /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +218,9 @@
 			dependencies = (
 			);
 			name = Sky;
+			packageProductDependencies = (
+				04B938912A22399A0023838B /* Sparkle */,
+			);
 			productName = Sky;
 			productReference = 04E847C621D99CE0009D1B0F /* Sky.app */;
 			productType = "com.apple.product-type.application";
@@ -292,6 +297,9 @@
 				Base,
 			);
 			mainGroup = 04E847BD21D99CE0009D1B0F;
+			packageReferences = (
+				04B938902A22399A0023838B /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = 04E847C721D99CE0009D1B0F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -525,9 +533,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sky/Sky.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = A7B28PS5HF;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Sky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,9 +556,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sky/Sky.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = A7B28PS5HF;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Sky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -686,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04B938902A22399A0023838B /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04B938912A22399A0023838B /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04B938902A22399A0023838B /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04E847BE21D99CE0009D1B0F /* Project object */;
 }
