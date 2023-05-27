@@ -57,9 +57,13 @@ Made by [@jcsalterego.bsky.social](https://bsky.app/profile/jcsalterego.bsky.soc
 
 App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine Savarese.
 
+Check for Updates powered by [Sparkle](https://sparkle-project.org).
+
 ## Changelog
 
-### 0.2.6-pre
+### 0.3.0-pre
+
+* `Check for Updates...` available.
 
 ### 0.2.5
 
