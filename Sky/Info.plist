@@ -37,5 +37,9 @@
 	<string>NSApplication</string>
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
+	<key>SUFeedURL</key>
+	<string>https://jcsalterego.github.io/Sky.app/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>ysi04pOEexHw+CUwEwmlg35q6m2y+g/y2c7gto4/Mno=</string>
 </dict>
 </plist>
