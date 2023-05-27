@@ -61,7 +61,7 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
-### 0.3.0-pre
+### 0.3.0
 
 * `Check for Updates...` available.
 
