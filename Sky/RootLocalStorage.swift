@@ -37,7 +37,10 @@ struct RootLocalStorage: Decodable {
     }
     var shell: Shell
 
-    // preferences
+    struct Preferences: Decodable {
+        var savedFeeds: [String]?
+    }
+    var preferences: Preferences
     // invitedUsers
     // mutedThreads
 }

@@ -29,6 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var muteTermsEditorWindowController : NSWindowController?
     var muteTermsEditorViewController : MuteTermsEditorViewController?
 
+    var jumpbarWindowController : NSWindowController?
+    var jumpbarViewController : JumpbarViewController?
+
     var localStorageMirror = [String:String]()
 
     class var shared: AppDelegate {
@@ -58,6 +61,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let storyboard = mainWindow.windowController?.storyboard {
                     muteTermsEditorWindowController = storyboard.instantiateController(
                         withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController
+                } else {
+                    NSLog("fail to load storyboard")
+                }
+
+                if let storyboard = mainWindow.windowController?.storyboard {
+                    jumpbarWindowController = storyboard.instantiateController(
+                        withIdentifier: "JumpbarWindowController") as? JumpbarWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }

@@ -134,7 +134,7 @@ class ViewController: NSViewController {
             event.modifierFlags.contains(.command)
             && event.keyCode == Keycode.k
         ) {
-            actionViewSearch(nil)
+            actionLaunchJumpbar(nil)
         }
     }
 
@@ -260,6 +260,31 @@ class ViewController: NSViewController {
         webView.reload()
     }
 
+    func goToFeed(_ atURLString: String) {
+        NSLog("urlString = \(atURLString)")
+        // at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/hot-classic
+        let words = atURLString
+            .replacingOccurrences(of: "at://", with: "")
+            .split(separator: "/")
+        if words.count == 3 {
+            let actor = words[0]
+            let collection = words[1]
+            let rkey = words[2]
+            if actor.starts(with: "did:")
+                && collection == "app.bsky.feed.generator"
+            {
+                let url = getFeedURL(actor: "\(actor)", rkey: "\(rkey)")
+                let myRequest = URLRequest(url: url!)
+                webView.load(myRequest)
+            }
+        }
+    }
+
+    func getFeedURL(actor: String, rkey: String) -> URL? {
+        let urlString = "https://bsky.app/profile/\(actor)/feed/\(rkey)"
+        return URL(string: urlString)
+    }
+
     @IBAction func actionOpenInBrowser(_ sender: Any?) {
         let urlString = webView.url!.absoluteString
         switch urlString {
@@ -325,6 +350,12 @@ class ViewController: NSViewController {
     @IBAction func actionLaunchMuteTermsEditor(_ sender: Any?) {
         if let muteTermsEditorWindowController = AppDelegate.shared.muteTermsEditorWindowController {
             NSApplication.shared.runModal(for: muteTermsEditorWindowController.window!)
+        }
+    }
+
+    @IBAction func actionLaunchJumpbar(_ sender: Any?) {
+        if let jumpbarWindowController = AppDelegate.shared.jumpbarWindowController {
+            NSApplication.shared.runModal(for: jumpbarWindowController.window!)
         }
     }
 

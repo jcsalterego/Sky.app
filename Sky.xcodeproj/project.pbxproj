@@ -31,6 +31,9 @@
 		04E847E821D99CE1009D1B0F /* SkyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847E721D99CE1009D1B0F /* SkyUITests.swift */; };
 		04E847F721D99DEE009D1B0F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E847F621D99DEE009D1B0F /* WebKit.framework */; };
 		04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */; };
+		04FF78802A2A7572004569D7 /* JumpbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF787E2A2A7463004569D7 /* JumpbarViewController.swift */; };
+		04FF78812A2A7574004569D7 /* JumpbarWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF787F2A2A7477004569D7 /* JumpbarWindowController.swift */; };
+		04FF78832A2A8CBD004569D7 /* JumpbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF78822A2A8CBD004569D7 /* JumpbarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		04E847E921D99CE1009D1B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E847F621D99DEE009D1B0F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		04E8481021DA8A5E009D1B0F /* WebKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitDelegate.swift; sourceTree = "<group>"; };
+		04FF787E2A2A7463004569D7 /* JumpbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarViewController.swift; sourceTree = "<group>"; };
+		04FF787F2A2A7477004569D7 /* JumpbarWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarWindowController.swift; sourceTree = "<group>"; };
+		04FF78822A2A8CBD004569D7 /* JumpbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				04C166552A1D01CF004B459A /* DevConsole */,
+				04FF787D2A2A7415004569D7 /* Jumpbar */,
 				04C166542A1D019A004B459A /* MuteTerms */,
 				043A0F1729A5330E00B06D18 /* Scripts */,
 				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
@@ -200,6 +207,16 @@
 				04E847F621D99DEE009D1B0F /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04FF787D2A2A7415004569D7 /* Jumpbar */ = {
+			isa = PBXGroup;
+			children = (
+				04FF78822A2A8CBD004569D7 /* JumpbarItem.swift */,
+				04FF787E2A2A7463004569D7 /* JumpbarViewController.swift */,
+				04FF787F2A2A7477004569D7 /* JumpbarWindowController.swift */,
+			);
+			path = Jumpbar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +367,12 @@
 				04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */,
 				045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */,
 				0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */,
+				04FF78802A2A7572004569D7 /* JumpbarViewController.swift in Sources */,
 				0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */,
 				04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */,
+				04FF78812A2A7574004569D7 /* JumpbarWindowController.swift in Sources */,
 				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
+				04FF78832A2A8CBD004569D7 /* JumpbarItem.swift in Sources */,
 				0499FB832A1C0D79009226EE /* MuteTermsWindowController.swift in Sources */,
 				048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */,
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
