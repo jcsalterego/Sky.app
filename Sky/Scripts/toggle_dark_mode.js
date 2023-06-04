@@ -12,10 +12,19 @@ function toggleDarkMode() {
         if (answer) {
             let json = localStorage.root;
             let doc = JSON.parse(json);
-            doc.shell.darkMode = !doc.shell.darkMode;
-            let jsonReturn = JSON.stringify(doc, null, 0);
-            localStorage.setItem("root", jsonReturn);
-            window.webkit.messageHandlers.windowReload.postMessage({});
+            let changed = false;
+            if (doc.shell.colorMode === "light") {
+                doc.shell.colorMode = "dark";
+                changed = true;
+            } else if (doc.shell.colorMode === "dark") {
+                doc.shell.colorMode = "light";
+                changed = true;
+            }
+            if (changed) {
+                let jsonReturn = JSON.stringify(doc, null, 0);
+                localStorage.setItem("root", jsonReturn);
+                window.webkit.messageHandlers.windowReload.postMessage({});
+            }
         }
     } else {
         buttons[0].click();
