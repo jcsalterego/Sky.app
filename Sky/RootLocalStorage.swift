@@ -33,7 +33,7 @@ struct RootLocalStorage: Decodable {
     var me: Me
 
     struct Shell: Decodable {
-        var darkMode: Bool
+        var colorMode: String
     }
     var shell: Shell
 
