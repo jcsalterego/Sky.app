@@ -29,7 +29,7 @@ The current release is [**0.3.0**](https://github.com/jcsalterego/Sky.app/releas
 In Compact Mode:
 
 * `⌘-1` Home
-* `⌘-2` Search (also `⌘-k`)
+* `⌘-2` Search
 * `⌘-3` My Feeds
 * `⌘-4` Notifications
 * `⌘-5` Profile
@@ -37,7 +37,7 @@ In Compact Mode:
 In Desktop Mode:
 
 * `⌘-1` Home
-* `⌘-2` Search (also `⌘-k`)
+* `⌘-2` Search
 * `⌘-3` My Feeds
 * `⌘-4` Notifications
 * `⌘-5` Moderation
@@ -46,6 +46,7 @@ In Desktop Mode:
 
 ### Other
 
+* `⌘-K` Jump To...
 * `⌘-T` Open in Browser
 * `⌘-⇧-D` Toggle Dark Mode
 * `⌘-⇧-C` Copy Share URL
@@ -60,6 +61,11 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
+
+### 0.3.1
+
+* `Jump To...` allows for quick access to various sections
+* FIX: Dark Mode toggle when not in System mode
 
 ### 0.3.0
 
