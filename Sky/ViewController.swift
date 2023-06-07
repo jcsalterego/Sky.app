@@ -374,6 +374,20 @@ class ViewController: NSViewController {
             menuItem.state = hideHomeReplies ? .on : .off
             setHideHomeReplies(hideHomeReplies)
             AppDelegate.shared.setUserDefaultsHideHomeReplies(hideHomeReplies)
+
+            let alert = NSAlert()
+            alert.messageText = "Refresh Timeline?"
+            if hideHomeReplies {
+                alert.informativeText = "Refresh the timeline to hide replies?\nOr you can go to File > Refresh later on."
+            } else {
+                alert.informativeText = "Refresh the timeline to include replies?\nOr you can go to File > Refresh later on."
+            }
+            alert.addButton(withTitle: "Yes")
+            alert.addButton(withTitle: "No")
+            let action = alert.runModal()
+            if action == .alertFirstButtonReturn {
+                AppDelegate.shared.mainViewController?.webView.reload()
+            }
         }
     }
 
