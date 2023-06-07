@@ -386,7 +386,7 @@ class ViewController: NSViewController {
             alert.addButton(withTitle: "No")
             let action = alert.runModal()
             if action == .alertFirstButtonReturn {
-                AppDelegate.shared.mainViewController?.webView.reload()
+                AppDelegate.shared.mainViewController?.actionRefresh(nil)
             }
         }
     }
