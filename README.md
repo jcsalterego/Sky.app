@@ -5,7 +5,7 @@ keyboard shortcuts, Dark Mode Sync, and notification badges.
 
 _If you're looking for the official Bluesky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.3.2**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.3.3**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
