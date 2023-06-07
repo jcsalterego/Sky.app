@@ -62,11 +62,11 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
-### 0.3.2
+### 0.3.3
 
 * `Advanced > Hide Replies in Following` hides replies in your Home Following timeline.
 
-### 0.3.2
+### 0.3.1
 
 * `Jump To...` allows for quick access to various sections
 * FIX: Dark Mode toggle when not in System mode
