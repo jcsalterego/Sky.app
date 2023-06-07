@@ -4,6 +4,7 @@
 //
 
 enum UserDefaultKeys {
+    static let hideHomeReplies = "hideHomeReplies"
     static let muteTerms = "muteTerms"
     static let orderPosts = "orderPosts"
     static let webInspector = "webInspector"

@@ -146,3 +146,8 @@ export function filterTimelineWithStats(timeline, filters) {
         hits: stats.hits,
     };
 }
+
+export function removeHomeReplies(timeline) {
+    timeline.feed = timeline.feed.filter(item => item["reply"] === undefined);
+    return timeline;
+}

@@ -24,6 +24,7 @@ async function overrideGet(...args) {
 
     let isSearch = url.indexOf("https://search.bsky.social/search/posts") === 0;
     let featureOrderPosts = localStorage.getItem("featureOrderPosts") === "yes";
+    let featureHideHomeReplies = localStorage.getItem("featureHideHomeReplies") === "yes";
 
     if (isSearch && featureOrderPosts) {
         responseData.sort((post2, post1) =>
@@ -45,6 +46,13 @@ async function overrideGet(...args) {
                 localStorage.getItem("muteTerms")
             );
         }
+    }
+
+    if (url.indexOf("/xrpc/app.bsky.feed.getTimeline") > 0 &&
+        featureHideHomeReplies
+    ) {
+        responseData = removeHomeReplies(responseData);
+        altered = true;
     }
 
     if (

@@ -22,6 +22,7 @@ class ViewController: NSViewController {
 
     var muteWordsWkUserScript: WKUserScript?
     var orderPostsWkUserScript: WKUserScript?
+    var hideHomeRepliesWkUserScript: WKUserScript?
     var setZoomFactorWkUserScript: WKUserScript?
 
     var outerScrollbarsEnabled = false
@@ -72,6 +73,14 @@ class ViewController: NSViewController {
             ["key": LocalStorageKeys.orderPosts, "value": orderPostsValue]
         )
         userContentController.addUserScript(orderPostsWkUserScript!)
+
+        let hideHomeReplies = AppDelegate.shared.getUserDefaultsHideHomeReplies()
+        let hideHomeRepliesValue = hideHomeReplies ? "yes" : "no"
+        hideHomeRepliesWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.hideHomeReplies, "value": hideHomeRepliesValue]
+        )
+        userContentController.addUserScript(hideHomeRepliesWkUserScript!)
 
         let zoomFactor = AppDelegate.shared.getZoomFactor()
         setZoomFactorWkUserScript = JsLoader.loadWKUserScript(
@@ -243,6 +252,24 @@ class ViewController: NSViewController {
             )
         }
 
+        let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
+        let orderPostsValue = orderPosts ? "yes" : "no"
+        newUserScripts.append(
+            JsLoader.loadWKUserScript(
+                "Scripts/local_storage_set_item",
+                ["key": LocalStorageKeys.orderPosts, "value": orderPostsValue]
+            )
+        )
+
+        let hideHomeReplies = AppDelegate.shared.getUserDefaultsHideHomeReplies()
+        let hideHomeRepliesValue = hideHomeReplies ? "yes" : "no"
+        newUserScripts.append(
+            JsLoader.loadWKUserScript(
+                "Scripts/local_storage_set_item",
+                ["key": LocalStorageKeys.hideHomeReplies, "value": hideHomeRepliesValue]
+            )
+        )
+
         let zoomFactor = AppDelegate.shared.getZoomFactor()
         newUserScripts.append(
             JsLoader.loadWKUserScript(
@@ -250,7 +277,6 @@ class ViewController: NSViewController {
                 ["zoom_factor": "\(zoomFactor)"]
             )
         )
-
 
         userContentController.removeAllUserScripts()
         for userScript in newUserScripts {
@@ -337,6 +363,26 @@ class ViewController: NSViewController {
             Scripts.localStorageSetItem(
                 key: LocalStorageKeys.orderPosts,
                 value: orderPostsValue
+            )
+        )
+    }
+
+    @IBAction func actionHideHomeReplies(_ sender: Any?) {
+        if let menuItem = sender as? NSMenuItem {
+            var hideHomeReplies = menuItem.state == .on
+            hideHomeReplies = !hideHomeReplies
+            menuItem.state = hideHomeReplies ? .on : .off
+            setHideHomeReplies(hideHomeReplies)
+            AppDelegate.shared.setUserDefaultsHideHomeReplies(hideHomeReplies)
+        }
+    }
+
+    func setHideHomeReplies(_ hideHomeReplies: Bool) {
+        let hideHomeRepliesValue = hideHomeReplies ? "yes" : "no"
+        self.webView.evaluateJavaScript(
+            Scripts.localStorageSetItem(
+                key: LocalStorageKeys.hideHomeReplies,
+                value: hideHomeRepliesValue
             )
         )
     }

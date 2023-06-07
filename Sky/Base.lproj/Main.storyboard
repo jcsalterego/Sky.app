@@ -415,13 +415,20 @@
                                                 </connections>
                                             </menu>
                                         </menuItem>
-                                        <menuItem title="Search Posts by Newest First" id="HFE-fV-jHf">
+                                        <menuItem isSeparatorItem="YES" id="NeL-Ie-Lgk"/>
+                                        <menuItem title="Hide Replies in Following" id="HFE-fV-jHf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="actionOrderPosts:" target="Ady-hI-5gd" id="Clc-2x-R8m"/>
+                                                <action selector="actionHideHomeReplies:" target="Ady-hI-5gd" id="Ybj-pa-7SB"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="NeL-Ie-Lgk"/>
+                                        <menuItem title="Search Posts by Newest First" id="mmb-tW-RL5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionOrderPosts:" target="Ady-hI-5gd" id="bCj-nc-cGW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="T08-8M-KC2"/>
                                         <menuItem title="Developer Console..." keyEquivalent="i" id="ISh-6t-qzI">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>

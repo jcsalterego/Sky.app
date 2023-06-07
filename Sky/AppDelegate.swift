@@ -76,11 +76,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let menuItem = NSApplication.shared.mainMenu?
-            .item(withTitle: "Advanced")?.submenu?
+        let advancedSubmenu = NSApplication.shared.mainMenu?
+            .item(withTitle: "Advanced")?.submenu
+
+        let orderPostsMenuItem = advancedSubmenu?
             .item(withTitle: "Search Posts by Newest First")
         let orderPosts = getUserDefaultsOrderPosts()
-        menuItem?.state = orderPosts ? .on : .off
+        orderPostsMenuItem?.state = orderPosts ? .on : .off
+
+        let hideHomePostsMenuItem = advancedSubmenu?
+            .item(withTitle: "Hide Replies in Following")
+        let hideHomeReplies = getUserDefaultsHideHomeReplies()
+        hideHomePostsMenuItem?.state = hideHomeReplies ? .on : .off
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -129,6 +136,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.set(
             orderPosts,
             forKey: UserDefaultKeys.orderPosts
+        )
+    }
+
+    func getUserDefaultsHideHomeReplies() -> Bool {
+        let defaults = UserDefaults.standard
+        if let hideHomeReplies = defaults.object(forKey: UserDefaultKeys.hideHomeReplies) as? Bool {
+            return hideHomeReplies
+        } else {
+            return false
+        }
+    }
+
+    func setUserDefaultsHideHomeReplies(_ hideHomeReplies: Bool) {
+        UserDefaults.standard.set(
+            hideHomeReplies,
+            forKey: UserDefaultKeys.hideHomeReplies
         )
     }
 
