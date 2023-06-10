@@ -62,6 +62,10 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
+### 0.3.4-pre
+
+* FIX: badge notification counts reflect muted threads
+
 ### 0.3.3
 
 * `Advanced > Hide Replies in Following` hides replies in your Home Following timeline.
