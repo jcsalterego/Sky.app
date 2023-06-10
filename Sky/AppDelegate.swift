@@ -180,6 +180,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return accessToken
     }
 
+    func getMutedThreadUris() -> [String] {
+        var mutedThreadsUris: [String] = []
+        if let rootJsonData = localStorageMirror["root"]?.data(using:.utf8) {
+            let rootLocalStorage = try? JSONDecoder().decode(
+                RootLocalStorage.self,
+                from: rootJsonData
+            )
+            if let mutedThreads = rootLocalStorage?.mutedThreads {
+                mutedThreadsUris.append(contentsOf: mutedThreads.uris)
+            }
+        }
+        return mutedThreadsUris
+    }
+
     func getZoomFactor() -> Double {
         var zoomFactor = 1.0
         if let zoomFactorPref = UserDefaults.standard.object(

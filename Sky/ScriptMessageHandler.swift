@@ -61,7 +61,20 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
 
     func handleFetchListNotifications(_ doc : NSDictionary) {
         if let notificationsList = doc["notifications"] as? [NSDictionary] {
+            var mutedThreadUris: [String] = []
+            if notificationsList.count > 0 {
+                mutedThreadUris = AppDelegate.shared.getMutedThreadUris()
+            }
             for notification in notificationsList {
+                if mutedThreadUris.count > 0,
+                   let record = notification["record"] as? NSDictionary,
+                   let recordReply = record["reply"] as? NSDictionary,
+                   let recordReplyRoot = recordReply["root"] as? NSDictionary,
+                   let recordReplyRootUri = recordReplyRoot["uri"] as? String,
+                   mutedThreadUris.contains(recordReplyRootUri)
+                {
+                    continue
+                }
                 if let isRead = notification["isRead"] as? Int,
                    let uri = notification["uri"] as? String
                 {

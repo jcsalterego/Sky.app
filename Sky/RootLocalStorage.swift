@@ -32,6 +32,11 @@ struct RootLocalStorage: Decodable {
     }
     var me: Me
 
+    struct MutedThreads: Decodable {
+        var uris: [String]
+    }
+    var mutedThreads: MutedThreads
+
     struct Shell: Decodable {
         var colorMode: String
     }
