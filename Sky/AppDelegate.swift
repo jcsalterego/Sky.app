@@ -52,22 +52,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 mainWindow.backgroundColor = NSColor.white
 
                 if let storyboard = mainWindow.windowController?.storyboard {
+
                     devConsoleWindowController = storyboard.instantiateController(
                         withIdentifier: "DevConsoleWindowController") as? NSWindowController
-                } else {
-                    NSLog("fail to load storyboard")
-                }
 
-                if let storyboard = mainWindow.windowController?.storyboard {
                     muteTermsEditorWindowController = storyboard.instantiateController(
                         withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController
-                } else {
-                    NSLog("fail to load storyboard")
-                }
 
-                if let storyboard = mainWindow.windowController?.storyboard {
                     jumpbarWindowController = storyboard.instantiateController(
                         withIdentifier: "JumpbarWindowController") as? JumpbarWindowController
+
                 } else {
                     NSLog("fail to load storyboard")
                 }
