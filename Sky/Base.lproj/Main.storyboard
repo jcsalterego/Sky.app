@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -836,6 +837,56 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1617" y="462.5"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="Y0d-e7-M4x">
+            <objects>
+                <windowController storyboardIdentifier="TranslationsWindowController" id="kDd-vJ-cSk" customClass="TranslationsWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="BvX-de-r7K">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="240"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+                        <view key="contentView" id="dVQ-Hf-aAG">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="kDd-vJ-cSk" id="j5D-Z9-ybM"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="lHJ-Xq-1xl" kind="relationship" relationship="window.shadowedContentViewController" id="Sjz-cW-qwj"/>
+                    </connections>
+                </windowController>
+                <customObject id="hDo-4n-uLq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1320" y="-1296"/>
+        </scene>
+        <!--Translations View Controller-->
+        <scene sceneID="KNK-x8-Qde">
+            <objects>
+                <viewController id="lHJ-Xq-1xl" customClass="TranslationsViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="52X-v0-22l">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="720"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbh-sD-CzW">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="720"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Tbh-sD-CzW" id="CVL-aW-3VW"/>
+                    </connections>
+                </viewController>
+                <customObject id="EMn-Ou-jOT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1320" y="-590"/>
         </scene>
     </scenes>
 </document>

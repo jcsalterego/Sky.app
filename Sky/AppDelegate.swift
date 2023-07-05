@@ -32,12 +32,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var jumpbarWindowController : NSWindowController?
     var jumpbarViewController : JumpbarViewController?
 
+    var translationsWindowController : TranslationsWindowController?
+    var translationsViewController : TranslationsViewController?
+
     var localStorageMirror = [String:String]()
 
     class var shared: AppDelegate {
         get {
             return NSApplication.shared.delegate as! AppDelegate
         }
+    }
+
+    func openURL(_ urlString: String) {
+        let url = URL.init(string: urlString)!
+        if url.host == "translate.google.com" {
+            if let windowController = translationsWindowController {
+                windowController.openURL(url)
+                NSApplication.shared.runModal(for: windowController.window!)
+                return
+            }
+        }
+        NSWorkspace.shared.open(url)
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -61,6 +76,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                     jumpbarWindowController = storyboard.instantiateController(
                         withIdentifier: "JumpbarWindowController") as? JumpbarWindowController
+
+                    translationsWindowController = storyboard.instantiateController(
+                        withIdentifier: "TranslationsWindowController") as? TranslationsWindowController
 
                 } else {
                     NSLog("fail to load storyboard")

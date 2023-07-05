@@ -37,8 +37,7 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
     func windowOpen(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
             if let url = messageBody["0"] as? String {
-                NSLog("windowOpen \(url)")
-                NSWorkspace.shared.open(URL.init(string: url)!)
+                AppDelegate.shared.openURL(url)
             }
         }
     }
