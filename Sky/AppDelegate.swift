@@ -45,12 +45,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func openURL(_ urlString: String) {
         let url = URL.init(string: urlString)!
-        if url.host == "translate.google.com" {
-            if let windowController = translationsWindowController {
-                windowController.openURL(url)
-                NSApplication.shared.runModal(for: windowController.window!)
-                return
-            }
+        if url.host == "translate.google.com",
+            AppDelegate.shared.getUserDefaultsUseTranslationsWindow(),
+            let windowController = translationsWindowController
+        {
+            windowController.openURL(url)
+            NSApplication.shared.runModal(for: windowController.window!)
+            return
         }
         NSWorkspace.shared.open(url)
     }
@@ -100,6 +101,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .item(withTitle: "Hide Replies in Following")
         let hideHomeReplies = getUserDefaultsHideHomeReplies()
         hideHomePostsMenuItem?.state = hideHomeReplies ? .on : .off
+
+        let useTranslationsWindowMenuItem = advancedSubmenu?
+            .item(withTitle: "Use Translations Window")
+        let useTranslationsWindow = getUserDefaultsUseTranslationsWindow()
+        useTranslationsWindowMenuItem?.state = hideHomeReplies ? .on : .off
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -164,6 +170,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.set(
             hideHomeReplies,
             forKey: UserDefaultKeys.hideHomeReplies
+        )
+    }
+
+    func getUserDefaultsUseTranslationsWindow() -> Bool {
+        let defaults = UserDefaults.standard
+        if let showTranslationsInModal = defaults.object(forKey: UserDefaultKeys.useTranslationsWindow) as? Bool {
+            return showTranslationsInModal
+        } else {
+            return false
+        }
+    }
+
+    func setUserDefaultsUseTranslationsWindow(_ showTranslationsInModal: Bool) {
+        UserDefaults.standard.set(
+            showTranslationsInModal,
+            forKey: UserDefaultKeys.useTranslationsWindow
         )
     }
 

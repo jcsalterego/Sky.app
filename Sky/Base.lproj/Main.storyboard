@@ -429,6 +429,12 @@
                                                 <action selector="actionOrderPosts:" target="Ady-hI-5gd" id="bCj-nc-cGW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Use Translations Window" id="8k5-bm-eRL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionUseTranslationsWindow:" target="Ady-hI-5gd" id="gcC-Uz-oqc"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="T08-8M-KC2"/>
                                         <menuItem title="Developer Console..." keyEquivalent="i" id="ISh-6t-qzI">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>

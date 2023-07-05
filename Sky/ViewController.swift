@@ -391,6 +391,15 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func actionUseTranslationsWindow(_ sender: Any?) {
+        if let menuItem = sender as? NSMenuItem {
+            var useTranslationsWindow = menuItem.state == .on
+            useTranslationsWindow = !useTranslationsWindow
+            menuItem.state = useTranslationsWindow ? .on : .off
+            AppDelegate.shared.setUserDefaultsUseTranslationsWindow(useTranslationsWindow)
+        }
+    }
+
     func setHideHomeReplies(_ hideHomeReplies: Bool) {
         let hideHomeRepliesValue = hideHomeReplies ? "yes" : "no"
         self.webView.evaluateJavaScript(
