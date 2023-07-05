@@ -5,7 +5,7 @@ keyboard shortcuts, Dark Mode Sync, and notification badges.
 
 _If you're looking for the official Bluesky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.3.3**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.3.4**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
@@ -62,8 +62,9 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
-### 0.3.4-pre
+### 0.3.4
 
+* `Advanced > Translations in Window` opens up translations in its own window.
 * FIX: badge notification counts reflect muted threads
 
 ### 0.3.3
