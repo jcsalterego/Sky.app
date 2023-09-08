@@ -10,7 +10,7 @@ function findByNavbarIndex(index) {
     }
     let found = false;
     let elems = document.querySelectorAll(
-        "div[style*='position: absolute'][style*='bottom: 0']"
+        "div[style*='transform: translateY(0px)']"
     );
     for (let elem of elems) {
         let children = elem.children;
