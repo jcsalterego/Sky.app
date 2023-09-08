@@ -329,7 +329,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNewPost(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("Compose Post"))
+        self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
