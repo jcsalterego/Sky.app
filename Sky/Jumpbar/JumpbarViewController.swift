@@ -69,8 +69,8 @@ class JumpbarViewController:
             case .search:
                 mainViewController?.actionViewSearch(nil)
                 break
-            case .myFeeds:
-                mainViewController?.actionViewMyFeeds(nil)
+            case .feeds:
+                mainViewController?.actionViewFeeds(nil)
                 break
             case .feed:
                 mainViewController?.goToFeed(item.value)
@@ -132,7 +132,7 @@ class JumpbarViewController:
         jumpbarItems.append(JumpbarItem(
             label: "Search", value: "search", destination: .search))
         jumpbarItems.append(JumpbarItem(
-            label: "My Feeds", value: "my feeds", destination: .myFeeds))
+            label: "Feeds", value: "feeds", destination: .feeds))
 
         let localStorageMirror = AppDelegate.shared.localStorageMirror
         if let rootJsonData = localStorageMirror["root"]?.data(using:.utf8) {

@@ -169,14 +169,14 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionViewMyFeeds(_ sender: Any?) {
+    @IBAction func actionViewFeeds(_ sender: Any?) {
         let checkLoadNew = (webView.url!.absoluteString == SkyUrls.feeds)
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
-                label: "My Feeds",
+                label: "Feeds",
                 index: 2,
-                url: SkyUrls.notifications
+                url: SkyUrls.feeds
             )
         )
     }

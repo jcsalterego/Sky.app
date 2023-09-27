@@ -33,7 +33,7 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         let profileMenuItem = viewMenu?.item(withTitle: "Profile")
         let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
 
-        // COMMON: home, search, my feeds, notifications
+        // COMMON: home, search, feeds, notifications
         if desktopMode {
             // SHOW: moderation, profile, settings
             showMenuItem(moderationMenuItem!, commandNumber: 5)

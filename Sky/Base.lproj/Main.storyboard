@@ -324,9 +324,9 @@
                                                 <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="My Feeds" keyEquivalent="3" id="ut9-B8-PyY" userLabel="My Feeds">
+                                        <menuItem title="Feeds" keyEquivalent="3" id="ut9-B8-PyY" userLabel="Feeds">
                                             <connections>
-                                                <action selector="actionViewMyFeeds:" target="Ady-hI-5gd" id="0Y3-cb-mgg"/>
+                                                <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="0Y3-cb-mgg"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Notifications" keyEquivalent="4" id="mfB-kZ-eV6" userLabel="Notifications">

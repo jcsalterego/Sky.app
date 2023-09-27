@@ -6,7 +6,7 @@
 enum JumpbarDestination: Decodable, Encodable {
     case home
     case search
-    case myFeeds
+    case feeds
     case notifications
     case moderation
     case profile
