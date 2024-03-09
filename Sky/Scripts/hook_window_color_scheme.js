@@ -27,16 +27,6 @@ function setColorScheme(darkMode) {
     elems = Array.from(document.querySelectorAll("div")).filter((div) => {
         return div.scrollHeight > window.innerHeight;
     });
-    for (let elem of elems) {
-        elem.style.overflow = "hidden";
-        window.setTimeout(() => {
-            elem.style.overflow = "auto";
-        }, 10);
-    }
-    document.body.style.overflow = "auto";
-    window.setTimeout(() => {
-        document.body.style.overflow = "hidden";
-    }, 10);
 }
 
 function setColorSchemeChange() {

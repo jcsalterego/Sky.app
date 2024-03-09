@@ -25,13 +25,10 @@ class ViewController: NSViewController {
     var hideHomeRepliesWkUserScript: WKUserScript?
     var setZoomFactorWkUserScript: WKUserScript?
 
-    var outerScrollbarsEnabled = false
-
     let userScripts = [
         "hook_ctrl_tab",
         "hook_fetch",
         "hook_history_state",
-        "hook_initial_disable_scrollbars",
         "hook_local_storage",
         "hook_page_up_down",
         "hook_window_color_scheme",
@@ -109,23 +106,6 @@ class ViewController: NSViewController {
         change: [NSKeyValueChangeKey : Any]?,
         context: UnsafeMutableRawPointer?
     ) {
-        if let url = change?[NSKeyValueChangeKey.newKey] as? NSURL {
-            // Currently the only section that should have
-            // outer scrollbars enabled is /search.
-            // We compare with outerScrollbarsEnabled to prevent
-            // running JS unless we have to.
-            let shouldHaveOuterScrollbars = url.path!.contains("/search")
-            if shouldHaveOuterScrollbars != outerScrollbarsEnabled {
-                // change state
-                self.webView.evaluateJavaScript(
-                    JsLoader.loadScriptContents(
-                        "Scripts/toggle_outer_scrollbars",
-                        ["enabled": String(shouldHaveOuterScrollbars)]
-                    )
-                )
-                outerScrollbarsEnabled = shouldHaveOuterScrollbars
-            }
-        }
     }
 
     override func viewDidLoad() {
