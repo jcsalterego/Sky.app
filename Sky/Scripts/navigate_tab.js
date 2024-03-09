@@ -44,7 +44,7 @@ function navigateHomeTabs(direction) {
         return;
     }
 
-    navigateTabElems(tabElems, 1, direction);
+    navigateTabElems(tabElems, 2, direction);
 }
 
 function navigateProfileTabs(direction) {
@@ -95,7 +95,7 @@ function navigateSearchTabs(direction) {
         return;
     }
 
-    navigateTabElems(tabElems, 1, direction);
+    navigateTabElems(tabElems, 2, direction);
 }
 
 function navigateTabElems(tabElems, descendentCount, direction) {
@@ -104,8 +104,7 @@ function navigateTabElems(tabElems, descendentCount, direction) {
     for (let tabElem of tabElems) {
         let child = getDescendent(tabElem, descendentCount);
         if (
-            child.style.color === "rgb(0, 0, 0)" ||
-            child.style.color === "rgb(255, 255, 255)"
+            child.parentElement.style.borderBottomColor !== ""
         ) {
             selected = idx;
             break;
