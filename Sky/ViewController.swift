@@ -161,6 +161,18 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionViewLists(_ sender: Any?) {
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.lists)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "Lists",
+                index: -1,
+                url: SkyUrls.lists
+            )
+        )
+    }
+
     @IBAction func actionViewNotifications(_ sender: Any?) {
         let checkLoadNew = (webView.url!.absoluteString == SkyUrls.notifications)
         self.webView.evaluateJavaScript(

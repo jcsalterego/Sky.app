@@ -29,6 +29,7 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         let mainMenu = NSApplication.shared.mainMenu!
         let viewMenu = mainMenu.item(withTitle: "View")?.submenu
 
+        let listsMenuItem = viewMenu?.item(withTitle: "Lists")
         let moderationMenuItem = viewMenu?.item(withTitle: "Moderation")
         let profileMenuItem = viewMenu?.item(withTitle: "Profile")
         let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
@@ -36,11 +37,13 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         // COMMON: home, search, feeds, notifications
         if desktopMode {
             // SHOW: moderation, profile, settings
-            showMenuItem(moderationMenuItem!, commandNumber: 5)
-            showMenuItem(profileMenuItem!, commandNumber: 6)
-            showMenuItem(settingsMenuItem!, commandNumber: 7)
+            showMenuItem(listsMenuItem!, commandNumber: 5)
+            showMenuItem(moderationMenuItem!, commandNumber: 6)
+            showMenuItem(profileMenuItem!, commandNumber: 7)
+            showMenuItem(settingsMenuItem!, commandNumber: 8)
         } else {
             // hide moderation, settings, profile
+            hideMenuItem(listsMenuItem!)
             hideMenuItem(moderationMenuItem!)
             hideMenuItem(settingsMenuItem!)
             hideMenuItem(profileMenuItem!)
