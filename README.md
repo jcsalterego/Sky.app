@@ -30,7 +30,7 @@ In Compact Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` My Feeds
+* `⌘-3` Feeds
 * `⌘-4` Notifications
 * `⌘-5` Profile
 
@@ -38,7 +38,7 @@ In Desktop Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` My Feeds
+* `⌘-3` Feeds
 * `⌘-4` Notifications
 * `⌘-5` Lists
 * `⌘-6` Moderation
