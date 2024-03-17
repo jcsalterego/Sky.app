@@ -22,9 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var windowDelegate: WindowDelegate? = nil
     var mainViewController : ViewController?
 
-    var muteTermsEditorWindowController : NSWindowController?
-    var muteTermsEditorViewController : MuteTermsEditorViewController?
-
     var jumpbarWindowController : NSWindowController?
     var jumpbarViewController : JumpbarViewController?
 
@@ -64,9 +61,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 mainWindow.backgroundColor = NSColor.white
 
                 if let storyboard = mainWindow.windowController?.storyboard {
-
-                    muteTermsEditorWindowController = storyboard.instantiateController(
-                        withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController
 
                     jumpbarWindowController = storyboard.instantiateController(
                         withIdentifier: "JumpbarWindowController") as? JumpbarWindowController
@@ -235,43 +229,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.set(zoomFactor, forKey: UserDefaultKeys.zoomFactor)
     }
 
-    func getMuteTerms() -> [MuteTerm] {
-        var muteTerms: [MuteTerm] = []
-        if let json = UserDefaults.standard.object(forKey: UserDefaultKeys.muteTerms) as? String {
-            if let rootJsonData = json.data(using:.utf8) {
-                if let muteTermsFromJson = try? JSONDecoder().decode(
-                    [MuteTerm].self,
-                    from: rootJsonData
-                ) {
-                    muteTerms = muteTermsFromJson
-                }
-            }
-        }
-        return muteTerms
-    }
-
-    func saveMuteTerms(_ muteTerms: [MuteTerm]) {
-        var json: String? = nil
-        let jsonEncoder = JSONEncoder()
-        if let jsonResultData = try? jsonEncoder.encode(muteTerms) {
-            json = String(data: jsonResultData, encoding: .utf8)!
-        }
-
-        if json != nil {
-            UserDefaults.standard.set(
-                json,
-                forKey: UserDefaultKeys.muteTerms
-            )
-
-            mainViewController?.webView.evaluateJavaScript(
-                JsLoader.loadScriptContents(
-                    "Scripts/local_storage_set_item",
-                    ["key": LocalStorageKeys.muteTerms, "value": json!]
-                )
-            )
-        }
-    }
-
     @IBAction func actionResetStatistics(_ sender: Any?) {
         mutedTermsHits = 0
     }
@@ -310,31 +267,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate: NSMenuDelegate {
 
     func menuNeedsUpdate(_ menu: NSMenu) {
-        if menu.title == "Mute Terms" {
-            menuTermsNeedUpdate(menu)
-        } else if menu.title == "View" {
+        if menu.title == "View" {
             viewNeedsUpdate(menu)
-        }
-    }
-
-    func menuTermsNeedUpdate(_ menu: NSMenu) {
-        if let lastItem = menu.item(at: menu.numberOfItems - 1) {
-            let resetStatisticsTitle = "Reset Statistics"
-            let resetStatistics = menu.item(withTitle: resetStatisticsTitle)!
-            let count = AppDelegate.shared.getMuteTerms().count
-            var title = ""
-            if count == 0 {
-                title = "No mute terms enabled"
-                resetStatistics.isHidden = true
-                resetStatistics.isEnabled = true
-            } else {
-                let label = count == 1 ? "mute term" : "mute terms"
-                let hitsLabel = mutedTermsHits == 1 ? "hit" : "hits"
-                title = "\(count) \(label) enabled; \(mutedTermsHits) \(hitsLabel) filtered"
-                resetStatistics.isHidden = false
-                resetStatistics.isEnabled = true
-            }
-            lastItem.title = title
         }
     }
 

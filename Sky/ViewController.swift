@@ -51,16 +51,6 @@ class ViewController: NSViewController {
                     "Scripts/\(userScript)"))
         }
 
-        if let muteTermsJson = UserDefaults.standard.object(
-            forKey: UserDefaultKeys.muteTerms) as? String
-        {
-            muteWordsWkUserScript = JsLoader.loadWKUserScript(
-                "Scripts/local_storage_set_item",
-                ["key": LocalStorageKeys.muteTerms, "value": muteTermsJson]
-            )
-            userContentController.addUserScript(muteWordsWkUserScript!)
-        }
-
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
         orderPostsWkUserScript = JsLoader.loadWKUserScript(
@@ -231,16 +221,6 @@ class ViewController: NSViewController {
                 newUserScripts.append(userScript)
             }
         }
-        if let muteTermsJson = UserDefaults.standard.object(
-            forKey: UserDefaultKeys.muteTerms) as? String
-        {
-            newUserScripts.append(
-                JsLoader.loadWKUserScript(
-                    "Scripts/local_storage_set_item",
-                    ["key": LocalStorageKeys.muteTerms, "value": muteTermsJson]
-                )
-            )
-        }
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
@@ -398,12 +378,6 @@ class ViewController: NSViewController {
         self.webView.evaluateJavaScript(
             Scripts.toggleDarkMode()
         )
-    }
-
-    @IBAction func actionLaunchMuteTermsEditor(_ sender: Any?) {
-        if let muteTermsEditorWindowController = AppDelegate.shared.muteTermsEditorWindowController {
-            NSApplication.shared.runModal(for: muteTermsEditorWindowController.window!)
-        }
     }
 
     @IBAction func actionLaunchJumpbar(_ sender: Any?) {

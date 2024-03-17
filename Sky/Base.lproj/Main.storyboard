@@ -396,33 +396,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Advanced" id="UEP-1z-Fbm">
                                     <items>
-                                        <menuItem title="Mute Terms" id="beO-bL-nwt">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Mute Terms" id="faJ-s1-pDB">
-                                                <items>
-                                                    <menuItem title="Edit..." keyEquivalent="m" id="ftW-4c-2Kp">
-                                                        <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                                                        <connections>
-                                                            <action selector="actionLaunchMuteTermsEditor:" target="Ady-hI-5gd" id="Ex9-Az-Tee"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem isSeparatorItem="YES" id="tET-jR-P4X"/>
-                                                    <menuItem title="Reset Statistics" id="AuF-ol-y28">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="actionResetStatistics:" target="Voe-Tx-rLC" id="2On-aE-8Xm"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Not enabled" enabled="NO" id="6bO-7u-kBp">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                    </menuItem>
-                                                </items>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Voe-Tx-rLC" id="gts-iG-TnQ"/>
-                                                </connections>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="NeL-Ie-Lgk"/>
                                         <menuItem title="Hide Replies in Following" id="HFE-fV-jHf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
