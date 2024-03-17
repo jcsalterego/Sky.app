@@ -15,17 +15,11 @@
 		048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCC2A093F3E00A8C919 /* Scripts.swift */; };
 		048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCE2A09472400A8C919 /* SkyUrls.swift */; };
 		0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */; };
-		0499FB7F2A1BCF41009226EE /* MuteTermsEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7E2A1BCF41009226EE /* MuteTermsEditorViewController.swift */; };
-		0499FB832A1C0D79009226EE /* MuteTermsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB822A1C0D79009226EE /* MuteTermsWindowController.swift */; };
-		0499FB852A1C4007009226EE /* MuteTerm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB842A1C4007009226EE /* MuteTerm.swift */; };
 		0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB862A1C5A89009226EE /* UserDefaultKeys.swift */; };
 		04B35A752A55D74A00EBD69A /* TranslationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B35A722A55D68900EBD69A /* TranslationsViewController.swift */; };
 		04B35A762A55D74D00EBD69A /* TranslationsWebKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B35A732A55D68900EBD69A /* TranslationsWebKitDelegate.swift */; };
 		04B35A772A55D75000EBD69A /* TranslationsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B35A742A55D68900EBD69A /* TranslationsWindowController.swift */; };
 		04B938922A22399A0023838B /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 04B938912A22399A0023838B /* Sparkle */; };
-		04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */; };
-		04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C166572A1D01D6004B459A /* DevConsoleViewController.swift */; };
-		04C1665E2A1D0230004B459A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C1665C2A1D0205004B459A /* index.html */; };
 		04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847C921D99CE0009D1B0F /* AppDelegate.swift */; };
 		04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E847CB21D99CE0009D1B0F /* ViewController.swift */; };
 		04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E847CD21D99CE1009D1B0F /* Assets.xcassets */; };
@@ -65,16 +59,10 @@
 		048BAFCC2A093F3E00A8C919 /* Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripts.swift; sourceTree = "<group>"; };
 		048BAFCE2A09472400A8C919 /* SkyUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUrls.swift; sourceTree = "<group>"; };
 		0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootLocalStorage.swift; sourceTree = "<group>"; };
-		0499FB7E2A1BCF41009226EE /* MuteTermsEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteTermsEditorViewController.swift; sourceTree = "<group>"; };
-		0499FB822A1C0D79009226EE /* MuteTermsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteTermsWindowController.swift; sourceTree = "<group>"; };
-		0499FB842A1C4007009226EE /* MuteTerm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteTerm.swift; sourceTree = "<group>"; };
 		0499FB862A1C5A89009226EE /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		04B35A722A55D68900EBD69A /* TranslationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsViewController.swift; sourceTree = "<group>"; };
 		04B35A732A55D68900EBD69A /* TranslationsWebKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWebKitDelegate.swift; sourceTree = "<group>"; };
 		04B35A742A55D68900EBD69A /* TranslationsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWindowController.swift; sourceTree = "<group>"; };
-		04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevConsoleScriptMessageHandler.swift; sourceTree = "<group>"; };
-		04C166572A1D01D6004B459A /* DevConsoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevConsoleViewController.swift; sourceTree = "<group>"; };
-		04C1665C2A1D0205004B459A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		04E847C621D99CE0009D1B0F /* Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E847C921D99CE0009D1B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E847CB21D99CE0009D1B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,26 +120,6 @@
 			path = Translations;
 			sourceTree = "<group>";
 		};
-		04C166542A1D019A004B459A /* MuteTerms */ = {
-			isa = PBXGroup;
-			children = (
-				0499FB842A1C4007009226EE /* MuteTerm.swift */,
-				0499FB7E2A1BCF41009226EE /* MuteTermsEditorViewController.swift */,
-				0499FB822A1C0D79009226EE /* MuteTermsWindowController.swift */,
-			);
-			path = MuteTerms;
-			sourceTree = "<group>";
-		};
-		04C166552A1D01CF004B459A /* DevConsole */ = {
-			isa = PBXGroup;
-			children = (
-				04C166562A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift */,
-				04C166572A1D01D6004B459A /* DevConsoleViewController.swift */,
-				04C1665C2A1D0205004B459A /* index.html */,
-			);
-			path = DevConsole;
-			sourceTree = "<group>";
-		};
 		04E847BD21D99CE0009D1B0F = {
 			isa = PBXGroup;
 			children = (
@@ -176,9 +144,7 @@
 		04E847C821D99CE0009D1B0F /* Sky */ = {
 			isa = PBXGroup;
 			children = (
-				04C166552A1D01CF004B459A /* DevConsole */,
 				04FF787D2A2A7415004569D7 /* Jumpbar */,
-				04C166542A1D019A004B459A /* MuteTerms */,
 				043A0F1729A5330E00B06D18 /* Scripts */,
 				04B35A712A55D68900EBD69A /* Translations */,
 				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
@@ -351,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				043A0F1829A5330E00B06D18 /* Scripts in Resources */,
-				04C1665E2A1D0230004B459A /* index.html in Resources */,
 				04E847CE21D99CE1009D1B0F /* Assets.xcassets in Resources */,
 				04E847D121D99CE1009D1B0F /* Main.storyboard in Resources */,
 			);
@@ -379,10 +344,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */,
-				0499FB7F2A1BCF41009226EE /* MuteTermsEditorViewController.swift in Sources */,
 				043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */,
 				04B35A772A55D75000EBD69A /* TranslationsWindowController.swift in Sources */,
-				04C166592A1D01D6004B459A /* DevConsoleScriptMessageHandler.swift in Sources */,
 				04B35A752A55D74A00EBD69A /* TranslationsViewController.swift in Sources */,
 				045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */,
 				0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */,
@@ -392,14 +355,11 @@
 				04FF78812A2A7574004569D7 /* JumpbarWindowController.swift in Sources */,
 				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
 				04FF78832A2A8CBD004569D7 /* JumpbarItem.swift in Sources */,
-				0499FB832A1C0D79009226EE /* MuteTermsWindowController.swift in Sources */,
 				048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */,
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
-				0499FB852A1C4007009226EE /* MuteTerm.swift in Sources */,
 				048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */,
 				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
 				04B35A762A55D74D00EBD69A /* TranslationsWebKitDelegate.swift in Sources */,
-				04C1665A2A1D01D6004B459A /* DevConsoleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

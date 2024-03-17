@@ -14,8 +14,6 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             "consoleLog": ScriptMessageHandler.consoleLog,
             "ctrlTab": ctrlTab,
             "fetch": fetch,
-            "incrementMuteTermsHits": incrementMuteTermsHits,
-            "loadAccessJwt": loadAccessJwt,
             "localStorageSetItem": localStorageSetItem,
             "windowColorSchemeChange": windowColorSchemeChange,
             "windowOpen": windowOpen,
@@ -120,14 +118,6 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         }
     }
 
-    func loadAccessJwt(_ message: WKScriptMessage) {
-        if let messageBody = message.body as? NSDictionary {
-            if let accessJwt = messageBody["accessJwt"] as? String {
-                AppDelegate.shared.accessJwt = accessJwt
-            }
-        }
-    }
-
     func localStorageSetItem(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
             if let args = messageBody["args"] as? [String] {
@@ -136,14 +126,6 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                     let jsonValue = args[1]
                     AppDelegate.shared.setLocalStorage(key: itemKey, jsonValue: jsonValue)
                 }
-            }
-        }
-    }
-
-    func incrementMuteTermsHits(_ message: WKScriptMessage) {
-        if let messageBody = message.body as? NSDictionary {
-            if let hits = messageBody["hits"] as? Int {
-                AppDelegate.shared.addMutedTermsHits(hits)
             }
         }
     }
