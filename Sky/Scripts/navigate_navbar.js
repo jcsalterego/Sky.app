@@ -36,7 +36,7 @@ function navigate(checkLoadNew, label, index, url) {
             found = true;
         }
     }
-    if (!found) {
+    if (!found && document.location.pathname !== "/feeds") {
         found = clickByAriaLabel(label);
     }
     if (!found) {
