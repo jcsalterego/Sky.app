@@ -22,10 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var windowDelegate: WindowDelegate? = nil
     var mainViewController : ViewController?
 
-    var devConsoleWindowController : NSWindowController?
-    var devConsoleViewController : DevConsoleViewController?
-    var accessJwt : String? = nil
-
     var muteTermsEditorWindowController : NSWindowController?
     var muteTermsEditorViewController : MuteTermsEditorViewController?
 
@@ -68,9 +64,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 mainWindow.backgroundColor = NSColor.white
 
                 if let storyboard = mainWindow.windowController?.storyboard {
-
-                    devConsoleWindowController = storyboard.instantiateController(
-                        withIdentifier: "DevConsoleWindowController") as? NSWindowController
 
                     muteTermsEditorWindowController = storyboard.instantiateController(
                         withIdentifier: "MuteTermsEditorWindowController") as? MuteTermsWindowController

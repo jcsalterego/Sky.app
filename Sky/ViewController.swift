@@ -331,12 +331,6 @@ class ViewController: NSViewController {
         self.webView.evaluateJavaScript(Scripts.navigateTab(direction: -1))
     }
 
-    @IBAction func actionOpenDevConsole(_ sender: Any?) {
-        if let devConsoleWindowController = AppDelegate.shared.devConsoleWindowController {
-            devConsoleWindowController.showWindow(self)
-        }
-    }
-
     @IBAction func actionOrderPosts(_ sender: Any?) {
         if let menuItem = sender as? NSMenuItem {
             var orderPosts = menuItem.state == .on

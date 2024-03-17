@@ -15,7 +15,6 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             "ctrlTab": ctrlTab,
             "fetch": fetch,
             "incrementMuteTermsHits": incrementMuteTermsHits,
-            "loadAccessJwt": loadAccessJwt,
             "localStorageSetItem": localStorageSetItem,
             "windowColorSchemeChange": windowColorSchemeChange,
             "windowOpen": windowOpen,
@@ -116,14 +115,6 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
                 } else {
                     viewController.actionPrevTab(Optional.none)
                 }
-            }
-        }
-    }
-
-    func loadAccessJwt(_ message: WKScriptMessage) {
-        if let messageBody = message.body as? NSDictionary {
-            if let accessJwt = messageBody["accessJwt"] as? String {
-                AppDelegate.shared.accessJwt = accessJwt
             }
         }
     }
