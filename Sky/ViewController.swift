@@ -30,7 +30,6 @@ class ViewController: NSViewController {
         "hook_fetch",
         "hook_history_state",
         "hook_local_storage",
-        "hook_page_up_down",
         "hook_window_color_scheme",
         "hook_window_open",
     ]
