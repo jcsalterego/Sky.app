@@ -23,7 +23,7 @@ function findByNavbarIndex(index) {
     return found;
 }
 function getLoadNewButtons() {
-    return filterVisible(
+    return Array.from(
         document.querySelectorAll("button[aria-label^=\"load new\" i]")
     );
 }
