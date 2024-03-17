@@ -5,7 +5,7 @@ keyboard shortcuts, Dark Mode Sync, and notification badges.
 
 _If you're looking for the official Bluesky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.3.8**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.3.9**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
@@ -62,6 +62,14 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
+
+### 0.3.9
+
+* Remove Developer Console [#7](https://github.com/jcsalterego/Sky.app/issues/7)
+* Remove Mute Terms
+* Fix page up/down [#8](https://github.com/jcsalterego/Sky.app/issues/8)
+* Fix cmd-n for New Post [#9](https://github.com/jcsalterego/Sky.app/issues/9)
+* Fix cmd-# for refresh [#10](https://github.com/jcsalterego/Sky.app/issues/10)
 
 ### 0.3.8
 
