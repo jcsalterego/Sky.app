@@ -174,6 +174,18 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionViewChat(_ sender: Any?) {
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.messages)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "Chat",
+                index: -1,
+                url: SkyUrls.messages
+            )
+        )
+    }
+
     @IBAction func actionViewProfile(_ sender: Any?) {
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
