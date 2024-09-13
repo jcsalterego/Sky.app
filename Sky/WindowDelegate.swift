@@ -27,48 +27,41 @@ class WindowDelegate: NSObject, NSWindowDelegate {
 
     func updateViewNavigation(_ desktopMode: Bool) {
         let mainMenu = NSApplication.shared.mainMenu!
-        let viewMenu = mainMenu.item(withTitle: "View")?.submenu
-
-        let homeMenuItem = viewMenu?.item(withTitle: "Home")
-        let searchMenuItem = viewMenu?.item(withTitle: "Search")
-        let notificationsMenuItem = viewMenu?.item(withTitle: "Notifications")
-        let chatMenuItem = viewMenu?.item(withTitle: "Chat")
-        let feedsMenuItem = viewMenu?.item(withTitle: "Feeds")
-        let listsMenuItem = viewMenu?.item(withTitle: "Lists")
-        let profileMenuItem = viewMenu?.item(withTitle: "Profile")
-        let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
-
-        showMenuItem(homeMenuItem!, commandNumber: 1)
-        showMenuItem(searchMenuItem!, commandNumber: 2)
-
+        let viewMenu = mainMenu.item(withTitle: "View")!.submenu!
+        let desktopViewMenu = viewMenu.item(withTitle: "Desktop View")!.submenu!
+        let compactViewMenu = viewMenu.item(withTitle: "Compact View")!.submenu!
+        clearViewItemsUntilSeparator(viewMenu)
         if desktopMode {
-            showMenuItem(notificationsMenuItem!, commandNumber: 3)
-            showMenuItem(chatMenuItem!, commandNumber: 4)
-            showMenuItem(feedsMenuItem!, commandNumber: 5)
-            showMenuItem(listsMenuItem!, commandNumber: 6)
-            showMenuItem(profileMenuItem!, commandNumber: 7)
-            showMenuItem(settingsMenuItem!, commandNumber: 8)
+            copySubmenuToBeginning(desktopViewMenu, viewMenu)
         } else {
-            hideMenuItem(notificationsMenuItem!)
-            showMenuItem(chatMenuItem!, commandNumber: 3)
-            showMenuItem(notificationsMenuItem!, commandNumber: 4)
-            hideMenuItem(feedsMenuItem!)
-            hideMenuItem(listsMenuItem!)
-            showMenuItem(profileMenuItem!, commandNumber: 5)
-            hideMenuItem(settingsMenuItem!)
+            copySubmenuToBeginning(compactViewMenu, viewMenu)
         }
     }
 
-    func showMenuItem(_ menuItem: NSMenuItem, commandNumber: Int) {
-        menuItem.isHidden = false
-        menuItem.keyEquivalent = "\(commandNumber)"
-        menuItem.keyEquivalentModifierMask = .command
+    func copySubmenuToBeginning(_ sourceMenu: NSMenu?, _ targetMenu: NSMenu) {
+        for index in 0..<sourceMenu!.numberOfItems {
+            let srcMenuItem = sourceMenu!.item(at: index)!
+            let menuItem = srcMenuItem.copy() as! NSMenuItem
+            let modifierNumber = index + 1
+            menuItem.keyEquivalent = "\(modifierNumber)"
+            menuItem.keyEquivalentModifierMask = .command
+            targetMenu.insertItem(menuItem, at: index)
+        }
     }
 
-    func hideMenuItem(_ menuItem: NSMenuItem) {
-        menuItem.isHidden = true
-        menuItem.keyEquivalent = ""
-        menuItem.keyEquivalentModifierMask = NSEvent.ModifierFlags()
+    func clearViewItemsUntilSeparator(_ viewMenu: NSMenu) {
+        var index = 0
+        while index < viewMenu.numberOfItems {
+            let menuItem = viewMenu.item(at: index)
+            if menuItem?.isSeparatorItem == true {
+                break
+            } else if ["Desktop View", "Compact View"].contains(menuItem?.title) {
+                index += 1
+                continue
+            } else {
+                viewMenu.removeItem(at: index)
+            }
+        }
     }
 
 }

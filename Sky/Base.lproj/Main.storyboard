@@ -314,48 +314,97 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" autoenablesItems="NO" id="oIs-FJ-jib">
                                     <items>
-                                        <menuItem title="Home" keyEquivalent="1" id="LE2-aR-0XJ" userLabel="Home">
-                                            <connections>
-                                                <action selector="actionViewHome:" target="Ady-hI-5gd" id="6gm-YF-Bty"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Search" keyEquivalent="2" id="Knq-La-itP" userLabel="Search">
-                                            <connections>
-                                                <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Notifications" keyEquivalent="3" id="mfB-kZ-eV6" userLabel="Notifications">
-                                            <connections>
-                                                <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Chat" keyEquivalent="4" id="ut9-B8-PyY">
-                                            <connections>
-                                                <action selector="actionViewChat:" target="Ady-hI-5gd" id="C1X-gb-kmo"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Feeds" keyEquivalent="5" id="6am-i1-GKh" userLabel="Feeds">
-                                            <connections>
-                                                <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="8mY-Vt-gu7"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Lists" hidden="YES" id="JLM-9s-Neh" userLabel="Lists">
+                                        <menuItem title="Desktop View" hidden="YES" id="mII-Iu-Fht">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewLists:" target="Ady-hI-5gd" id="G7a-np-wqG"/>
-                                            </connections>
+                                            <menu key="submenu" title="Desktop View" id="33W-cf-Hh4">
+                                                <items>
+                                                    <menuItem title="Home" id="LE2-aR-0XJ" userLabel="Home">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewHome:" target="Ady-hI-5gd" id="6gm-YF-Bty"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Search" id="Knq-La-itP" userLabel="Search">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Notifications" id="mfB-kZ-eV6" userLabel="Notifications">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Chat" id="ut9-B8-PyY">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewChat:" target="Ady-hI-5gd" id="C1X-gb-kmo"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Feeds" id="6am-i1-GKh" userLabel="Feeds">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="8mY-Vt-gu7"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Lists" id="JLM-9s-Neh" userLabel="Lists">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewLists:" target="Ady-hI-5gd" id="G7a-np-wqG"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Profile" id="LZ2-q5-Ixa" userLabel="Profile">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewProfile:" target="Ady-hI-5gd" id="J9g-HD-AOg"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Settings" id="Aqg-zh-zCt" userLabel="Settings">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Profile" hidden="YES" id="LZ2-q5-Ixa" userLabel="Profile">
+                                        <menuItem title="Compact View" hidden="YES" id="IAo-xF-Y6u" userLabel="Compact View">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewProfile:" target="Ady-hI-5gd" id="J9g-HD-AOg"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Settings" hidden="YES" id="Aqg-zh-zCt" userLabel="Settings">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
-                                            </connections>
+                                            <menu key="submenu" title="Compact View" id="4er-wd-MDx">
+                                                <items>
+                                                    <menuItem title="Home" id="ANR-Pm-9hg" userLabel="Home">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewHome:" target="Ady-hI-5gd" id="Hft-bu-bfn"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Search" id="oBN-kV-dJb" userLabel="Search">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSearch:" target="Ady-hI-5gd" id="9D8-QB-33u"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Chat" id="LDf-NQ-Rd6">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewChat:" target="Ady-hI-5gd" id="wxB-AX-Ls0"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Notifications" id="11H-wB-xFK" userLabel="Notifications">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="XNN-YG-mVE"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Profile" id="Qxt-A4-tqJ" userLabel="Profile">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewProfile:" target="Ady-hI-5gd" id="eHk-Lw-u3J"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2GO-Mh-Pot"/>
                                         <menuItem title="Actual Size" keyEquivalent="0" id="vBi-ho-dYr">
