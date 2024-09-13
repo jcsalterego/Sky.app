@@ -29,27 +29,33 @@ class WindowDelegate: NSObject, NSWindowDelegate {
         let mainMenu = NSApplication.shared.mainMenu!
         let viewMenu = mainMenu.item(withTitle: "View")?.submenu
 
+        let homeMenuItem = viewMenu?.item(withTitle: "Home")
+        let searchMenuItem = viewMenu?.item(withTitle: "Search")
+        let notificationsMenuItem = viewMenu?.item(withTitle: "Notifications")
+        let chatMenuItem = viewMenu?.item(withTitle: "Chat")
+        let feedsMenuItem = viewMenu?.item(withTitle: "Feeds")
         let listsMenuItem = viewMenu?.item(withTitle: "Lists")
-        let moderationMenuItem = viewMenu?.item(withTitle: "Moderation")
         let profileMenuItem = viewMenu?.item(withTitle: "Profile")
         let settingsMenuItem = viewMenu?.item(withTitle: "Settings")
 
-        // COMMON: home, search, feeds, notifications
+        showMenuItem(homeMenuItem!, commandNumber: 1)
+        showMenuItem(searchMenuItem!, commandNumber: 2)
+
         if desktopMode {
-            // SHOW: moderation, profile, settings
-            showMenuItem(listsMenuItem!, commandNumber: 5)
-            showMenuItem(moderationMenuItem!, commandNumber: 6)
+            showMenuItem(notificationsMenuItem!, commandNumber: 3)
+            showMenuItem(chatMenuItem!, commandNumber: 4)
+            showMenuItem(feedsMenuItem!, commandNumber: 5)
+            showMenuItem(listsMenuItem!, commandNumber: 6)
             showMenuItem(profileMenuItem!, commandNumber: 7)
             showMenuItem(settingsMenuItem!, commandNumber: 8)
         } else {
-            // hide moderation, settings, profile
+            hideMenuItem(notificationsMenuItem!)
+            showMenuItem(chatMenuItem!, commandNumber: 3)
+            showMenuItem(notificationsMenuItem!, commandNumber: 4)
+            hideMenuItem(feedsMenuItem!)
             hideMenuItem(listsMenuItem!)
-            hideMenuItem(moderationMenuItem!)
-            hideMenuItem(settingsMenuItem!)
-            hideMenuItem(profileMenuItem!)
-
-            // SHOW: profile
             showMenuItem(profileMenuItem!, commandNumber: 5)
+            hideMenuItem(settingsMenuItem!)
         }
     }
 

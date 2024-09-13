@@ -324,25 +324,25 @@
                                                 <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Feeds" keyEquivalent="3" id="ut9-B8-PyY" userLabel="Feeds">
-                                            <connections>
-                                                <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="0Y3-cb-mgg"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Notifications" keyEquivalent="4" id="mfB-kZ-eV6" userLabel="Notifications">
+                                        <menuItem title="Notifications" keyEquivalent="3" id="mfB-kZ-eV6" userLabel="Notifications">
                                             <connections>
                                                 <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Chat" keyEquivalent="4" id="ut9-B8-PyY" userLabel="Feeds">
+                                            <connections>
+                                                <action selector="actionViewChat:" target="Ady-hI-5gd" id="C1X-gb-kmo"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Feeds" keyEquivalent="5" id="6am-i1-GKh" userLabel="Feeds">
+                                            <connections>
+                                                <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="8mY-Vt-gu7"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Lists" hidden="YES" id="JLM-9s-Neh" userLabel="Lists">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionViewLists:" target="Ady-hI-5gd" id="G7a-np-wqG"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Moderation" hidden="YES" id="W0R-Jf-REN" userLabel="Moderation">
-                                            <connections>
-                                                <action selector="actionViewModeration:" target="Ady-hI-5gd" id="6S8-Ij-vzC"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Profile" hidden="YES" id="LZ2-q5-Ixa" userLabel="Profile">
@@ -617,7 +617,7 @@
                                                             <rect key="frame" x="8" y="0.0" width="421" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
                                                                     <rect key="frame" x="0.0" y="0.0" width="421" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufj-mp-s6u">
@@ -728,7 +728,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
                                 <rect key="frame" x="0.0" y="250" width="480" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" drawsBackground="YES" id="DUY-Us-eia">
@@ -776,7 +776,7 @@
                                                             <rect key="frame" x="18" y="0.0" width="443" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
                                                                     <rect key="frame" x="0.0" y="0.0" width="443" height="24"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TTf-rB-auk">
