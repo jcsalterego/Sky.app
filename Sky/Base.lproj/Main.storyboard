@@ -329,7 +329,7 @@
                                                 <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Chat" keyEquivalent="4" id="ut9-B8-PyY" userLabel="Feeds">
+                                        <menuItem title="Chat" keyEquivalent="4" id="ut9-B8-PyY">
                                             <connections>
                                                 <action selector="actionViewChat:" target="Ady-hI-5gd" id="C1X-gb-kmo"/>
                                             </connections>
