@@ -8,7 +8,7 @@ import AppKit
 
 class WindowDelegate: NSObject, NSWindowDelegate {
 
-    let MIN_DESKTOP_WIDTH = 1230.0
+    let MIN_DESKTOP_WIDTH = 815.0
     var lastDesktopMode: Bool? = nil
 
     func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
