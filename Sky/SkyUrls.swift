@@ -13,4 +13,5 @@ enum SkyUrls {
     static let notifications = "\(root)/notifications"
     static let moderation = "\(root)/moderation"
     static let settings = "\(root)/settings"
+    static let messages = "\(root)/messages"
 }
