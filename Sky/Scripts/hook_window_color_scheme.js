@@ -1,7 +1,8 @@
 $INCLUDE("_with_retry");
-function setColorScheme(darkMode) {
+function updateColorScheme() {
     let background = document.body.style.backgroundColor;
     let foreground = document.body.style.color;
+    let darkMode = false;
     if (background === "rgb(255, 255, 255)") {
         darkMode = false;
     } else {
@@ -21,14 +22,11 @@ function setColorScheme(darkMode) {
     for (let rule of rules) {
         stylesheet.insertRule(rule, stylesheet.rules.length - 1);
     }
-    elems = Array.from(document.querySelectorAll("div")).filter((div) => {
-        return div.scrollHeight > window.innerHeight;
-    });
 }
 
 function setColorSchemeChange() {
     let done = false;
-    let elems = Array.from(document.querySelectorAll("#root div div"));
+    let elems = Array.from(document.querySelectorAll("body"));
     if (elems.length > 0) {
         let elem = elems[0];
         if (elem.dataset.windowColorSchemeObserverSet === undefined) {
@@ -42,11 +40,7 @@ function setColorSchemeChange() {
                     let backgroundColor =
                         window.getComputedStyle(elem).backgroundColor;
                     if (elem.dataset.lastBackgroundColor !== backgroundColor) {
-                        if (backgroundColor === "rgb(0, 0, 0)") {
-                            setColorScheme(true);
-                        } else {
-                            setColorScheme(false);
-                        }
+                        updateColorScheme();
                         elem.dataset.lastBackgroundColor = backgroundColor;
                         break;
                     }
