@@ -49,10 +49,4 @@ class Scripts {
         )
     }
 
-    static func toggleDarkMode() -> String {
-        return JsLoader.loadScriptContents(
-            "Scripts/toggle_dark_mode", [:]
-        )
-    }
-
 }

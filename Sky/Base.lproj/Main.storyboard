@@ -422,12 +422,6 @@
                                                 <action selector="actionZoomOut:" target="Ady-hI-5gd" id="9J8-9Q-oaz"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="vWQ-2z-ZVe"/>
-                                        <menuItem title="Toggle Dark Mode" keyEquivalent="D" id="sDs-WP-qC5">
-                                            <connections>
-                                                <action selector="actionToggleDarkMode:" target="Ady-hI-5gd" id="fJI-7C-ZPZ"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="mHh-pj-LA4"/>
                                         <menuItem title="Open in Browser..." keyEquivalent="t" id="k6J-EO-HUe">
                                             <connections>

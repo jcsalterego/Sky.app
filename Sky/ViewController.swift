@@ -386,12 +386,6 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionToggleDarkMode(_ sender: Any?) {
-        self.webView.evaluateJavaScript(
-            Scripts.toggleDarkMode()
-        )
-    }
-
     @IBAction func actionLaunchJumpbar(_ sender: Any?) {
         if let jumpbarWindowController = AppDelegate.shared.jumpbarWindowController {
             NSApplication.shared.runModal(for: jumpbarWindowController.window!)
