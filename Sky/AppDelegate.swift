@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var lastBadgeCount = 0
     var notificationReadStatuses = [String:Int]()
+    var convoUnreadCounts = [String:Int]()
     var firstRun = true
 
     var mutedTermsHits = 0
@@ -104,10 +105,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func clearNotifCounts() {
         notificationReadStatuses.removeAll()
+        convoUnreadCounts.removeAll()
     }
 
     func setNotificationReadStatus(uri: String, isRead: Int) {
         notificationReadStatuses[uri] = isRead
+    }
+
+    func setConvoUnreadCount(id: String, unreadCount: Int) {
+        convoUnreadCounts[id] = unreadCount
     }
 
     func refreshBadge() {
@@ -117,6 +123,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if isRead == 0 {
                 totalBadgeCount += 1
             }
+        }
+        for (_, unreadCount) in convoUnreadCounts {
+            totalBadgeCount += unreadCount
         }
         if totalBadgeCount != lastBadgeCount {
             if totalBadgeCount == 0 {
