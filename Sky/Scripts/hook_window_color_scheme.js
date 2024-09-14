@@ -1,19 +1,16 @@
 $INCLUDE("_with_retry");
 function setColorScheme(darkMode) {
-    const DARK_MODE_FOREGROUND = "#79787c";
-    const DARK_MODE_BACKGROUND = "#000000";
-    const LIGHT_MODE_FOREGROUND = "#c3c3c3";
-    const LIGHT_MODE_BACKGROUND = "#fafafa";
+    let background = document.body.style.backgroundColor;
+    let foreground = document.body.style.color;
+    if (background === "rgb(255, 255, 255)") {
+        darkMode = false;
+    } else {
+        darkMode = true;
+    }
     window.webkit.messageHandlers.windowColorSchemeChange.postMessage({
         darkMode: darkMode,
+        backgroundColor: background,
     });
-    if (darkMode) {
-        foreground = DARK_MODE_FOREGROUND;
-        background = DARK_MODE_BACKGROUND;
-    } else {
-        foreground = LIGHT_MODE_FOREGROUND;
-        background = LIGHT_MODE_BACKGROUND;
-    }
     let rules = [
         `::-webkit-scrollbar { width: auto }`,
         `::-webkit-scrollbar-track { background: ${background}; }`,
