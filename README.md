@@ -30,7 +30,7 @@ In Compact Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` Feeds
+* `⌘-3` Chat
 * `⌘-4` Notifications
 * `⌘-5` Profile
 
@@ -38,18 +38,18 @@ In Desktop Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` Feeds
-* `⌘-4` Notifications
-* `⌘-5` Lists
-* `⌘-6` Moderation
+* `⌘-3` Notifications
+* `⌘-4` Chat
+* `⌘-5` Feed
+* `⌘-6` Lists
 * `⌘-7` Profile
 * `⌘-8` Settings
 
 ### Other
 
+* `⌘-,` Settings...
 * `⌘-K` Jump To...
 * `⌘-T` Open in Browser
-* `⌘-⇧-D` Toggle Dark Mode
 * `⌘-⇧-C` Copy Share URL
 * `^-⌘-⇧-C` Copy Current URL
 
