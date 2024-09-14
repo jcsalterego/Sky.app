@@ -23,10 +23,15 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Check for Updates..." id="fv0-HU-nF8">
+                                        <menuItem title="Settings..." keyEquivalent="," id="fv0-HU-nF8" userLabel="Settings...">
+                                            <connections>
+                                                <action selector="actionViewSettings:" target="Ady-hI-5gd" id="8a7-ek-96l"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Check for Updates..." id="skY-dr-tsu">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="checkForUpdates:" target="hqL-jg-X44" id="RJJ-Mb-ABn"/>
+                                                <action selector="checkForUpdates:" target="hqL-jg-X44" id="JIL-jg-RpR"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gFw-en-kLH"/>
