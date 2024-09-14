@@ -25,9 +25,12 @@ class ViewController: NSViewController {
     var hideHomeRepliesWkUserScript: WKUserScript?
     var setZoomFactorWkUserScript: WKUserScript?
 
-    let userScripts = [
-        "hook_ctrl_tab",
+    let userScriptsAtDocumentStart = [
         "hook_fetch",
+    ]
+
+    let userScriptsAtDocumentEnd = [
+        "hook_ctrl_tab",
         "hook_history_state",
         "hook_local_storage",
         "hook_window_color_scheme",
@@ -45,10 +48,19 @@ class ViewController: NSViewController {
         for name in scriptMessageHandler.nameFns.keys {
             userContentController.add(scriptMessageHandler, name: name)
         }
-        for userScript in userScripts {
+        for userScript in userScriptsAtDocumentStart {
             userContentController.addUserScript(
                 JsLoader.loadWKUserScript(
-                    "Scripts/\(userScript)"))
+                    "Scripts/\(userScript)",
+                    [:],
+                    .atDocumentStart))
+        }
+        for userScript in userScriptsAtDocumentEnd {
+            userContentController.addUserScript(
+                JsLoader.loadWKUserScript(
+                    "Scripts/\(userScript)",
+                    [:],
+                    .atDocumentEnd))
         }
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()

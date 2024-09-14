@@ -9,12 +9,13 @@ class JsLoader {
 
     class func loadWKUserScript(
         _ name: String,
-        _ context: [String: String] = [:]
+        _ context: [String: String] = [:],
+        _ injectionTime: WKUserScriptInjectionTime = .atDocumentStart
     ) -> WKUserScript {
         let source = JsLoader.loadScriptContents(name, context)
         return WKUserScript(
             source: source,
-            injectionTime: .atDocumentStart,
+            injectionTime: injectionTime,
             forMainFrameOnly: false
         )
     }
