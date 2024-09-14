@@ -14,7 +14,7 @@ class JsLoader {
         let source = JsLoader.loadScriptContents(name, context)
         return WKUserScript(
             source: source,
-            injectionTime: .atDocumentEnd,
+            injectionTime: .atDocumentStart,
             forMainFrameOnly: false
         )
     }
