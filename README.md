@@ -63,6 +63,15 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
+### 0.4.0
+
+* Add (`⌘-,`) to go to the Settings page
+* Fix color scheme sync
+* Remove "Toggle Dark Mode" (for now?)
+* Notification badges now include unread chat messages
+* Fix notification badges
+* Fix keybindings and menu items between Compact and Desktop modes
+
 ### 0.3.9
 
 * Remove Developer Console [#7](https://github.com/jcsalterego/Sky.app/issues/7)
