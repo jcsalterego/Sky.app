@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="22689"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,10 +23,15 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Check for Updates..." id="fv0-HU-nF8">
+                                        <menuItem title="Settings..." keyEquivalent="," id="fv0-HU-nF8" userLabel="Settings...">
+                                            <connections>
+                                                <action selector="actionViewSettings:" target="Ady-hI-5gd" id="8a7-ek-96l"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Check for Updates..." id="skY-dr-tsu">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="checkForUpdates:" target="hqL-jg-X44" id="RJJ-Mb-ABn"/>
+                                                <action selector="checkForUpdates:" target="hqL-jg-X44" id="JIL-jg-RpR"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gFw-en-kLH"/>
@@ -314,48 +319,97 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" autoenablesItems="NO" id="oIs-FJ-jib">
                                     <items>
-                                        <menuItem title="Home" keyEquivalent="1" id="LE2-aR-0XJ" userLabel="Home">
-                                            <connections>
-                                                <action selector="actionViewHome:" target="Ady-hI-5gd" id="6gm-YF-Bty"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Search" keyEquivalent="2" id="Knq-La-itP" userLabel="Search">
-                                            <connections>
-                                                <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Feeds" keyEquivalent="3" id="ut9-B8-PyY" userLabel="Feeds">
-                                            <connections>
-                                                <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="0Y3-cb-mgg"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Notifications" keyEquivalent="4" id="mfB-kZ-eV6" userLabel="Notifications">
-                                            <connections>
-                                                <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Lists" hidden="YES" id="JLM-9s-Neh" userLabel="Lists">
+                                        <menuItem title="Desktop View" hidden="YES" id="mII-Iu-Fht">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewLists:" target="Ady-hI-5gd" id="G7a-np-wqG"/>
-                                            </connections>
+                                            <menu key="submenu" title="Desktop View" id="33W-cf-Hh4">
+                                                <items>
+                                                    <menuItem title="Home" id="LE2-aR-0XJ" userLabel="Home">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewHome:" target="Ady-hI-5gd" id="6gm-YF-Bty"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Search" id="Knq-La-itP" userLabel="Search">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSearch:" target="Ady-hI-5gd" id="Xvq-pi-8Ym"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Notifications" id="mfB-kZ-eV6" userLabel="Notifications">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="GTf-G1-HiP"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Chat" id="ut9-B8-PyY">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewChat:" target="Ady-hI-5gd" id="C1X-gb-kmo"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Feeds" id="6am-i1-GKh" userLabel="Feeds">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewFeeds:" target="Ady-hI-5gd" id="8mY-Vt-gu7"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Lists" id="JLM-9s-Neh" userLabel="Lists">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewLists:" target="Ady-hI-5gd" id="G7a-np-wqG"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Profile" id="LZ2-q5-Ixa" userLabel="Profile">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewProfile:" target="Ady-hI-5gd" id="J9g-HD-AOg"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Settings" id="Aqg-zh-zCt" userLabel="Settings">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
-                                        <menuItem title="Moderation" hidden="YES" id="W0R-Jf-REN" userLabel="Moderation">
-                                            <connections>
-                                                <action selector="actionViewModeration:" target="Ady-hI-5gd" id="6S8-Ij-vzC"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Profile" hidden="YES" id="LZ2-q5-Ixa" userLabel="Profile">
+                                        <menuItem title="Compact View" hidden="YES" id="IAo-xF-Y6u" userLabel="Compact View">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewProfile:" target="Ady-hI-5gd" id="J9g-HD-AOg"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Settings" hidden="YES" id="Aqg-zh-zCt" userLabel="Settings">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="actionViewSettings:" target="Ady-hI-5gd" id="noE-Wq-eGt"/>
-                                            </connections>
+                                            <menu key="submenu" title="Compact View" id="4er-wd-MDx">
+                                                <items>
+                                                    <menuItem title="Home" id="ANR-Pm-9hg" userLabel="Home">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewHome:" target="Ady-hI-5gd" id="Hft-bu-bfn"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Search" id="oBN-kV-dJb" userLabel="Search">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewSearch:" target="Ady-hI-5gd" id="9D8-QB-33u"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Chat" id="LDf-NQ-Rd6">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewChat:" target="Ady-hI-5gd" id="wxB-AX-Ls0"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Notifications" id="11H-wB-xFK" userLabel="Notifications">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewNotifications:" target="Ady-hI-5gd" id="XNN-YG-mVE"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Profile" id="Qxt-A4-tqJ" userLabel="Profile">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionViewProfile:" target="Ady-hI-5gd" id="eHk-Lw-u3J"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2GO-Mh-Pot"/>
                                         <menuItem title="Actual Size" keyEquivalent="0" id="vBi-ho-dYr">
@@ -371,12 +425,6 @@
                                         <menuItem title="Zoom Out" keyEquivalent="-" id="0Hj-K6-7Tb">
                                             <connections>
                                                 <action selector="actionZoomOut:" target="Ady-hI-5gd" id="9J8-9Q-oaz"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="vWQ-2z-ZVe"/>
-                                        <menuItem title="Toggle Dark Mode" keyEquivalent="D" id="sDs-WP-qC5">
-                                            <connections>
-                                                <action selector="actionToggleDarkMode:" target="Ady-hI-5gd" id="fJI-7C-ZPZ"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="mHh-pj-LA4"/>
@@ -617,7 +665,7 @@
                                                             <rect key="frame" x="8" y="0.0" width="421" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-0K-Pbh">
                                                                     <rect key="frame" x="0.0" y="0.0" width="421" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufj-mp-s6u">
@@ -728,7 +776,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
                                 <rect key="frame" x="0.0" y="250" width="480" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" drawsBackground="YES" id="DUY-Us-eia">
@@ -776,7 +824,7 @@
                                                             <rect key="frame" x="18" y="0.0" width="443" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
                                                                     <rect key="frame" x="0.0" y="0.0" width="443" height="24"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TTf-rB-auk">

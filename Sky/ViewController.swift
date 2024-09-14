@@ -25,9 +25,12 @@ class ViewController: NSViewController {
     var hideHomeRepliesWkUserScript: WKUserScript?
     var setZoomFactorWkUserScript: WKUserScript?
 
-    let userScripts = [
-        "hook_ctrl_tab",
+    let userScriptsAtDocumentStart = [
         "hook_fetch",
+    ]
+
+    let userScriptsAtDocumentEnd = [
+        "hook_ctrl_tab",
         "hook_history_state",
         "hook_local_storage",
         "hook_window_color_scheme",
@@ -45,10 +48,19 @@ class ViewController: NSViewController {
         for name in scriptMessageHandler.nameFns.keys {
             userContentController.add(scriptMessageHandler, name: name)
         }
-        for userScript in userScripts {
+        for userScript in userScriptsAtDocumentStart {
             userContentController.addUserScript(
                 JsLoader.loadWKUserScript(
-                    "Scripts/\(userScript)"))
+                    "Scripts/\(userScript)",
+                    [:],
+                    .atDocumentStart))
+        }
+        for userScript in userScriptsAtDocumentEnd {
+            userContentController.addUserScript(
+                JsLoader.loadWKUserScript(
+                    "Scripts/\(userScript)",
+                    [:],
+                    .atDocumentEnd))
         }
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
@@ -170,6 +182,18 @@ class ViewController: NSViewController {
                 label: "Notifications",
                 index: 3,
                 url: SkyUrls.notifications
+            )
+        )
+    }
+
+    @IBAction func actionViewChat(_ sender: Any?) {
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.messages)
+        self.webView.evaluateJavaScript(
+            Scripts.navigateNavbar(
+                checkLoadNew: checkLoadNew,
+                label: "Chat",
+                index: -1,
+                url: SkyUrls.messages
             )
         )
     }
@@ -374,12 +398,6 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionToggleDarkMode(_ sender: Any?) {
-        self.webView.evaluateJavaScript(
-            Scripts.toggleDarkMode()
-        )
-    }
-
     @IBAction func actionLaunchJumpbar(_ sender: Any?) {
         if let jumpbarWindowController = AppDelegate.shared.jumpbarWindowController {
             NSApplication.shared.runModal(for: jumpbarWindowController.window!)
@@ -391,14 +409,28 @@ class ViewController: NSViewController {
         case light
     }
 
-    func updateTitleBar(_ mode: WindowColorScheme) {
-//        NSLog("mode = \(mode)")
-        switch (mode) {
-        case .dark:
-            self.webView.window!.backgroundColor = NSColor.black
+    func updateTitleBar(_ mode: WindowColorScheme, backgroundColor: String) {
+        if backgroundColor.starts(with:"rgb("),
+            let range = backgroundColor.range(of: #"\((.*?)\)"#, options: .regularExpression)
+        {
+            let result = backgroundColor[range]
+            let trimmedResult = result.trimmingCharacters(in: CharacterSet(charactersIn: "()"))
+            let rgb: [String.SubSequence] = trimmedResult.split(separator: ",")
+            if rgb.count == 3 {
+                let r = CGFloat(Int(rgb[0].trimmingCharacters(in:.whitespaces))!) / 255.0
+                let g = CGFloat(Int(rgb[1].trimmingCharacters(in:.whitespaces))!) / 255.0
+                let b = CGFloat(Int(rgb[2].trimmingCharacters(in:.whitespaces))!) / 255.0
+                self.webView.window!.backgroundColor = NSColor(
+                    red: r,
+                    green: g,
+                    blue: b,
+                    alpha: 1.0
+                )
+            }
+        }
+        if mode == .dark {
             self.webView.window!.appearance = NSAppearance(named: .darkAqua)
-        case .light:
-            self.webView.window!.backgroundColor = NSColor.white
+        } else {
             self.webView.window!.appearance = NSAppearance(named: .aqua)
         }
     }

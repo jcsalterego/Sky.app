@@ -46,11 +46,13 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
 
     func windowColorSchemeChange(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
-            if let darkMode = messageBody["darkMode"] as? Int {
+            if let darkMode = messageBody["darkMode"] as? Int,
+               let backgroundColor = messageBody["backgroundColor"] as? String
+            {
                 if darkMode == 1 {
-                    viewController.updateTitleBar(.dark)
+                    viewController.updateTitleBar(.dark, backgroundColor: backgroundColor)
                 } else {
-                    viewController.updateTitleBar(.light)
+                    viewController.updateTitleBar(.light, backgroundColor: backgroundColor)
                 }
             }
         }
@@ -82,6 +84,22 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
         }
     }
 
+    func handleFetchListConversations(_ doc : NSDictionary) {
+        if let convosList = doc["convos"] as? [NSDictionary] {
+            var mutedThreadUris: [String] = []
+            for convo in convosList {
+                if let convoId = convo["id"] as? String,
+                   let convoUnreadCount = convo["unreadCount"] as? Int
+                {
+                    AppDelegate.shared.setConvoUnreadCount(
+                        id: convoId, unreadCount: convoUnreadCount
+                    )
+                }
+            }
+            AppDelegate.shared.refreshBadge()
+        }
+    }
+
     func fetch(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
             if let urlString = messageBody["url"] as? String,
@@ -89,6 +107,9 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
             {
                 if urlString.contains("listNotifications") {
                     handleFetchListNotifications(response)
+                }
+                if urlString.contains("listConvos") {
+                    handleFetchListConversations(response)
                 }
             }
         }

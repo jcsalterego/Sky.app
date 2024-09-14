@@ -1,19 +1,17 @@
 $INCLUDE("_with_retry");
-function setColorScheme(darkMode) {
-    const DARK_MODE_FOREGROUND = "#79787c";
-    const DARK_MODE_BACKGROUND = "#000000";
-    const LIGHT_MODE_FOREGROUND = "#c3c3c3";
-    const LIGHT_MODE_BACKGROUND = "#fafafa";
+function updateColorScheme() {
+    let background = document.body.style.backgroundColor;
+    let foreground = document.body.style.color;
+    let darkMode = false;
+    if (background === "rgb(255, 255, 255)") {
+        darkMode = false;
+    } else {
+        darkMode = true;
+    }
     window.webkit.messageHandlers.windowColorSchemeChange.postMessage({
         darkMode: darkMode,
+        backgroundColor: background,
     });
-    if (darkMode) {
-        foreground = DARK_MODE_FOREGROUND;
-        background = DARK_MODE_BACKGROUND;
-    } else {
-        foreground = LIGHT_MODE_FOREGROUND;
-        background = LIGHT_MODE_BACKGROUND;
-    }
     let rules = [
         `::-webkit-scrollbar { width: auto }`,
         `::-webkit-scrollbar-track { background: ${background}; }`,
@@ -24,14 +22,11 @@ function setColorScheme(darkMode) {
     for (let rule of rules) {
         stylesheet.insertRule(rule, stylesheet.rules.length - 1);
     }
-    elems = Array.from(document.querySelectorAll("div")).filter((div) => {
-        return div.scrollHeight > window.innerHeight;
-    });
 }
 
 function setColorSchemeChange() {
     let done = false;
-    let elems = Array.from(document.querySelectorAll("#root div div"));
+    let elems = Array.from(document.querySelectorAll("body"));
     if (elems.length > 0) {
         let elem = elems[0];
         if (elem.dataset.windowColorSchemeObserverSet === undefined) {
@@ -45,11 +40,7 @@ function setColorSchemeChange() {
                     let backgroundColor =
                         window.getComputedStyle(elem).backgroundColor;
                     if (elem.dataset.lastBackgroundColor !== backgroundColor) {
-                        if (backgroundColor === "rgb(0, 0, 0)") {
-                            setColorScheme(true);
-                        } else {
-                            setColorScheme(false);
-                        }
+                        updateColorScheme();
                         elem.dataset.lastBackgroundColor = backgroundColor;
                         break;
                     }

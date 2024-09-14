@@ -1,7 +1,18 @@
 $INCLUDE("_filters.js");
 
 async function overrideGet(...args) {
-    const url = args[0];
+    let request = args[0];
+    let url = null;
+    if (request.constructor.name === "Request") {
+        url = request.url;
+    } else if (request.constructor.name === "URL") {
+        url = request.href;
+    } else if (request.constructor.name === "String") {
+        url = request;
+    } else {
+        console.warn("Unknown request type", request);
+        return window._fetch(...args);
+    }
     const response = await window._fetch(...args);
     const contentType = response.headers.get("Content-Type");
     if (
@@ -21,7 +32,6 @@ async function overrideGet(...args) {
     });
 
     let altered = false;
-
     let isSearch = url.indexOf("https://search.bsky.social/search/posts") === 0;
     let featureOrderPosts = localStorage.getItem("featureOrderPosts") === "yes";
     let featureHideHomeReplies = localStorage.getItem("featureHideHomeReplies") === "yes";

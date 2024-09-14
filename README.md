@@ -5,7 +5,7 @@ keyboard shortcuts, Dark Mode Sync, and notification badges.
 
 _If you're looking for the official Bluesky Social iOS app, [head on over to the App Store](https://apps.apple.com/us/app/bluesky-social/id6444370199)._
 
-The current release is [**0.3.9**](https://github.com/jcsalterego/Sky.app/releases/latest).
+The current release is [**0.4.0**](https://github.com/jcsalterego/Sky.app/releases/latest).
 
 ![](Docs/screenshot.png)
 
@@ -30,7 +30,7 @@ In Compact Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` Feeds
+* `⌘-3` Chat
 * `⌘-4` Notifications
 * `⌘-5` Profile
 
@@ -38,18 +38,18 @@ In Desktop Mode:
 
 * `⌘-1` Home
 * `⌘-2` Search
-* `⌘-3` Feeds
-* `⌘-4` Notifications
-* `⌘-5` Lists
-* `⌘-6` Moderation
+* `⌘-3` Notifications
+* `⌘-4` Chat
+* `⌘-5` Feed
+* `⌘-6` Lists
 * `⌘-7` Profile
 * `⌘-8` Settings
 
 ### Other
 
+* `⌘-,` Settings...
 * `⌘-K` Jump To...
 * `⌘-T` Open in Browser
-* `⌘-⇧-D` Toggle Dark Mode
 * `⌘-⇧-C` Copy Share URL
 * `^-⌘-⇧-C` Copy Current URL
 
@@ -62,6 +62,15 @@ App icon based on the [work](https://unsplash.com/photos/KVVpx8M10OY) of Carmine
 Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
+
+### 0.4.0
+
+* Add (`⌘-,`) to go to the Settings page
+* Fix color scheme sync
+* Remove "Toggle Dark Mode" (for now?)
+* Notification badges now include unread chat messages
+* Fix notification badges
+* Fix keybindings and menu items between Compact and Desktop modes
 
 ### 0.3.9
 
