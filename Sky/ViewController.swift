@@ -91,6 +91,9 @@ class ViewController: NSViewController {
         webView.navigationDelegate = webKitDelegate
         webView.uiDelegate = webKitDelegate
         webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+        if #available(macOS 12.3, *) {
+            webView.configuration.preferences.isElementFullscreenEnabled = true
+        }
 
         // defaults write jcsalterego.Sky webInspector -bool TRUE
         if let webInspector = UserDefaults.standard.object(forKey: UserDefaultKeys.webInspector) as? Bool {
