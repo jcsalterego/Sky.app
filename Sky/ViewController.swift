@@ -159,7 +159,7 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Feeds",
-                index: 2,
+                index: -1,
                 url: SkyUrls.feeds
             )
         )
@@ -195,7 +195,7 @@ class ViewController: NSViewController {
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Chat",
-                index: -1,
+                index: 2,
                 url: SkyUrls.messages
             )
         )
