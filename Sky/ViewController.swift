@@ -198,7 +198,7 @@ class ViewController: NSViewController {
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
-                label: "Chat",
+                label: "Chat;Messages",
                 index: 2,
                 url: SkyUrls.messages
             )
