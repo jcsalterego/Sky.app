@@ -72,6 +72,29 @@ function navigateProfileTabs(direction) {
     navigateTabElems(tabElems, 2, direction);
 }
 
+function navigateNotificationsTabs(direction) {
+    let rootElem = undefined,
+        tabElems = undefined;
+    if (rootElem === undefined) {
+        let rootElems = filterVisible(
+            document.querySelectorAll(`div[data-testid="undefined-selector"]`)
+        );
+        if (rootElems.length === 1) {
+            rootElem = rootElems[0];
+        }
+    }
+    if (rootElem === undefined) {
+        console.warn("could not find rootElem");
+        return;
+    }
+    tabElems = Array.from(rootElem.querySelectorAll(`div[role="tab"]`));
+    if (tabElems.length === 0) {
+        console.warn("could not find tabElems");
+        return;
+    }
+    navigateTabElems(tabElems, 2, direction);
+}
+
 function navigateSearchTabs(direction) {
     let rootElem = undefined,
         tabElems = undefined;
@@ -130,6 +153,8 @@ function navigateTab(direction) {
         navigateHomeTabs(direction);
     } else if (path.match(/\/profile\//)) {
         navigateProfileTabs(direction);
+    } else if (path.match(/\/notifications/)) {
+        navigateNotificationsTabs(direction);
     } else if (path.match(/\/search/)) {
         navigateSearchTabs(direction);
     }
