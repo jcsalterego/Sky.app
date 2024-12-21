@@ -1,4 +1,6 @@
 $INCLUDE("_filter_visible.js");
+$INCLUDE("_is_present.js");
+
 function getAncestor(elem, levels) {
     let parent = elem;
     for (let i = 0; i < levels; i++) {
@@ -18,7 +20,7 @@ function navigateHomeTabs(direction) {
         tabElems = undefined;
     if (rootElem === undefined) {
         let rootElems = filterVisible(
-            document.querySelectorAll(`div[data-testid="homeScreenFeedTabs"]`)
+            document.querySelectorAll(`div[data-testid="homeScreenFeedTabs-selector"]`)
         );
         if (rootElems.length === 1) {
             rootElem = rootElems[0];
@@ -103,9 +105,7 @@ function navigateTabElems(tabElems, descendentCount, direction) {
     var idx = 0;
     for (let tabElem of tabElems) {
         let child = getDescendent(tabElem, descendentCount);
-        if (
-            child.parentElement.style.borderBottomColor !== ""
-        ) {
+        if (child.children.length && isPresent(child.children[0].style.backgroundColor)) {
             selected = idx;
             break;
         }
