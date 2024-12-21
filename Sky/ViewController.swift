@@ -143,14 +143,18 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
-        self.webView.evaluateJavaScript(
-            Scripts.navigateNavbar(
-                checkLoadNew: false,
-                label: "Search",
-                index: 1,
-                url: SkyUrls.search
+        if webView.url!.absoluteString == SkyUrls.search {
+            self.webView.evaluateJavaScript(Scripts.focusSearch())
+        } else {
+            self.webView.evaluateJavaScript(
+                Scripts.navigateNavbar(
+                    checkLoadNew: false,
+                    label: "Search",
+                    index: 1,
+                    url: SkyUrls.search
+                )
             )
-        )
+        }
     }
 
     @IBAction func actionViewFeeds(_ sender: Any?) {
