@@ -1,7 +1,6 @@
 $INCLUDE("_with_retry");
 function updateColorScheme() {
     let background = document.body.style.backgroundColor;
-    let foreground = document.body.style.color;
     let darkMode = false;
     if (background === "rgb(255, 255, 255)") {
         darkMode = false;
@@ -12,16 +11,6 @@ function updateColorScheme() {
         darkMode: darkMode,
         backgroundColor: background,
     });
-    let rules = [
-        `::-webkit-scrollbar { width: auto }`,
-        `::-webkit-scrollbar-track { background: ${background}; }`,
-        `::-webkit-scrollbar-thumb { background-color: ${foreground}; ` +
-            `border-radius: 6px; border: 4px solid ${background}; }`,
-    ];
-    let stylesheet = document.styleSheets[document.styleSheets.length - 1];
-    for (let rule of rules) {
-        stylesheet.insertRule(rule, stylesheet.rules.length - 1);
-    }
 }
 
 function setColorSchemeChange() {
