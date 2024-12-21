@@ -36,11 +36,18 @@ function navigate(checkLoadNew, label, index, url) {
             found = true;
         }
     }
-    if (!found) {
-        found = clickByAriaLabel(label);
-    }
-    if (!found) {
-        found = findByNavbarIndex(index);
+    let labels = label.split(";");
+    for (const labelVariant of labels) {
+        console.log(`Finding ${labelVariant}`);
+        if (!found) {
+            found = clickByAriaLabel(labelVariant);
+        }
+        if (!found) {
+            found = findByNavbarIndex(labelVariant);
+        }
+        if (found) {
+            break;
+        }
     }
     if (!found) {
         if (url !== "") {
