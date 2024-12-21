@@ -53,20 +53,18 @@ function navigateProfileTabs(direction) {
     let rootElem = undefined,
         tabElems = undefined;
     if (rootElem === undefined) {
-        let postsElems = filterVisible(
-            Array.from(document.querySelectorAll("div")).filter(
-                (elem) => elem.innerHTML === "Posts"
-            )
+        let rootElems = filterVisible(
+            document.querySelectorAll(`div[data-testid="profilePager-selector"]`)
         );
-        if (postsElems.length == 1) {
-            rootElem = getAncestor(postsElems[0], 3);
+        if (rootElems.length === 1) {
+            rootElem = rootElems[0];
         }
     }
     if (rootElem === undefined) {
         console.warn("could not find rootElem");
         return;
     }
-    tabElems = Array.from(rootElem.querySelectorAll(`div[aria-label]`));
+    tabElems = Array.from(rootElem.querySelectorAll(`div[role="tab"]`));
     if (tabElems.length === 0) {
         console.warn("could not find tabElems");
         return;
