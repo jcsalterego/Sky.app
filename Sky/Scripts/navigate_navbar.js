@@ -38,7 +38,6 @@ function navigate(checkLoadNew, label, index, url) {
     }
     let labels = label.split(";");
     for (const labelVariant of labels) {
-        console.log(`Finding ${labelVariant}`);
         if (!found) {
             found = clickByAriaLabel(labelVariant);
         }
