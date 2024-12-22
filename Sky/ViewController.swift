@@ -331,7 +331,8 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNewPost(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
+        // Does nothing because 'n' is bound to New Post now
+        // self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
