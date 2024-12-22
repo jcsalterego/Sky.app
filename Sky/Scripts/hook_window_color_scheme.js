@@ -1,36 +1,59 @@
 $INCLUDE("_with_retry");
 function updateColorScheme() {
-    let background = document.body.style.backgroundColor;
-    let darkMode = false;
-    if (background === "rgb(255, 255, 255)") {
-        darkMode = false;
-    } else {
-        darkMode = true;
+    const classDefs = {
+        "theme--light": {
+            "name": "light",
+            "darkMode": false,
+            "backgroundColor": "rgb(255, 255, 255)",
+        },
+        "theme--dark": {
+            "name": "dark",
+            "darkMode": true,
+            "backgroundColor": "rgb(0, 0, 0)",
+        },
+        "theme--dim": {
+            "name": "dim",
+            "darkMode": true,
+            "backgroundColor": "rgb(24, 30, 38)",
+        }
+    };
+    let match = classDefs["theme--light"];
+    let htmlTheme = getHtmlTheme();
+    for (let c of Object.keys(classDefs)) {
+        if (htmlTheme === c) {
+            match = classDefs[c];
+            break;
+        }
     }
     window.webkit.messageHandlers.windowColorSchemeChange.postMessage({
-        darkMode: darkMode,
-        backgroundColor: background,
+        colorScheme: match.name,
+        darkMode: match.darkMode,
+        backgroundColor: match.backgroundColor,
     });
+    return true;
+}
+
+function getHtmlTheme() {
+    return document.querySelector("html").className;
 }
 
 function setColorSchemeChange() {
     let done = false;
-    let elems = Array.from(document.querySelectorAll("body"));
+    let elems = document.querySelectorAll("html");
     if (elems.length > 0) {
         let elem = elems[0];
         if (elem.dataset.windowColorSchemeObserverSet === undefined) {
             const config = {
                 attributes: true,
-                childList: true,
+                childList: false,
                 subtree: false,
             };
             const callback = (mutationList, observer) => {
                 for (let m of mutationList) {
-                    let backgroundColor =
-                        window.getComputedStyle(elem).backgroundColor;
-                    if (elem.dataset.lastBackgroundColor !== backgroundColor) {
+                    let htmlTheme = getHtmlTheme();
+                    if (elem.dataset.lastHtmlTheme !== htmlTheme) {
                         updateColorScheme();
-                        elem.dataset.lastBackgroundColor = backgroundColor;
+                        elem.dataset.lastHtmlTheme = htmlTheme;
                         break;
                     }
                 }
@@ -44,4 +67,4 @@ function setColorSchemeChange() {
     }
     return done;
 }
-withRetry(setColorSchemeChange);
+withRetry(setColorSchemeChange, 1000, 10);
