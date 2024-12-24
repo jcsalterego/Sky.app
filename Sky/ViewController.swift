@@ -332,7 +332,9 @@ class ViewController: NSViewController {
 
     @IBAction func actionNewPost(_ sender: Any?) {
         // Does nothing because 'n' is bound to New Post now
-        // self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
+        if !NSEvent.modifierFlags.contains(.command) {
+            self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
+        }
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {
