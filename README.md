@@ -63,6 +63,17 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 ## Changelog
 
+### 0.4.1
+
+* Clean up ⌘-n behavior as `n` is bound to New Post in-app
+* Fix color scheme sync (again)
+* Some code cleanup around old window and view controllers
+* Fix: Window control boxes disappear during lost focus [#22](https://github.com/jcsalterego/Sky.app/issues/22)
+* Fix: White title bar and scroll bar [#24](https://github.com/jcsalterego/Sky.app/issues/24)
+* ⌘-2 (Search) a second time will focus on search box
+* Fix tab navigation
+* Fix setZoomFactor crash
+
 ### 0.4.0
 
 * Add (`⌘-,`) to go to the Settings page
@@ -77,8 +88,8 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 * Remove Developer Console [#7](https://github.com/jcsalterego/Sky.app/issues/7)
 * Remove Mute Terms
 * Fix page up/down [#8](https://github.com/jcsalterego/Sky.app/issues/8)
-* Fix cmd-n for New Post [#9](https://github.com/jcsalterego/Sky.app/issues/9)
-* Fix cmd-# for refresh [#10](https://github.com/jcsalterego/Sky.app/issues/10)
+* Fix ⌘-n for New Post [#9](https://github.com/jcsalterego/Sky.app/issues/9)
+* Fix ⌘-# for refresh [#10](https://github.com/jcsalterego/Sky.app/issues/10)
 
 ### 0.3.8
 
@@ -89,8 +100,6 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 ### 0.3.7
 
 * More bug fixes for keyboard navigation
-
-## Changelog
 
 ### 0.3.6
 

@@ -143,14 +143,18 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewSearch(_ sender: Any?) {
-        self.webView.evaluateJavaScript(
-            Scripts.navigateNavbar(
-                checkLoadNew: false,
-                label: "Search",
-                index: 1,
-                url: SkyUrls.search
+        if webView.url!.absoluteString == SkyUrls.search {
+            self.webView.evaluateJavaScript(Scripts.focusSearch())
+        } else {
+            self.webView.evaluateJavaScript(
+                Scripts.navigateNavbar(
+                    checkLoadNew: false,
+                    label: "Search",
+                    index: 1,
+                    url: SkyUrls.search
+                )
             )
-        )
+        }
     }
 
     @IBAction func actionViewFeeds(_ sender: Any?) {
@@ -194,7 +198,7 @@ class ViewController: NSViewController {
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
-                label: "Chat",
+                label: "Chat;Messages",
                 index: 2,
                 url: SkyUrls.messages
             )
@@ -327,7 +331,10 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNewPost(_ sender: Any?) {
-        self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
+        // Does nothing because 'n' is bound to New Post now
+        if !NSEvent.modifierFlags.contains(.command) {
+            self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
+        }
     }
 
     @IBAction func actionNextTab(_ sender: Any?) {

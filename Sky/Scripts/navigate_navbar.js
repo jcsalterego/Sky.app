@@ -36,14 +36,17 @@ function navigate(checkLoadNew, label, index, url) {
             found = true;
         }
     }
-    if (!found
-        && document.location.pathname !== "/feeds"
-        && document.location.pathname !== "/notifications"
-    ) {
-        found = clickByAriaLabel(label);
-    }
-    if (!found) {
-        found = findByNavbarIndex(index);
+    let labels = label.split(";");
+    for (const labelVariant of labels) {
+        if (!found) {
+            found = clickByAriaLabel(labelVariant);
+        }
+        if (!found) {
+            found = findByNavbarIndex(labelVariant);
+        }
+        if (found) {
+            break;
+        }
     }
     if (!found) {
         if (url !== "") {

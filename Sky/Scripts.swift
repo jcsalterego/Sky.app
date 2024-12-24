@@ -49,4 +49,10 @@ class Scripts {
         )
     }
 
+    static func focusSearch() -> String {
+        return JsLoader.loadScriptContents(
+            "Scripts/focus_search", [:]
+        )
+    }
+
 }

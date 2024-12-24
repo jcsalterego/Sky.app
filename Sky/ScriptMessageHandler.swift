@@ -46,9 +46,11 @@ class ScriptMessageHandler: NSObject, WKScriptMessageHandler {
 
     func windowColorSchemeChange(_ message: WKScriptMessage) {
         if let messageBody = message.body as? NSDictionary {
-            if let darkMode = messageBody["darkMode"] as? Int,
+            if let colorScheme = messageBody["colorScheme"] as? String,
+               let darkMode = messageBody["darkMode"] as? Int,
                let backgroundColor = messageBody["backgroundColor"] as? String
             {
+                // NSLog("colorScheme: \(colorScheme), darkMode: \(darkMode), backgroundColor: \(backgroundColor)")
                 if darkMode == 1 {
                     viewController.updateTitleBar(.dark, backgroundColor: backgroundColor)
                 } else {

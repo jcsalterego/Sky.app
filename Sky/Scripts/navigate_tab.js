@@ -1,4 +1,6 @@
 $INCLUDE("_filter_visible.js");
+$INCLUDE("_is_present.js");
+
 function getAncestor(elem, levels) {
     let parent = elem;
     for (let i = 0; i < levels; i++) {
@@ -18,7 +20,7 @@ function navigateHomeTabs(direction) {
         tabElems = undefined;
     if (rootElem === undefined) {
         let rootElems = filterVisible(
-            document.querySelectorAll(`div[data-testid="homeScreenFeedTabs"]`)
+            document.querySelectorAll(`div[data-testid="homeScreenFeedTabs-selector"]`)
         );
         if (rootElems.length === 1) {
             rootElem = rootElems[0];
@@ -51,20 +53,41 @@ function navigateProfileTabs(direction) {
     let rootElem = undefined,
         tabElems = undefined;
     if (rootElem === undefined) {
-        let postsElems = filterVisible(
-            Array.from(document.querySelectorAll("div")).filter(
-                (elem) => elem.innerHTML === "Posts"
-            )
+        let rootElems = filterVisible(
+            document.querySelectorAll(`div[data-testid="profilePager-selector"]`)
         );
-        if (postsElems.length == 1) {
-            rootElem = getAncestor(postsElems[0], 3);
+        if (rootElems.length === 1) {
+            rootElem = rootElems[0];
         }
     }
     if (rootElem === undefined) {
         console.warn("could not find rootElem");
         return;
     }
-    tabElems = Array.from(rootElem.querySelectorAll(`div[aria-label]`));
+    tabElems = Array.from(rootElem.querySelectorAll(`div[role="tab"]`));
+    if (tabElems.length === 0) {
+        console.warn("could not find tabElems");
+        return;
+    }
+    navigateTabElems(tabElems, 2, direction);
+}
+
+function navigateNotificationsTabs(direction) {
+    let rootElem = undefined,
+        tabElems = undefined;
+    if (rootElem === undefined) {
+        let rootElems = filterVisible(
+            document.querySelectorAll(`div[data-testid="undefined-selector"]`)
+        );
+        if (rootElems.length === 1) {
+            rootElem = rootElems[0];
+        }
+    }
+    if (rootElem === undefined) {
+        console.warn("could not find rootElem");
+        return;
+    }
+    tabElems = Array.from(rootElem.querySelectorAll(`div[role="tab"]`));
     if (tabElems.length === 0) {
         console.warn("could not find tabElems");
         return;
@@ -76,13 +99,11 @@ function navigateSearchTabs(direction) {
     let rootElem = undefined,
         tabElems = undefined;
     if (rootElem === undefined) {
-        let postsElems = filterVisible(
-            Array.from(document.querySelectorAll("div")).filter(
-                (elem) => elem.innerHTML === "Posts"
-            )
+        let rootElems = filterVisible(
+            document.querySelectorAll(`div[data-testid="undefined-selector"]`)
         );
-        if (postsElems.length == 1) {
-            rootElem = getAncestor(postsElems[0], 3);
+        if (rootElems.length === 1) {
+            rootElem = rootElems[0];
         }
     }
     if (rootElem === undefined) {
@@ -103,9 +124,7 @@ function navigateTabElems(tabElems, descendentCount, direction) {
     var idx = 0;
     for (let tabElem of tabElems) {
         let child = getDescendent(tabElem, descendentCount);
-        if (
-            child.parentElement.style.borderBottomColor !== ""
-        ) {
+        if (child.children.length && isPresent(child.children[0].style.backgroundColor)) {
             selected = idx;
             break;
         }
@@ -134,6 +153,8 @@ function navigateTab(direction) {
         navigateHomeTabs(direction);
     } else if (path.match(/\/profile\//)) {
         navigateProfileTabs(direction);
+    } else if (path.match(/\/notifications/)) {
+        navigateNotificationsTabs(direction);
     } else if (path.match(/\/search/)) {
         navigateSearchTabs(direction);
     }
