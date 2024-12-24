@@ -90,8 +90,6 @@ Check for Updates powered by [Sparkle](https://sparkle-project.org).
 
 * More bug fixes for keyboard navigation
 
-## Changelog
-
 ### 0.3.6
 
 * Bug fixes for keyboard navigation
