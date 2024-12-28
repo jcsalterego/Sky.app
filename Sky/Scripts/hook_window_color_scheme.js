@@ -45,7 +45,7 @@ function updateColorSchemeWithBskyStorage(bskyStorage) {
     };
     let match = classDefs["theme--light"];
     let initSystemAppearance = getInitSystemAppearance();
-    console.info("initSystemAppearance", initSystemAppearance);
+    console.info("updateColorSchemeWithBskyStorage initSystemAppearance", initSystemAppearance);
     if (colorMode === "system") {
         if (initSystemAppearance === "dark" && darkTheme === "dark") {
             match = classDefs["theme--dark"];
