@@ -63,6 +63,14 @@ class ViewController: NSViewController {
                     .atDocumentEnd))
         }
 
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        let saveSystemAppearanceWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.initSystemAppearance, "value": initSystemAppearanceValue]
+        )
+        userContentController.addUserScript(saveSystemAppearanceWkUserScript)
+
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
         orderPostsWkUserScript = JsLoader.loadWKUserScript(
@@ -116,8 +124,6 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         let url = URL(string: SkyUrls.root)
         let myRequest = URLRequest(url: url!)
-        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
-        NSLog("best match = \(bestMatch!)")
         webView.load(myRequest)
     }
 
