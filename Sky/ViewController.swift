@@ -37,9 +37,31 @@ class ViewController: NSViewController {
         "hook_window_open",
     ]
 
+    var observation: NSKeyValueObservation?
+
+    func checkAppearance() {
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        NSLog("checkAppearance initSystemAppearanceValue = \(initSystemAppearanceValue)")
+        if self.webView != nil {
+            NSLog("checkAppearance setting local storage")
+            self.webView.evaluateJavaScript(
+                Scripts.localStorageSetItem(
+                    key: LocalStorageKeys.initSystemAppearance,
+                    value: initSystemAppearanceValue
+                )
+            )
+        }
+    }
+
     override func loadView() {
         AppDelegate.shared.mainViewController = self
-
+        checkAppearance()
+        observation = NSApp.observe(\.effectiveAppearance) { (app, _) in
+            app.effectiveAppearance.performAsCurrentDrawingAppearance {
+                self.checkAppearance()
+            }
+        }
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
