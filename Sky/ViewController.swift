@@ -116,6 +116,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         let url = URL(string: SkyUrls.root)
         let myRequest = URLRequest(url: url!)
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        NSLog("best match = \(bestMatch!)")
         webView.load(myRequest)
     }
 
