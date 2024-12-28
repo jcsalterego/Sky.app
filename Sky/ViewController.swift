@@ -283,6 +283,17 @@ class ViewController: NSViewController {
             }
         }
 
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        let saveSystemAppearanceWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.initSystemAppearance, "value": initSystemAppearanceValue]
+        )
+        NSLog("setting refresh system appearance to \(initSystemAppearanceValue)")
+        newUserScripts.append(
+            saveSystemAppearanceWkUserScript
+        )
+
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
         newUserScripts.append(
