@@ -91,6 +91,7 @@ class ViewController: NSViewController {
             "Scripts/local_storage_set_item",
             ["key": LocalStorageKeys.initSystemAppearance, "value": initSystemAppearanceValue]
         )
+        NSLog("setting init system appearance to \(initSystemAppearanceValue)")
         userContentController.addUserScript(saveSystemAppearanceWkUserScript)
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
