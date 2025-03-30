@@ -8,4 +8,5 @@ import Foundation
 enum LocalStorageKeys {
     static let hideHomeReplies = "featureHideHomeReplies"
     static let orderPosts = "featureOrderPosts"
+    static let initSystemAppearance = "initSystemAppearance"
 }

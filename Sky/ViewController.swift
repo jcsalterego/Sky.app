@@ -37,9 +37,31 @@ class ViewController: NSViewController {
         "hook_window_open",
     ]
 
+    var observation: NSKeyValueObservation?
+
+    func checkAppearance() {
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        NSLog("checkAppearance initSystemAppearanceValue = \(initSystemAppearanceValue)")
+        if self.webView != nil {
+            NSLog("checkAppearance setting local storage")
+            self.webView.evaluateJavaScript(
+                Scripts.localStorageSetItem(
+                    key: LocalStorageKeys.initSystemAppearance,
+                    value: initSystemAppearanceValue
+                )
+            )
+        }
+    }
+
     override func loadView() {
         AppDelegate.shared.mainViewController = self
-
+        checkAppearance()
+        observation = NSApp.observe(\.effectiveAppearance) { (app, _) in
+            app.effectiveAppearance.performAsCurrentDrawingAppearance {
+                self.checkAppearance()
+            }
+        }
         webKitDelegate = WebKitDelegate()
         let webConfiguration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
@@ -62,6 +84,15 @@ class ViewController: NSViewController {
                     [:],
                     .atDocumentEnd))
         }
+
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        let saveSystemAppearanceWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.initSystemAppearance, "value": initSystemAppearanceValue]
+        )
+        NSLog("setting init system appearance to \(initSystemAppearanceValue)")
+        userContentController.addUserScript(saveSystemAppearanceWkUserScript)
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
@@ -252,6 +283,17 @@ class ViewController: NSViewController {
                 newUserScripts.append(userScript)
             }
         }
+
+        let bestMatch = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+        let initSystemAppearanceValue = bestMatch == .darkAqua ? "dark" : "light"
+        let saveSystemAppearanceWkUserScript = JsLoader.loadWKUserScript(
+            "Scripts/local_storage_set_item",
+            ["key": LocalStorageKeys.initSystemAppearance, "value": initSystemAppearanceValue]
+        )
+        NSLog("setting refresh system appearance to \(initSystemAppearanceValue)")
+        newUserScripts.append(
+            saveSystemAppearanceWkUserScript
+        )
 
         let orderPosts = AppDelegate.shared.getUserDefaultsOrderPosts()
         let orderPostsValue = orderPosts ? "yes" : "no"
