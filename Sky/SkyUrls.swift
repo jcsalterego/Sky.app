@@ -4,7 +4,7 @@
 //
 
 enum SkyUrls {
-    static let host = "bsky.app"
+    static let host = "deer.social"
     static let root = "https://\(host)"
     static let home = "\(root)/"
     static let search = "\(root)/search"
