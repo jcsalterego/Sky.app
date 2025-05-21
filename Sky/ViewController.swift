@@ -15,6 +15,7 @@ class ViewController: NSViewController {
         static let leftBracket               : UInt16 = 0x21
         static let rightBracket              : UInt16 = 0x1E
         static let k                         : UInt16 = 0x28
+    static let enter                     : UInt16 = 0x24
     }
 
     var webView: WKWebView!
@@ -158,7 +159,13 @@ class ViewController: NSViewController {
             && event.keyCode == Keycode.k
         ) {
             actionLaunchJumpbar(nil)
-        }
+    } else if ( // New block starts here
+        event.modifierFlags.contains(.command)
+        && event.keyCode == Keycode.enter
+    ) {
+        // This will call a function we'll define in Sky/Scripts.swift
+        self.webView.evaluateJavaScript(Scripts.submitPost()) 
+    } // New block ends here
     }
 
     @IBAction func actionViewHome(_ sender: Any?) {
