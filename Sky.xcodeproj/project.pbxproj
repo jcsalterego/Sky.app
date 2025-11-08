@@ -10,6 +10,7 @@
 		043A0F1829A5330E00B06D18 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 043A0F1729A5330E00B06D18 /* Scripts */; };
 		043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1929A5331800B06D18 /* JsLoader.swift */; };
 		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
+		0447A07B2EBF7B4E00F5EF98 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A07A2EBF7B4E00F5EF98 /* MainWindowController.swift */; };
 		045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */; };
 		048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048239162A1E55D600715D01 /* LocalStorageKeys.swift */; };
 		048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCC2A093F3E00A8C919 /* Scripts.swift */; };
@@ -54,6 +55,7 @@
 		043A0F1729A5330E00B06D18 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		043A0F1929A5331800B06D18 /* JsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsLoader.swift; sourceTree = "<group>"; };
 		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
+		0447A07A2EBF7B4E00F5EF98 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowDelegate.swift; sourceTree = "<group>"; };
 		048239162A1E55D600715D01 /* LocalStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageKeys.swift; sourceTree = "<group>"; };
 		048BAFCC2A093F3E00A8C919 /* Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripts.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */,
 				043A0F1929A5331800B06D18 /* JsLoader.swift */,
 				048239162A1E55D600715D01 /* LocalStorageKeys.swift */,
+				0447A07A2EBF7B4E00F5EF98 /* MainWindowController.swift */,
 				043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */,
 				048BAFCC2A093F3E00A8C919 /* Scripts.swift */,
 				048BAFCE2A09472400A8C919 /* SkyUrls.swift */,
@@ -351,6 +354,7 @@
 				0499FB7D2A1BBD6B009226EE /* RootLocalStorage.swift in Sources */,
 				04FF78802A2A7572004569D7 /* JumpbarViewController.swift in Sources */,
 				0499FB872A1C5A89009226EE /* UserDefaultKeys.swift in Sources */,
+				0447A07B2EBF7B4E00F5EF98 /* MainWindowController.swift in Sources */,
 				04E8481121DA8A5E009D1B0F /* WebKitDelegate.swift in Sources */,
 				04FF78812A2A7574004569D7 /* JumpbarWindowController.swift in Sources */,
 				043A0F1B29A5331800B06D18 /* JsLoader.swift in Sources */,
