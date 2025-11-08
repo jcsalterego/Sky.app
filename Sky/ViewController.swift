@@ -527,6 +527,7 @@ class ViewController: NSViewController {
             let title = menuItem.title
             let widthString = title.replacingOccurrences(of: "pt", with: "")
             if let width = Int(widthString) {
+                AppDelegate.shared.setMinimumWindowWidth(width)
                 let currentMinHeight = window.contentMinSize.height
                 window.contentMinSize = NSSize(
                     width: CGFloat(width),
