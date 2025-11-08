@@ -29,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var translationsWindowController : TranslationsWindowController?
     var translationsViewController : TranslationsViewController?
 
+    var appViewWindowController : AppViewWindowController?
+
     var localStorageMirror = [String:String]()
 
     class var shared: AppDelegate {
@@ -69,6 +71,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     translationsWindowController = storyboard.instantiateController(
                         withIdentifier: "TranslationsWindowController") as? TranslationsWindowController
 
+                    appViewWindowController = storyboard.instantiateController(
+                        withIdentifier: "AppViewWindowController") as? AppViewWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }

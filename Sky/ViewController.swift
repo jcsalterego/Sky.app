@@ -270,6 +270,12 @@ class ViewController: NSViewController {
         )
     }
 
+    @IBAction func actionChooseAppView(_ sender: Any) {
+        if let appViewWindowController = AppDelegate.shared.appViewWindowController {
+            NSApplication.shared.runModal(for: appViewWindowController.window!)
+        }
+    }
+
     @IBAction func actionRefresh(_ sender: Any?) {
         AppDelegate.shared.clearNotifCounts()
 
