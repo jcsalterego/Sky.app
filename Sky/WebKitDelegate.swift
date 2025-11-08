@@ -67,4 +67,16 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         completionHandler(action == .alertFirstButtonReturn)
     }
 
+    func webView(
+        _ webView: WKWebView,
+        createWebViewWith configuration: WKWebViewConfiguration,
+        for navigationAction: WKNavigationAction,
+        windowFeatures: WKWindowFeatures) -> WKWebView?
+    {
+        // open link in new window
+        // open image in new window
+        NSWorkspace.shared.open(navigationAction.request.url!)
+        return nil
+    }
+
 }
