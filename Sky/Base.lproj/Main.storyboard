@@ -462,6 +462,40 @@
                                                 <action selector="actionUseTranslationsWindow:" target="Ady-hI-5gd" id="gcC-Uz-oqc"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Set Minimum Window Width" id="QUk-Bi-zQa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Advanced" id="9tr-6l-vsR">
+                                                <items>
+                                                    <menuItem title="250pt" id="sxJ-Vm-DAm">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionSetMinimumWindowHeight:" target="Ady-hI-5gd" id="CfS-xy-S7x"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="300pt" id="qyB-vf-hqW">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionSetMinimumWindowHeight:" target="Ady-hI-5gd" id="IGU-bs-H7a"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="350pt" id="Vfp-29-sQj">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionSetMinimumWindowHeight:" target="Ady-hI-5gd" id="e2B-YN-vKe"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="375pt" id="jRS-jr-Bfk">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="actionSetMinimumWindowHeight:" target="Ady-hI-5gd" id="DuL-vI-95W"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                            <connections>
+                                                <action selector="actionUseTranslationsWindow:" target="Ady-hI-5gd" id="5uh-WP-rI6"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
