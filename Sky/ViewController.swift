@@ -520,7 +520,7 @@ class ViewController: NSViewController {
         adjustAndApplyZoomFactor(0)
     }
 
-    @IBAction func actionSetMinimumWindowHeight(_ sender: Any?) {
+    @IBAction func actionSetMinimumWindowWidth(_ sender: Any?) {
         if let menuItem = sender as? NSMenuItem,
            let window = self.view.window
         {
