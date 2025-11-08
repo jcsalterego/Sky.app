@@ -629,7 +629,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcw-JG-r8m">
                                 <rect key="frame" x="0.0" y="250" width="480" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" drawsBackground="YES" id="DUY-Us-eia">
@@ -677,7 +677,7 @@
                                                             <rect key="frame" x="18" y="0.0" width="443" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZ2-Tc-YzK">
                                                                     <rect key="frame" x="0.0" y="0.0" width="443" height="24"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TTf-rB-auk">
@@ -766,6 +766,44 @@
                 <customObject id="EMn-Ou-jOT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1320" y="-590"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="HEm-Nz-fj9">
+            <objects>
+                <windowController id="Kuy-Oi-Mnx" customClass="AppViewWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jZK-Ut-2yG">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="211" y="267" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1800" height="1125"/>
+                        <view key="contentView" id="L3t-Ol-Zct">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="Kuy-Oi-Mnx" id="Y5B-s0-89j"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="zxc-8R-22T" kind="relationship" relationship="window.shadowedContentViewController" id="1ED-7w-aqn"/>
+                    </connections>
+                </windowController>
+                <customObject id="YSg-U0-iEu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2444" y="-278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Yhy-MQ-2bj">
+            <objects>
+                <viewController id="zxc-8R-22T" sceneMemberID="viewController">
+                    <view key="view" id="Rmr-UV-GrH">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="ZCX-7z-1N2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2444" y="135"/>
         </scene>
     </scenes>
 </document>
