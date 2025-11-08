@@ -238,6 +238,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.set(zoomFactor, forKey: UserDefaultKeys.zoomFactor)
     }
 
+    func getUserDefaultMinimumWindowWidth() -> Int {
+        var minimumWindowWidth = 375
+        if let minimumWindowWidthPref = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.minimumWindowWidth) as? Int
+        {
+            minimumWindowWidth = minimumWindowWidthPref
+        }
+        return minimumWindowWidth
+    }
+
+    func setUserDefaultMinimumWindowWidth(_ minimumWindowWidth: Int) {
+        UserDefaults.standard.set(minimumWindowWidth, forKey: UserDefaultKeys.minimumWindowWidth)
+    }
+
     @IBAction func actionResetStatistics(_ sender: Any?) {
         mutedTermsHits = 0
     }

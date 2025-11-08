@@ -520,4 +520,34 @@ class ViewController: NSViewController {
         adjustAndApplyZoomFactor(0)
     }
 
+    @IBAction func actionSetMinimumWindowWidth(_ sender: Any?) {
+        if let menuItem = sender as? NSMenuItem,
+           let window = self.view.window
+        {
+            let title = menuItem.title
+            let widthString = title.replacingOccurrences(of: "pt", with: "")
+            if let width = Int(widthString) {
+                AppDelegate.shared.setUserDefaultMinimumWindowWidth(width)
+                let currentMinHeight = window.contentMinSize.height
+                window.contentMinSize = NSSize(
+                    width: CGFloat(width),
+                    height: currentMinHeight
+                )
+                let subMenu = NSApplication.shared.mainMenu?
+                    .item(withTitle: "Advanced")?
+                    .submenu?
+                    .item(withTitle: "Set Minimum Window Width")?
+                    .submenu
+                for item in subMenu?.items ?? [] {
+                    if item.title == "\(width)pt" {
+                        item.state = .on
+                    } else {
+                        item.state = .off
+                    }
+                }
+            }
+        }
+    }
+
+
 }

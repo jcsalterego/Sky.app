@@ -9,4 +9,5 @@ enum UserDefaultKeys {
     static let useTranslationsWindow = "useTranslationsWindow"
     static let webInspector = "webInspector"
     static let zoomFactor = "zoomFactor"
+    static let minimumWindowWidth = "minimumWindowWidth"
 }
