@@ -30,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var translationsViewController : TranslationsViewController?
 
     var appViewWindowController : AppViewWindowController?
+    var appViewViewController : AppViewViewController?
 
     var localStorageMirror = [String:String]()
 

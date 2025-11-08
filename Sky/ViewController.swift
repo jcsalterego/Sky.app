@@ -270,9 +270,9 @@ class ViewController: NSViewController {
         )
     }
 
-    @IBAction func actionChooseAppView(_ sender: Any) {
-        if let appViewWindowController = AppDelegate.shared.appViewWindowController {
-            NSApplication.shared.runModal(for: appViewWindowController.window!)
+    @IBAction func actionChooseAppView(_ sender: Any?) {
+        if let appViewWindow = AppDelegate.shared.appViewWindowController?.window {
+            NSApplication.shared.runModal(for: appViewWindow)
         }
     }
 

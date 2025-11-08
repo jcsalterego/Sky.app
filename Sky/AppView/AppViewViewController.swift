@@ -9,16 +9,14 @@ class AppViewViewController: NSViewController {
 
     @IBAction func actionOKButtonClicked(_ sender: Any) {
         NSLog("OK")
-        if let appViewWindowController = AppDelegate.shared.appViewWindowController {
-            NSLog("appViewWindowController = \(appViewWindowController)")
-        }
+        NSApplication.shared.stopModal()
+        AppDelegate.shared.appViewWindowController?.close()
     }
 
     @IBAction func actionCancelButtonClicked(_ sender: Any) {
         NSLog("Cancel")
-        if let appViewWindowController = AppDelegate.shared.appViewWindowController {
-            NSLog("appViewWindowController = \(appViewWindowController)")
-        }
+        NSApplication.shared.stopModal()
+        AppDelegate.shared.appViewWindowController?.close()
     }
 
 }
