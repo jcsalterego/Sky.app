@@ -799,10 +799,10 @@
             </objects>
             <point key="canvasLocation" x="2386.5" y="-348"/>
         </scene>
-        <!--View Controller-->
+        <!--App View View Controller-->
         <scene sceneID="Yhy-MQ-2bj">
             <objects>
-                <viewController id="zxc-8R-22T" sceneMemberID="viewController">
+                <viewController id="zxc-8R-22T" customClass="AppViewViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Rmr-UV-GrH">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -821,7 +821,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Bluesky (bsky.app)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IAC-Ez-bgI" id="4Vd-Qs-XtJ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="message"/>
                                     <menu key="menu" id="JRG-bK-qeM">
                                         <items>
                                             <menuItem title="Bluesky (bsky.app)" state="on" id="IAC-Ez-bgI"/>
@@ -840,6 +840,9 @@
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="actionOKButtonClicked:" target="ZCX-7z-1N2" id="bwC-hO-Ekd"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEg-UC-QJo">
                                 <rect key="frame" x="225" y="13" width="76" height="32"/>
@@ -851,6 +854,9 @@ DQ
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="actionCancelButtonClicked:" target="ZCX-7z-1N2" id="zHL-es-wPS"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>

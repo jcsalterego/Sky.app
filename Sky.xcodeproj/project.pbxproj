@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		043A0F1C29A5331800B06D18 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */; };
 		0447A07B2EBF7B4E00F5EF98 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447A07A2EBF7B4E00F5EF98 /* MainWindowController.swift */; };
 		045D4BFF2A0FC1610040A8FD /* WindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */; };
-		046FB0972EBFB90300570BD5 /* AppViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FB0962EBFB90300570BD5 /* AppViewWindowController.swift */; };
 		048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048239162A1E55D600715D01 /* LocalStorageKeys.swift */; };
 		048BAFCD2A093F3E00A8C919 /* Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCC2A093F3E00A8C919 /* Scripts.swift */; };
 		048BAFCF2A09472400A8C919 /* SkyUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BAFCE2A09472400A8C919 /* SkyUrls.swift */; };
@@ -58,7 +57,6 @@
 		043A0F1A29A5331800B06D18 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
 		0447A07A2EBF7B4E00F5EF98 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		045D4BFE2A0FC1610040A8FD /* WindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowDelegate.swift; sourceTree = "<group>"; };
-		046FB0962EBFB90300570BD5 /* AppViewWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewWindowController.swift; sourceTree = "<group>"; };
 		048239162A1E55D600715D01 /* LocalStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageKeys.swift; sourceTree = "<group>"; };
 		048BAFCC2A093F3E00A8C919 /* Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripts.swift; sourceTree = "<group>"; };
 		048BAFCE2A09472400A8C919 /* SkyUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyUrls.swift; sourceTree = "<group>"; };
@@ -86,6 +84,10 @@
 		04FF787F2A2A7477004569D7 /* JumpbarWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarWindowController.swift; sourceTree = "<group>"; };
 		04FF78822A2A8CBD004569D7 /* JumpbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		046FB09A2EC000B500570BD5 /* AppView */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppView; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		04E847C321D99CE0009D1B0F /* Frameworks */ = {
@@ -148,11 +150,11 @@
 		04E847C821D99CE0009D1B0F /* Sky */ = {
 			isa = PBXGroup;
 			children = (
+				046FB09A2EC000B500570BD5 /* AppView */,
 				04FF787D2A2A7415004569D7 /* Jumpbar */,
 				043A0F1729A5330E00B06D18 /* Scripts */,
 				04B35A712A55D68900EBD69A /* Translations */,
 				04E847C921D99CE0009D1B0F /* AppDelegate.swift */,
-				046FB0962EBFB90300570BD5 /* AppViewWindowController.swift */,
 				0499FB7C2A1BBD6B009226EE /* RootLocalStorage.swift */,
 				043A0F1929A5331800B06D18 /* JsLoader.swift */,
 				048239162A1E55D600715D01 /* LocalStorageKeys.swift */,
@@ -222,6 +224,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				046FB09A2EC000B500570BD5 /* AppView */,
 			);
 			name = Sky;
 			packageProductDependencies = (
@@ -366,7 +371,6 @@
 				04E847CC21D99CE0009D1B0F /* ViewController.swift in Sources */,
 				048239172A1E55D600715D01 /* LocalStorageKeys.swift in Sources */,
 				04E847CA21D99CE0009D1B0F /* AppDelegate.swift in Sources */,
-				046FB0972EBFB90300570BD5 /* AppViewWindowController.swift in Sources */,
 				04B35A762A55D74D00EBD69A /* TranslationsWebKitDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
