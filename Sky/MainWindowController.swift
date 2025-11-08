@@ -15,11 +15,11 @@ class MainWindowController : NSWindowController {
             return
         }
 
-        let currentMinWidth = AppDelegate.shared.getMinimumWindowWidth()
+        let currentMinWidth = AppDelegate.shared.getUserDefaultMinimumWindowWidth()
         let advancedSubmenu = NSApplication.shared.mainMenu?
             .item(withTitle: "Advanced")?.submenu
-        let setMinimumWindowWidthSubmenu = advancedSubmenu?.item(withTitle: "Set Minimum Window Width")?.submenu
-        for item in setMinimumWindowWidthSubmenu?.items ?? [] {
+        let setUserDefaultMinimumWindowWidthSubmenu = advancedSubmenu?.item(withTitle: "Set Minimum Window Width")?.submenu
+        for item in setUserDefaultMinimumWindowWidthSubmenu?.items ?? [] {
             if item.title == "\(currentMinWidth)pt" {
                 item.state = .on
             } else {
