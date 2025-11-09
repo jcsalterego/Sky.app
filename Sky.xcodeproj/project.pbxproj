@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -85,6 +85,10 @@
 		04FF78822A2A8CBD004569D7 /* JumpbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		046FB09A2EC000B500570BD5 /* AppView */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AppView; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		04E847C321D99CE0009D1B0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -146,6 +150,7 @@
 		04E847C821D99CE0009D1B0F /* Sky */ = {
 			isa = PBXGroup;
 			children = (
+				046FB09A2EC000B500570BD5 /* AppView */,
 				04FF787D2A2A7415004569D7 /* Jumpbar */,
 				043A0F1729A5330E00B06D18 /* Scripts */,
 				04B35A712A55D68900EBD69A /* Translations */,
@@ -219,6 +224,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				046FB09A2EC000B500570BD5 /* AppView */,
 			);
 			name = Sky;
 			packageProductDependencies = (

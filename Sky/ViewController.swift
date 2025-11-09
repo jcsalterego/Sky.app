@@ -146,7 +146,11 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: SkyUrls.root)
+        loadHome()
+    }
+
+    func loadHome() {
+        let url = URL(string: SkyUrls.getHome())
         let myRequest = URLRequest(url: url!)
         webView.load(myRequest)
     }
@@ -163,19 +167,20 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionViewHome(_ sender: Any?) {
-        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.home)
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.getHome())
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Home",
                 index: 0,
-                url: SkyUrls.home
+                url: SkyUrls.getHome()
             )
         )
     }
 
+
     @IBAction func actionViewSearch(_ sender: Any?) {
-        if webView.url!.absoluteString == SkyUrls.search {
+        if webView.url!.absoluteString == SkyUrls.getSearch() {
             self.webView.evaluateJavaScript(Scripts.focusSearch())
         } else {
             self.webView.evaluateJavaScript(
@@ -183,56 +188,56 @@ class ViewController: NSViewController {
                     checkLoadNew: false,
                     label: "Search",
                     index: 1,
-                    url: SkyUrls.search
+                    url: SkyUrls.getSearch()
                 )
             )
         }
     }
 
     @IBAction func actionViewFeeds(_ sender: Any?) {
-        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.feeds)
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.getFeeds())
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Feeds",
                 index: -1,
-                url: SkyUrls.feeds
+                url: SkyUrls.getFeeds()
             )
         )
     }
 
     @IBAction func actionViewLists(_ sender: Any?) {
-        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.lists)
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.getLists())
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Lists",
                 index: -1,
-                url: SkyUrls.lists
+                url: SkyUrls.getLists()
             )
         )
     }
 
     @IBAction func actionViewNotifications(_ sender: Any?) {
-        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.notifications)
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.getNotifications())
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Notifications",
                 index: 3,
-                url: SkyUrls.notifications
+                url: SkyUrls.getNotifications()
             )
         )
     }
 
     @IBAction func actionViewChat(_ sender: Any?) {
-        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.messages)
+        let checkLoadNew = (webView.url!.absoluteString == SkyUrls.getMessages())
         self.webView.evaluateJavaScript(
             Scripts.navigateNavbar(
                 checkLoadNew: checkLoadNew,
                 label: "Chat;Messages",
                 index: 2,
-                url: SkyUrls.messages
+                url: SkyUrls.getMessages()
             )
         )
     }
@@ -254,7 +259,7 @@ class ViewController: NSViewController {
                 checkLoadNew: false,
                 label: "Moderation",
                 index: -1,
-                url: SkyUrls.moderation
+                url: SkyUrls.getModeration()
             )
         )
     }
@@ -265,9 +270,15 @@ class ViewController: NSViewController {
                 checkLoadNew: false,
                 label: "Settings",
                 index: -1,
-                url: SkyUrls.settings
+                url: SkyUrls.getSettings()
             )
         )
+    }
+
+    @IBAction func actionChooseAppView(_ sender: Any?) {
+        if let appViewWindow = AppDelegate.shared.appViewWindowController?.window {
+            NSApplication.shared.runModal(for: appViewWindow)
+        }
     }
 
     @IBAction func actionRefresh(_ sender: Any?) {
@@ -351,15 +362,16 @@ class ViewController: NSViewController {
     }
 
     func getFeedURL(actor: String, rkey: String) -> URL? {
-        let urlString = "https://bsky.app/profile/\(actor)/feed/\(rkey)"
+        let host = AppDelegate.shared.getAppViewHost()
+        let urlString = "https://\(host)/profile/\(actor)/feed/\(rkey)"
         return URL(string: urlString)
     }
 
     @IBAction func actionOpenInBrowser(_ sender: Any?) {
         let urlString = webView.url!.absoluteString
         switch urlString {
-        case SkyUrls.home,
-             SkyUrls.notifications:
+        case SkyUrls.getHome(),
+             SkyUrls.getNotifications():
             break
         default:
             NSWorkspace.shared.open(webView.url!)

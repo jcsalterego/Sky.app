@@ -29,6 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var translationsWindowController : TranslationsWindowController?
     var translationsViewController : TranslationsViewController?
 
+    var appViewWindowController : AppViewWindowController?
+    var appViewViewController : AppViewViewController?
+
     var localStorageMirror = [String:String]()
 
     class var shared: AppDelegate {
@@ -69,6 +72,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     translationsWindowController = storyboard.instantiateController(
                         withIdentifier: "TranslationsWindowController") as? TranslationsWindowController
 
+                    appViewWindowController = storyboard.instantiateController(
+                        withIdentifier: "AppViewWindowController") as? AppViewWindowController
                 } else {
                     NSLog("fail to load storyboard")
                 }
@@ -250,6 +255,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func setUserDefaultMinimumWindowWidth(_ minimumWindowWidth: Int) {
         UserDefaults.standard.set(minimumWindowWidth, forKey: UserDefaultKeys.minimumWindowWidth)
+    }
+
+    func getAppViewHost() -> String {
+        var appViewHost = "bsky.app"
+        if let appViewHostPref = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.appViewHost) as? String
+        {
+            appViewHost = appViewHostPref
+        }
+        return appViewHost
+    }
+
+    func setAppViewHost(_ appViewHost: String) {
+        UserDefaults.standard.set(appViewHost, forKey: UserDefaultKeys.appViewHost)
     }
 
     @IBAction func actionResetStatistics(_ sender: Any?) {

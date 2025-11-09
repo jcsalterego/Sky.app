@@ -4,14 +4,32 @@
 //
 
 enum SkyUrls {
-    static let host = "bsky.app"
-    static let root = "https://\(host)"
-    static let home = "\(root)/"
-    static let search = "\(root)/search"
-    static let feeds = "\(root)/feeds"
-    static let lists = "\(root)/lists"
-    static let notifications = "\(root)/notifications"
-    static let moderation = "\(root)/moderation"
-    static let settings = "\(root)/settings"
-    static let messages = "\(root)/messages"
+    static func withPath(_ path: String) -> String {
+        let host = AppDelegate.shared.getAppViewHost()
+        return "https://\(host)/\(path)"
+    }
+    static func getHome() -> String {
+        return withPath("")
+    }
+    static func getSearch() -> String {
+        return withPath("search")
+    }
+    static func getFeeds() -> String {
+        return withPath("feeds")
+    }
+    static func getLists() -> String {
+        return withPath("lists")
+    }
+    static func getNotifications() -> String {
+        return withPath("notifications")
+    }
+    static func getModeration() -> String {
+        return withPath("moderation")
+    }
+    static func getSettings() -> String {
+        return withPath("settings")
+    }
+    static func getMessages() -> String {
+        return withPath("messages")
+    }
 }

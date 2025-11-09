@@ -23,10 +23,8 @@ function getInitSystemAppearance() {
     return localStorage.initSystemAppearance;
 }
 
-function updateColorSchemeWithBskyStorage(bskyStorage) {
-    const colorMode = bskyStorage.colorMode;
-    const darkTheme = bskyStorage.darkTheme;
-    const classDefs = {
+const CLASS_DEFS = {
+    "bsky.app": {
         "theme--light": {
             "name": "light",
             "darkMode": false,
@@ -42,7 +40,30 @@ function updateColorSchemeWithBskyStorage(bskyStorage) {
             "darkMode": true,
             "backgroundColor": "rgb(24, 30, 38)",
         }
-    };
+    },
+    "blacksky.community": {
+        "theme--light": {
+            "name": "light",
+            "darkMode": false,
+            "backgroundColor": "rgb(248, 250, 249)",
+        },
+        "theme--dark": {
+            "name": "dark",
+            "darkMode": true,
+            "backgroundColor": "rgb(0, 0, 0)",
+        },
+        "theme--dim": {
+            "name": "dim",
+            "darkMode": true,
+            "backgroundColor": "rgb(24, 30, 38)",
+        }
+    },
+};
+
+function updateColorSchemeWithBskyStorage(bskyStorage) {
+    const colorMode = bskyStorage.colorMode;
+    const darkTheme = bskyStorage.darkTheme;
+    let classDefs = CLASS_DEFS[window.location.hostname];
     let match = classDefs["theme--light"];
     let initSystemAppearance = getInitSystemAppearance();
     console.info("updateColorSchemeWithBskyStorage initSystemAppearance", initSystemAppearance);
@@ -72,23 +93,7 @@ function updateColorSchemeWithBskyStorage(bskyStorage) {
 }
 
 function updateColorSchemeAuto() {
-    const classDefs = {
-        "theme--light": {
-            "name": "light",
-            "darkMode": false,
-            "backgroundColor": "rgb(255, 255, 255)",
-        },
-        "theme--dark": {
-            "name": "dark",
-            "darkMode": true,
-            "backgroundColor": "rgb(0, 0, 0)",
-        },
-        "theme--dim": {
-            "name": "dim",
-            "darkMode": true,
-            "backgroundColor": "rgb(24, 30, 38)",
-        }
-    };
+    let classDefs = CLASS_DEFS[window.location.hostname];
     let match = classDefs["theme--light"];
     let htmlTheme = getHtmlTheme();
     for (let c of Object.keys(classDefs)) {
