@@ -860,6 +860,9 @@ Gw
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="appHostPopUpButton" destination="8kD-JT-uMq" id="6Jm-sd-fUC"/>
+                    </connections>
                 </viewController>
                 <customObject id="ZCX-7z-1N2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

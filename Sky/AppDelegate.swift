@@ -257,6 +257,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.set(minimumWindowWidth, forKey: UserDefaultKeys.minimumWindowWidth)
     }
 
+    func getAppViewHost() -> String {
+        var appViewHost = "bsky.app"
+        if let appViewHostPref = UserDefaults.standard.object(
+            forKey: UserDefaultKeys.appViewHost) as? String
+        {
+            appViewHost = appViewHostPref
+        }
+        return appViewHost
+    }
+
+    func setAppViewHost(_ appViewHost: String) {
+        UserDefaults.standard.set(appViewHost, forKey: UserDefaultKeys.appViewHost)
+    }
+
     @IBAction func actionResetStatistics(_ sender: Any?) {
         mutedTermsHits = 0
     }

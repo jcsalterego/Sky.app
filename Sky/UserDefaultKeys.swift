@@ -10,4 +10,5 @@ enum UserDefaultKeys {
     static let webInspector = "webInspector"
     static let zoomFactor = "zoomFactor"
     static let minimumWindowWidth = "minimumWindowWidth"
+    static let appViewHost = "appViewHost"
 }
