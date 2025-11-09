@@ -146,6 +146,10 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadHome()
+    }
+
+    func loadHome() {
         let url = URL(string: SkyUrls.getHome())
         let myRequest = URLRequest(url: url!)
         webView.load(myRequest)
