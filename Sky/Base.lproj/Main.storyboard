@@ -810,13 +810,13 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-JT-uMq">
                                 <rect key="frame" x="86" y="56" width="263" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Bluesky (bsky.app)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IAC-Ez-bgI" id="4Vd-Qs-XtJ">
+                                <popUpButtonCell key="cell" type="push" title="Blacksky (blacksky.community)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wCR-QX-qot" id="4Vd-Qs-XtJ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
                                     <menu key="menu" id="JRG-bK-qeM">
                                         <items>
-                                            <menuItem title="Bluesky (bsky.app)" state="on" id="IAC-Ez-bgI"/>
                                             <menuItem title="Blacksky (blacksky.community)" id="wCR-QX-qot"/>
+                                            <menuItem title="Bluesky (bsky.app)" state="on" id="IAC-Ez-bgI"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
