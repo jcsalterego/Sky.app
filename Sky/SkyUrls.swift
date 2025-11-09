@@ -4,36 +4,32 @@
 //
 
 enum SkyUrls {
-    static func getHome() -> String {
+    static func withPath(_ path: String) -> String {
         let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/"
+        return "https://\(host)/\(path)"
+    }
+    static func getHome() -> String {
+        return withPath("")
     }
     static func getSearch() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/search"
+        return withPath("search")
     }
     static func getFeeds() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/feeds"
+        return withPath("feeds")
     }
     static func getLists() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/lists"
+        return withPath("lists")
     }
     static func getNotifications() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/notifications"
+        return withPath("notifications")
     }
     static func getModeration() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/moderation"
+        return withPath("moderation")
     }
     static func getSettings() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/settings"
+        return withPath("settings")
     }
     static func getMessages() -> String {
-        let host = AppDelegate.shared.getAppViewHost()
-        return "https://\(host)/messages"
+        return withPath("messages")
     }
 }
