@@ -14,7 +14,6 @@ class AppViewViewController: NSViewController {
         NSApplication.shared.stopModal()
 
         let selectedAppHost = getSelectedAppHost()
-        NSLog("Selected App Host: \(selectedAppHost ?? "None")")
 
         // parse "Name (host)" to get host with regex
         if let selectedAppHost = selectedAppHost {
@@ -22,9 +21,19 @@ class AppViewViewController: NSViewController {
             if let regex = try? NSRegularExpression(pattern: pattern, options: []),
                let match = regex.firstMatch(in: selectedAppHost, options: [], range: NSRange(location: 0, length: selectedAppHost.utf16.count)) {
                 if let range = Range(match.range(at: 1), in: selectedAppHost) {
-                    let host = String(selectedAppHost[range])
-                    AppDelegate.shared.setAppViewHost(host)
-                    NSLog("Parsed Host: \(host)")
+                    let currentAppHost = AppDelegate.shared.getAppViewHost()
+                    let selectedHost = String(selectedAppHost[range])
+                    if currentAppHost != selectedHost {
+                        let alert = NSAlert()
+                        alert.messageText = "Switch App View to \(selectedAppHost)?"
+                        alert.addButton(withTitle: "Yes")
+                        alert.addButton(withTitle: "No")
+                        let action = alert.runModal()
+                        if action == .alertFirstButtonReturn {
+                            AppDelegate.shared.setAppViewHost(selectedHost)
+                            AppDelegate.shared.mainViewController?.loadHome()
+                        }
+                    }
                 }
             }
         }
