@@ -13,10 +13,8 @@ class AppViewViewController: NSViewController {
         NSLog("OK")
         NSApplication.shared.stopModal()
 
-        let selectedAppHost = getSelectedAppHost()
-
         // parse "Name (host)" to get host with regex
-        if let selectedAppHost = selectedAppHost {
+        if let selectedAppHost = appHostPopUpButton.titleOfSelectedItem {
             let pattern = "\\((.*?)\\)"
             if let regex = try? NSRegularExpression(pattern: pattern, options: []),
                let match = regex.firstMatch(in: selectedAppHost, options: [], range: NSRange(location: 0, length: selectedAppHost.utf16.count)) {
@@ -45,10 +43,6 @@ class AppViewViewController: NSViewController {
         NSLog("Cancel")
         NSApplication.shared.stopModal()
         AppDelegate.shared.appViewWindowController?.close()
-    }
-
-    func getSelectedAppHost() -> String? {
-        return appHostPopUpButton.titleOfSelectedItem
     }
 
 }
