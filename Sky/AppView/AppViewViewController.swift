@@ -45,4 +45,17 @@ class AppViewViewController: NSViewController {
         AppDelegate.shared.appViewWindowController?.close()
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let popUpButtonMenu = appHostPopUpButton?.menu {
+            let currentAppHost = AppDelegate.shared.getAppViewHost()
+            for item in popUpButtonMenu.items {
+                if item.title.contains("(\(currentAppHost))") {
+                    appHostPopUpButton.select(item)
+                    break
+                }
+            }
+        }
+    }
+
 }
