@@ -35,7 +35,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gFw-en-kLH"/>
-                                        <menuItem title="Select AppView..." id="4UY-2y-hyO" userLabel="Settings...">
+                                        <menuItem title="Switch AppView..." id="4UY-2y-hyO" userLabel="Settings...">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionChooseAppView:" target="Ady-hI-5gd" id="uLf-yq-KFP"/>
@@ -778,7 +778,7 @@
         <scene sceneID="HEm-Nz-fj9">
             <objects>
                 <windowController storyboardIdentifier="AppViewWindowController" id="Kuy-Oi-Mnx" customClass="AppViewWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Select AppView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jZK-Ut-2yG">
+                    <window key="window" title="Switch AppView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jZK-Ut-2yG">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="211" y="267" width="365" height="130"/>
@@ -810,13 +810,13 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-JT-uMq">
                                 <rect key="frame" x="86" y="56" width="263" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Blacksky (blacksky.community)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wCR-QX-qot" id="4Vd-Qs-XtJ">
+                                <popUpButtonCell key="cell" type="push" title="Blacksky (blacksky.community)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wCR-QX-qot" id="4Vd-Qs-XtJ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
                                     <menu key="menu" id="JRG-bK-qeM">
                                         <items>
-                                            <menuItem title="Blacksky (blacksky.community)" id="wCR-QX-qot"/>
-                                            <menuItem title="Bluesky (bsky.app)" state="on" id="IAC-Ez-bgI"/>
+                                            <menuItem title="Blacksky (blacksky.community)" state="on" id="wCR-QX-qot"/>
+                                            <menuItem title="Bluesky (bsky.app)" id="IAC-Ez-bgI"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
