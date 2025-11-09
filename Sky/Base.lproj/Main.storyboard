@@ -799,7 +799,7 @@
             </objects>
             <point key="canvasLocation" x="2386.5" y="-348"/>
         </scene>
-        <!--AppView View Controller-->
+        <!--App View View Controller-->
         <scene sceneID="Yhy-MQ-2bj">
             <objects>
                 <viewController id="zxc-8R-22T" customClass="AppViewViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
@@ -807,15 +807,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="365" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3P-KV-1dH">
-                                <rect key="frame" x="18" y="62" width="65" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="AppView:" id="TIr-Dz-CId">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-JT-uMq">
                                 <rect key="frame" x="86" y="56" width="263" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -858,6 +849,15 @@ Gw
                                     <action selector="actionCancelButtonClicked:" target="ZCX-7z-1N2" id="zHL-es-wPS"/>
                                 </connections>
                             </button>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3P-KV-1dH">
+                                <rect key="frame" x="18" y="62" width="65" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="AppView:" id="TIr-Dz-CId">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
