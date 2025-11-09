@@ -23,7 +23,7 @@ class AppViewViewController: NSViewController {
                     let selectedHost = String(selectedAppHost[range])
                     if currentAppHost != selectedHost {
                         let alert = NSAlert()
-                        alert.messageText = "Switch App View to \(selectedAppHost)?"
+                        alert.messageText = "Switch AppView to \(selectedAppHost)?"
                         alert.addButton(withTitle: "Yes")
                         alert.addButton(withTitle: "No")
                         let action = alert.runModal()

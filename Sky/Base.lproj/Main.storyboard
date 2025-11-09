@@ -35,7 +35,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="gFw-en-kLH"/>
-                                        <menuItem title="Choose App View..." id="4UY-2y-hyO" userLabel="Settings...">
+                                        <menuItem title="Select AppView..." id="4UY-2y-hyO" userLabel="Settings...">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionChooseAppView:" target="Ady-hI-5gd" id="uLf-yq-KFP"/>
@@ -778,7 +778,7 @@
         <scene sceneID="HEm-Nz-fj9">
             <objects>
                 <windowController storyboardIdentifier="AppViewWindowController" id="Kuy-Oi-Mnx" customClass="AppViewWindowController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Choose App View" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jZK-Ut-2yG">
+                    <window key="window" title="Select AppView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jZK-Ut-2yG">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="211" y="267" width="365" height="130"/>
@@ -799,7 +799,7 @@
             </objects>
             <point key="canvasLocation" x="2386.5" y="-348"/>
         </scene>
-        <!--App View View Controller-->
+        <!--AppView View Controller-->
         <scene sceneID="Yhy-MQ-2bj">
             <objects>
                 <viewController id="zxc-8R-22T" customClass="AppViewViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
@@ -810,7 +810,7 @@
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3P-KV-1dH">
                                 <rect key="frame" x="18" y="62" width="65" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="App View:" id="TIr-Dz-CId">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="AppView:" id="TIr-Dz-CId">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
