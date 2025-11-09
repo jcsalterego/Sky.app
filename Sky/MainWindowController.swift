@@ -11,11 +11,15 @@ class MainWindowController : NSWindowController {
         super.windowDidLoad()
 
         // Ensure the window exists
-        if self.window == nil {
+        guard let window = self.window else {
             return
         }
-
         let currentMinWidth = AppDelegate.shared.getUserDefaultMinimumWindowWidth()
+        let currentMinHeight = window.contentMinSize.height
+        window.contentMinSize = NSSize(
+            width: CGFloat(currentMinWidth),
+            height: currentMinHeight
+        )
         let advancedSubmenu = NSApplication.shared.mainMenu?
             .item(withTitle: "Advanced")?.submenu
         let setUserDefaultMinimumWindowWidthSubmenu = advancedSubmenu?.item(withTitle: "Set Minimum Window Width")?.submenu
