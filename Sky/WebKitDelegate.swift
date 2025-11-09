@@ -17,8 +17,11 @@ class WebKitDelegate: NSObject, WKNavigationDelegate, WKUIDelegate {
         if navigationAction.navigationType == WKNavigationType.linkActivated {
             decisionHandler(WKNavigationActionPolicy.cancel)
             let requestURL = navigationAction.request.url!
+            let appViewHost = AppDelegate.shared.getAppViewHost()
             let host = requestURL.host!
-            if host == "staging.bsky.app" || host == "bsky.app" {
+            if host == appViewHost {
+                webView.load(navigationAction.request)
+            } else if host == "staging.bsky.app" && appViewHost == "bsky.app" {
                 var urlString = requestURL.absoluteString
                 urlString = urlString.replacingOccurrences(
                     of: "//staging.bsky.app/",

@@ -362,7 +362,8 @@ class ViewController: NSViewController {
     }
 
     func getFeedURL(actor: String, rkey: String) -> URL? {
-        let urlString = "https://bsky.app/profile/\(actor)/feed/\(rkey)"
+        let host = AppDelegate.shared.getAppViewHost()
+        let urlString = "https://\(host)/profile/\(actor)/feed/\(rkey)"
         return URL(string: urlString)
     }
 
