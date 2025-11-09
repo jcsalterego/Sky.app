@@ -10,7 +10,6 @@ class AppViewViewController: NSViewController {
     @IBOutlet weak var appHostPopUpButton: NSPopUpButton!
 
     @IBAction func actionOKButtonClicked(_ sender: Any) {
-        NSLog("OK")
         NSApplication.shared.stopModal()
 
         // parse "Name (host)" to get host with regex
@@ -40,7 +39,6 @@ class AppViewViewController: NSViewController {
     }
 
     @IBAction func actionCancelButtonClicked(_ sender: Any) {
-        NSLog("Cancel")
         NSApplication.shared.stopModal()
         AppDelegate.shared.appViewWindowController?.close()
     }
