@@ -3,6 +3,11 @@
 # https://www.npmjs.com/package/create-dmg
 # https://github.com/sindresorhus/create-dmg
 #
+load_secret() {
+    secret_name="${1}"
+    jq -r ".\"${secret_name}\"" .secrets.json
+}
+
 dir=../Build/Releases/
 mkdir -p ${dir}
 
@@ -29,8 +34,19 @@ mkdir -p ${dir}
 set -e
 set -x
 
-create-dmg --overwrite "${app}" ${dir}
+create-dmg --no-code-sign --overwrite "${app}" ${dir}
+dmg="$(cd ${dir}; realpath *.dmg)"
+echo "DMG: ${dmg}"
 
-xcrun notarytool submit ${dir}*.dmg --keychain-profile "${keychain_profile}" --wait
-xcrun stapler staple ${dir}*.dmg
-spctl -a -vvvv -t open --context context:primary-signature --raw ${dir}*.dmg
+apple_id=$(load_secret 'apple-id')
+password=$(load_secret 'app-password')
+team_id=$(load_secret 'team-id')
+
+xcrun notarytool submit "${dmg}" \
+  --wait \
+  --apple-id "${apple_id}" \
+  --password "${password}" \
+  --team-id "${team_id}" \
+;
+xcrun stapler staple "${dmg}";
+xcrun stapler validate "${dmg}";
