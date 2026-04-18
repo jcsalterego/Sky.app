@@ -32,8 +32,12 @@ function navigate(checkLoadNew, label, index, url) {
     if (checkLoadNew) {
         let loadNewButtons = getLoadNewButtons();
         if (loadNewButtons.length > 0) {
-            loadNewButtons.forEach((b) => b.click());
-            found = true;
+            for (let loadNewButton of loadNewButtons) {
+                if (loadNewButton.checkVisibility()) {
+                    loadNewButton.click();
+                    found = true;
+                }
+            }
         }
     }
     let labels = label.split(";");
@@ -42,7 +46,7 @@ function navigate(checkLoadNew, label, index, url) {
             found = clickByAriaLabel(labelVariant);
         }
         if (!found) {
-            found = findByNavbarIndex(labelVariant);
+            found = findByNavbarIndex(index);
         }
         if (found) {
             break;
