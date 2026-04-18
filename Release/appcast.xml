@@ -1,7 +1,15 @@
-<?xml version="1.0" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
   <channel>
     <title>Sky</title>
+    <item>
+      <title>0.5.2</title>
+      <pubDate>Sat, 18 Apr 2026 10:07:39 -0500</pubDate>
+      <sparkle:version>0.5.2</sparkle:version>
+      <sparkle:shortVersionString>0.5.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/jcsalterego/Sky.app/releases/download/0.5.2/Sky.0.5.2.dmg" length="4695504" type="application/octet-stream" sparkle:edSignature="69/9NRSiSEbyovJ7663lBvv60P5JbnLYJyerA19NPFuduHibp5GEzNFVIodSQNNnrzRa+Fq6R/p7UfGfYyrECQ==" />
+    </item>
     <item>
       <title>0.5.1</title>
       <pubDate>Sun, 23 Nov 2025 09:37:31 -0600</pubDate>
