@@ -30,6 +30,7 @@ class ViewController: NSViewController {
     ]
 
     let userScriptsAtDocumentEnd = [
+        "fix_message_input_bar",
         "hook_ctrl_tab",
         "hook_history_state",
         "hook_local_storage",
