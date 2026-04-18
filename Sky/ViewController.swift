@@ -386,8 +386,8 @@ class ViewController: NSViewController {
     }
 
     @IBAction func actionNewPost(_ sender: Any?) {
-        // Does nothing because 'n' is bound to New Post now
-        if !NSEvent.modifierFlags.contains(.command) {
+        // Ignore in-page "n" dispatches while still allowing the menu action and Cmd-N.
+        if sender is NSMenuItem || sender == nil {
             self.webView.evaluateJavaScript(Scripts.clickByAriaLabel("New Post"))
         }
     }
