@@ -71,14 +71,19 @@ function hookFetch() {
 
     window._fetch = window.fetch;
     window.fetch = async function (...args) {
-        let url = args[0];
-        let method = "get";
-        if (args.length > 1 && ["get"].indexOf(args[1].method) >= 0) {
+        let request = args[0];
+        let url = request;
+        let method = "GET";
+        if (request?.constructor?.name === "Request") {
+            method = request.method || method;
+        }
+        if (args.length > 1 && args[1]?.method !== undefined) {
             method = args[1].method;
         }
+        method = method.toUpperCase();
 
         try {
-            if (method === "get") {
+            if (method === "GET") {
                 return await overrideGet(...args);
             } else {
                 return window._fetch(...args);
