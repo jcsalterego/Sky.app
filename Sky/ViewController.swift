@@ -127,10 +127,12 @@ class ViewController: NSViewController {
         if #available(macOS 12.3, *) {
             webView.configuration.preferences.isElementFullscreenEnabled = true
         }
-
         // defaults write jcsalterego.Sky webInspector -bool TRUE
         if let webInspector = UserDefaults.standard.object(forKey: UserDefaultKeys.webInspector) as? Bool {
             webView.configuration.preferences.setValue(webInspector, forKey: "developerExtrasEnabled")
+            if #available(macOS 13.3, *) {
+                webView.isInspectable = webInspector
+            }
         }
 
         view = webView
