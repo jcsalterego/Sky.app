@@ -84,7 +84,7 @@ function hookFetch() {
                 return window._fetch(...args);
             }
         } catch (error) {
-            console.error("fail", error);
+            console.error("fail", error, args);
             return window._fetch(...args);
         }
     };
